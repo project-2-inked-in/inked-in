@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a project developed by XXX and YYY as the project for the second module at Ironhack. The purpose of the application is...
+This is a project developed by Estefania and Pau as the project for the second module at Ironhack. The purpose of the application is ...
 
 ---
 
@@ -42,14 +42,28 @@ Substitute this image with an image of your own app wireframes or designs
 
 What can the user do with the app?
 - User can sign up and create and account
-- User can login
-- User can log out
-- User can create ...
+- User can choose between two roles: user or tattooer
+- User/tattooer can login
+- User/tattooer can log out
+- User/tattooer can create their profile
+- User/tattooer can update their profile
+- User/tattooer can upload a profile photo
+- User/tattooer can upload a tattoos photos ans tattooer can upload their work
+- User/tattooer can visit other tattooer profile
 
 ## User stories (Backlog)
 
-- User can upload a profile picture
-- User can ...
+- User/tattooer can delete their profile
+- User/tattooer can give like to tattooer photo
+- User/tattooer can have favourites work from tattooers (from likes)
+- User/tattooer can do reviews to tattoers, but not to himselfs
+- User can see their reviews
+- User can edit their reviews
+- User can visit other users profiles
+- User can ask appointment to tattooer
+- User can send a DM to tattoer
+- User/tattoor can see favoutire images in big size
+
 
 ---
 
