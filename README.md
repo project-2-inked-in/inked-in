@@ -103,7 +103,7 @@ const userSchema = new Schema(
 ## Useful links
 
 - [Github Repo]()
-- [Trello kanban]()
+- [Trello kanban](https://trello.com/b/h4l8ecjZ/inked-in)
 - [Deployed version]()
 - [Presentation slides](https://www.slides.com)
 
