@@ -1,22 +1,25 @@
-<h1>¡Create a new account!</h1>
+<h1>Be part of our community</h1>
 
 <div id="form">
   <form action="/auth/signup" method="POST">
- 
     <label>Username</label>
-      <input type="text" name="username" placeholder="JohnDoe88" />
- 
+    <input type="text" name="username" placeholder="tattoLover" required />
     <label>Email</label>
-      <input type="email" name="email" placeholder="john@doe.com" />
-    
+    <input type="email" name="email" placeholder="love@tattoes.com" required />
     <label>Password</label>
-      <input type="password" name="password" placeholder="********" />
-
-      {{#if error}}
-      <p style="color: red;">{{error}}</p>
-      {{/if}}
- 
-    <button type="submit">Create account</button>
- 
+    <input type="password" name="password" placeholder="********" required />
+    <select name="userRole" required>
+      <option value="" disabled selected>Choose a user role</option>
+      <option value="tattoer">Tattoer</option>
+      <option value="user">Tattoed User</option>
+    </select>
+    <label>Where are you living?</label>
+    <input type="text" name="city" placeholder="Barcelona" required />
+    <label>How many tattoes de you have</label>
+    <input type="number" name="tattooNumber" placeholder="3" required />
+    {{#if error}}
+    <p style="color: red;">{{error}}</p>
+    {{/if}}
+    <button type="submit">Join us</button>
   </form>
 </div>
