@@ -8,7 +8,8 @@ const saltRounds = 10;
 // @route   GET /auth/signup
 // @access  Public
 router.get('/signup', async (req, res, next) => {
-  res.render('auth/signup');
+  const user = req.session.currentUser;
+  res.render('auth/signup', user);
 })
 
 // @desc    Displays form view to log in
