@@ -16,7 +16,8 @@ router.get('/signup', async (req, res, next) => {
 // @route   GET /auth/login
 // @access  Public
 router.get('/login', async (req, res, next) => {
-  res.render('auth/login');
+  const user = req.session.currentUser;
+  res.render('auth/login', user);
 })
 
 // @desc    Sends user auth data to database to create a new user
@@ -54,18 +55,22 @@ router.post('/signup', async (req, res, next) => {
 // @access  Public
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
-  // ⚠️ Add validations!
+  if (!email || !password) {
+    res.render('auth/login', { error: 'email or password do not match.' })
+    return;
+  }
   try {
-    const user = await User.findOne({ email: email });
-    if (!user) {
-      res.render('auth/login', { error: "User not found" });
+    const isUserInDB = await User.findOne({ email: email });
+    if (!isUserInDB) {
+      res.render('auth/login', { error: `There are no users by ${email}`});
       return;
     } else {
-      const match = await bcrypt.compare(password, user.hashedPassword);
-      if (match) {
+      const passwordMatch = await bcrypt.compare(password, passwordMatch.hashedPassword);
+      if (passwordMatch) {
         // Remember to assign user to session cookie:
-        req.session.currentUser = user;
-        res.redirect('/');
+        req.session.currentUser = isUserInDB;
+        //res.redirect('/'); puc fer un res.redirect i passar dades?
+        res.render('welcome', { user: isUserInDB });
       } else {
         res.render('auth/login', { error: "Unable to authenticate user" });
       }
