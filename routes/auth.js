@@ -23,13 +23,27 @@ router.get('/login', async (req, res, next) => {
 // @route   POST /auth/signup
 // @access  Public
 router.post('/signup', async (req, res, next) => {
-  const { email, password, username } = req.body;
-  // ⚠️ Add validations!
+  const { username, email, password, userRole, city, tattooNumber } = req.body;
+  if (!email || !password || !username || !userRole || !city || !tattooNumber) {
+    res.render('auth/signup', { error: 'All fields are necessary.' })
+    return;
+  }
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+  if (!regex.test(password)) {
+    res.render('auth/signup', { error: 'Password needs to containe at lesat 7 characters, one number, one lowercase an one uppercase letter.' })
+    return;
+  }
   try {
+    const isUserInDB = await User.findOne({ email: email });
+    if (isUserInDB) {
+      res.render('auth/signup', { error: `There already is a user with email ${email}.` })
+      return;
+    } else {
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const user = await User.create({ username, email, hashedPassword });
-    res.render('auth/profile', user)
+    const user = await User.create({ username, email, hashedPassword, userRole, city, tattooNumber });
+    res.render('welcome', user)
+    } 
   } catch (error) {
     next(error)
   }
