@@ -10,7 +10,7 @@ const saltRounds = 10;
 router.get('/signup', async (req, res, next) => {
   const user = req.session.currentUser;
   res.render('auth/signup', user);
-})
+});
 
 // @desc    Displays form view to log in
 // @route   GET /auth/login
@@ -18,7 +18,7 @@ router.get('/signup', async (req, res, next) => {
 router.get('/login', async (req, res, next) => {
   const user = req.session.currentUser;
   res.render('auth/login', user);
-})
+});
 
 // @desc    Sends user auth data to database to create a new user
 // @route   POST /auth/signup
@@ -62,7 +62,7 @@ router.post('/login', async (req, res, next) => {
   try {
     const isUserInDB = await User.findOne({ email: email });
     if (!isUserInDB) {
-      res.render('auth/login', { error: `There are no users by ${email}`});
+      res.render('auth/login', { error: `There are no users by ${email}` });
       return;
     } else {
       const passwordMatch = await bcrypt.compare(password, passwordMatch.hashedPassword);
@@ -78,7 +78,7 @@ router.post('/login', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 // @desc    Destroy user session and log out
 // @route   POST /auth/logout
@@ -88,9 +88,10 @@ router.post('/logout', (req, res, next) => {
     if (err) {
       next(err)
     } else {
+      res.clearCookie('inked-in-cookie');
       res.redirect('/auth/login');
     }
   });
-})
+});
 
 module.exports = router;
