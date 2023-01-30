@@ -65,7 +65,7 @@ router.post('/login', async (req, res, next) => {
       res.render('auth/login', { error: `There are no users by ${email}` });
       return;
     } else {
-      const passwordMatch = await bcrypt.compare(password, passwordMatch.hashedPassword);
+      const passwordMatch = await bcrypt.compare(password, isUserInDB.hashedPassword);
       if (passwordMatch) {
         // Remember to assign user to session cookie:
         req.session.currentUser = isUserInDB;
