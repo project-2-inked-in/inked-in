@@ -108,7 +108,7 @@ const userSchema = new Schema(
 | Login | GET    | /auth/login | No |                      |           |
 | Login | POST | /auth/login   | No | { email, password }  | /         |
 | Signup | GET    | /auth/signup | No |                      |           |
-| Signup | POST | /auth/signup   | No | { username, email, password }  | /auth/login  |
+| Signup | POST | /auth/signup   | No | { username, password }  | /auth/login  |
 | New movie  | GET    | /movies/new | Yes |                      |           |
 | New movie | POST | /movies/new   | Yes | { title, cast, genre }  | /movies/:movieId   |
 
