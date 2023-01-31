@@ -109,9 +109,10 @@ const userSchema = new Schema(
 | Login | POST | /auth/login   | No | { email, password }  | /         |
 | Signup | GET    | /auth/signup | No |                      |           |
 | Signup | POST | /auth/signup   | No | { username, password }  | /auth/login  |
-| New movie  | GET    | /movies/new | Yes |                      |           |
-| New movie | POST | /movies/new   | Yes | { title, cast, genre }  | /movies/:movieId   |
-
+| Welcome  | GET    | /welcome | Yes |                        |           |
+| Profile | GET | /profile   | Yes |          |   |
+| Profile | POST | /profile | Yes |
+| 
 ---
 
 ## Useful links
