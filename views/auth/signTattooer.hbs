@@ -1,0 +1,39 @@
+<section class="form-container">
+  <h2>Hey {{username}} just two more questions!</h2>
+  <div id="form">
+    <form action="/auth/tattooer" method="POST">
+      <label>Select your tattoo style</label>
+      <select name="tattooStyle" multiple required>
+        <option value="" disabled selected>Choose your styles</option>
+        <option value="traditionalOldSchool">Traditional OldSchool</option>
+        <option value="realism">Realism</option>
+        <option value="watercolor">Watercolor</option>
+        <option value="tribal">Tribal</option>
+        <option value="newSchool">New School</option>
+        <option value="neoTraditional">Neo Traditional</option>
+        <option value="japanese">Japanese</option>
+        <option value="blackwork">Blackwork</option>
+        <option value="dotwork">Dotwork</option>
+        <option value="geometric">Geometric</option>
+        <option value="illustrative">Illustrative</option>
+        <option value="sketch">Sketch</option>
+        <option value="anime">Anime</option>
+        <option value="lettering">Lettering</option>
+        <option value="minimalism">Minimalism</option>
+        <option value="surrealism">Surrealism</option>
+        <option value="trashPolka">TrashPolka</option>
+        <option value="blackAndGrey">Black and Grey</option>
+        <option value="ignorant">Illustrative</option>
+        <option value="other">Other</option>
+      </select>
+      <label>Where are you living?</label>
+      <input type="text" name="city" placeholder="Barcelona" required />
+      {{#if error}}
+      <p style="color: red;">{{error}}</p>
+      {{/if}}
+      <div class="button-form-container">
+        <button type="submit">Join us</button>
+      </div>
+    </form>
+  </div>
+</section>
