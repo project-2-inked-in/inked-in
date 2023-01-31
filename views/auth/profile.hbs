@@ -1,1 +1,16 @@
 <h1>Welcome {{ username }}</h1>
+
+<img src={{profileImage}} alt="{{username}}"/>
+{{!-- ¿Quedaría bien poner el rol debajo del avatar?
+<p>{{userRole}}</p> --}}
+<p>City: {{city}}</p>
+<p>I have {{tattooNumber}} tattoos</p>
+<p>About me: {{profileDescription}}</p>
+
+{{!-- {{#ifeq user.role 'tattoer'}}
+<p>I work these styles: {{tattooSyle}}</p>
+<p>I work in: {{studio}}</p>
+<p>Soon I will be in: {{nextJourneys}}</p>
+{{/ifeq}} --}}
+
+<a href="/">Edit profile</a>

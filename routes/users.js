@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const isLoggedIn =
+// const isLoggedIn = require('../middlewares')
 
 // @desc Profile user
 // @route GET user/profile
 // @access Private
 router.get('/profile', /*middleware here */ function (req, res, next) {
     const user = req.session.currentUser;
-    res.render('profile', user);
+    res.render('/auth/profile', user);
 });
 
 // @desc Profile user EDIT
@@ -16,7 +16,7 @@ router.get('/profile', /*middleware here */ function (req, res, next) {
 // @access Private
 router.get('/profile/edit', /*middleware here */ function (req, res, next) {
     const user = req.session.currentUser;
-    res.render('profileEdit', user);
+    res.render('/editProfile', user);
 });
 
 // @desc Profile user EDIT
