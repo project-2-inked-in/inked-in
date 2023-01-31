@@ -27,8 +27,55 @@ h2 {
   font-family: porlane;
 }
 
+a {
+  font-family: 'Manrope', sans-serif;
+  text-decoration: none;
+  color: var(--primary-black);
+}
+
 /*---------------INDEX PAGE---------------*/
+section.index-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 3.6rem;
+}
 
+section.index-container div.main-logo-container {
+  display: flex;
+}
 
+section.index-container div.main-logo-container img {
+  width: 195px;
+}
+
+section.index-container div.main-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem
+}
+
+section.index-container div.main-buttons-container button {
+  border: 1px solid var(--secondary-gold);
+  width: 200px;
+  background-color: var(--primary-white);
+  padding: 0.6rem 0;
+}
+
+section.index-container div.main-buttons-container button:hover {
+  border: 1px solid var(--primary-black);
+  width: 205px;
+}
+
+section.index-container div.main-buttons-container button a {
+  text-transform: uppercase;
+}
+
+section.index-container div.main-buttons-container button a:hover {
+  color: var(--secondary-gold)
+}
 
 
