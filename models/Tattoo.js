@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const tattooSchema = new Schema(
     {
         user: {
-            type: String,
+            type: [Schema.Types.ObjectId],
+            ref: 'User',
             required: [true]
         },
         tattooImage: {
