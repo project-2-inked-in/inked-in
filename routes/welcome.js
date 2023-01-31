@@ -5,7 +5,8 @@ const User = require('../models/User');
 // @route   GET /welcome
 // @access  Private
 router.get('/', (req, res, next) => {
-  res.render('welcome');
+  const user = req.session.currentUser;
+  res.render('welcome', user);
 });
 
 module.exports = router;

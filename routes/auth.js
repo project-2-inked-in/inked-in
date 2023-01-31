@@ -43,7 +43,13 @@ router.post('/signup', async (req, res, next) => {
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({ username, email, hashedPassword, userRole, city, tattooNumber });
-    res.render('welcome', user)
+      req.session.currentUser = user;
+    if (user.userRole == "tattooer") {
+      res.render('signTattooer', user)
+    } else {
+      res.redirect('/welcome')
+      //res.render('welcome', user)
+      };
     } 
   } catch (error) {
     next(error)
@@ -67,9 +73,7 @@ router.post('/login', async (req, res, next) => {
     } else {
       const passwordMatch = await bcrypt.compare(password, isUserInDB.hashedPassword);
       if (passwordMatch) {
-        // Remember to assign user to session cookie:
         req.session.currentUser = isUserInDB;
-        //res.redirect('/'); puc fer un res.redirect i passar dades?
         res.render('welcome', { user: isUserInDB });
       } else {
         res.render('auth/login', { error: "Unable to authenticate user" });
