@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const { isLoggedTattooer } = require('../middlewares');
 
 // @desc    Displays form view to sign up
 // @route   GET /auth/signup
@@ -20,12 +21,20 @@ router.get('/login', async (req, res, next) => {
   res.render('auth/login', user);
 });
 
+// @desc    Displays second tattooer form view to sign up
+// @route   GET /auth/tattooer
+// @access  just for tattoer role
+router.get('/tattooer', isLoggedTattooer, async (req, res, next) => {
+  const user = req.session.currentUser;
+  res.render('auth/signTattooer', user); // s'ha de canviar per profile
+});
+
 // @desc    Sends user auth data to database to create a new user
 // @route   POST /auth/signup
 // @access  Public
 router.post('/signup', async (req, res, next) => {
   const { username, email, password, userRole, city, tattooNumber } = req.body;
-  if (!email || !password || !username || !userRole || !city || !tattooNumber) {
+  if (!email || !password || !username || !userRole ) {
     res.render('auth/signup', { error: 'All fields are necessary.' })
     return;
   }
@@ -42,10 +51,10 @@ router.post('/signup', async (req, res, next) => {
     } else {
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const user = await User.create({ username, email, hashedPassword, userRole, city, tattooNumber });
+    const user = await User.create({ username, email, hashedPassword, userRole });
       req.session.currentUser = user;
     if (user.userRole == "tattooer") {
-      res.render('signTattooer', user)
+      res.render('auth/signTattooer', user)
     } else {
       res.redirect('/welcome')
       //res.render('welcome', user)
@@ -80,6 +89,24 @@ router.post('/login', async (req, res, next) => {
       }
     }
   } catch (error) {
+    next(error);
+  }
+});
+
+// @desc    Sends tattooer auth data to database to update user info
+// @route   POST /auth/tattooer
+// @access  just for tattoer role
+router.post('/tattooer', isLoggedTattooer ,async (req, res, next) => {
+  const { tattooStyle, city } = req.body;
+  const userId = req.session.currentUser._id
+  if (!tattooStyle || !city) {
+    res.render('auth/login', { error: 'Tattoo style or city fields are necessary.' })
+    return;
+  }
+  try {
+    const updateUser = await User.findByIdAndUpdate(userId, { tattooStyle, city });
+    res.redirect('/welcome');
+    } catch (error) {
     next(error);
   }
 });

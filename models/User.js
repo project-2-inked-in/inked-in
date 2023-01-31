@@ -28,11 +28,9 @@ const userSchema = new Schema(
     },
     city: {
       type: String,
-      required: [true, 'City is required. Please add what city are you living.']
     },
     tattooNumber: {
       type: Number,
-      required: [true, 'Number of tattooes is required. Please add a number.']
     },
     profileImage: {
       type: String,
@@ -42,7 +40,7 @@ const userSchema = new Schema(
       type: String,
     },
     tattooStyle: {
-      enum: ['traditional-oldSchool', 'realism', 'watercolor', 'tribal', 'new school', 'neo traditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant']
+      enum: ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant']
     },
     studio: {
       type: String
