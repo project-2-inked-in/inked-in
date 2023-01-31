@@ -1,26 +1,29 @@
-<h1>Be part of our community</h1>
-
-<div id="form">
-  <form action="/auth/signup" method="POST">
-    <label>Username</label>
-    <input type="text" name="username" placeholder="tattooLover" required />
-    <label>Email</label>
-    <input type="email" name="email" placeholder="love@tattooes.com" required />
-    <label>Password</label>
-    <input type="password" name="password" placeholder="********" required />
-    <label>Select your role</label>
-    <select name="userRole" required>
-      <option value="" disabled selected>Choose a user role</option>
-      <option value="tattooer">Tattooer</option>
-      <option value="user">Tattoed User</option>
-    </select>
-    <label>Where are you living?</label>
-    <input type="text" name="city" placeholder="Barcelona" required />
-    <label>How many tattoes de you have</label>
-    <input type="number" name="tattooNumber" placeholder="3" required />
-    {{#if error}}
-    <p style="color: red;">{{error}}</p>
-    {{/if}}
-    <button type="submit">Join us</button>
-  </form>
-</div>
+<section class="form-container">
+  <h2>Be part of our community</h2>
+  <div id="form">
+    <form action="/auth/signup" method="POST">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="tattooLover" required />
+      <label>Email</label>
+      <input type="email" name="email" placeholder="love@tattooes.com" required />
+      <label>Password</label>
+      <input type="password" name="password" placeholder="********" required />
+      <label>Select your role</label>
+      <select name="userRole" required>
+        <option value="" disabled selected>Choose a user role</option>
+        <option value="tattooer">Tattooer</option>
+        <option value="user">Tattoed User</option>
+      </select>
+      <label>Where are you living?</label>
+      <input type="text" name="city" placeholder="Barcelona" required />
+      <label>How many tattoes do you have</label>
+      <input type="number" name="tattooNumber" placeholder="3" required />
+      {{#if error}}
+      <p style="color: red;">{{error}}</p>
+      {{/if}}
+      <div class="button-form-container">
+        <button type="submit">Join us</button>
+      </div>
+    </form>
+  </div>
+</section>

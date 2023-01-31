@@ -25,6 +25,7 @@ body {
 
 h2 {
   font-family: porlane;
+  font-size: 5.2rem;
 }
 
 a {
@@ -77,5 +78,67 @@ section.index-container div.main-buttons-container button a {
 section.index-container div.main-buttons-container button a:hover {
   color: var(--secondary-gold)
 }
+
+/*---------------SIGN UP PAGE---------------*/
+
+section.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  height: 100vh;
+}
+
+section.form-container h2 {
+  margin-left: 1rem;
+}
+
+input, label {
+  font-family: 'Manrope', sans-serif;
+}
+
+div#form form{
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+div#form form label {
+  margin: 0.5rem 0 1rem 0;
+}
+
+div#form form input {
+  margin-bottom: 1rem;
+  border-style: solid;
+  border-width: 0px 0px 1px;
+  border-color: var(--secondary-gold);
+  background-color: var(--primary-white);
+}
+
+div#form form select {
+  border-color: var(--secondary-gold);
+  margin-bottom: 1rem;
+  background-color: var(--primary-white);
+}
+
+div.button-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+div#form form button {
+  border: 1px solid var(--secondary-gold);
+  width: 200px;
+  background-color: var(--primary-white);
+  padding: 0.6rem 0;
+}
+
+div#form form button:hover {
+  border: 1px solid var(--primary-black);
+  width: 205px;
+  margin-left: 2rem;
+}
+
 
 
