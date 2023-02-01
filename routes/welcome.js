@@ -7,7 +7,7 @@ const { isLoggedTattooer } = require('../middlewares');
 // @access  Private
 router.get('/', isLoggedTattooer, (req, res, next) => {
   const user = req.session.currentUser;
-  res.render('welcome', user);
+  res.render('welcome', { user });
 });
 
 module.exports = router;

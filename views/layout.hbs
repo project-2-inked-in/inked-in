@@ -6,9 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='/stylesheets/reset.css' rel="stylesheet" />
   <link href='/stylesheets/style.css' rel="stylesheet"/>
-  <title>Project module 2</title>
+  <title>Inked-in</title>
 </head>
 <body>
     {{{ body }}}
+    <nav class="navbar-layout">
+      <ul>
+        {{#if user}}
+        <li><a href="/welcome"><img src="/images/home-icon.png" alt="home-icon"></a></li>
+        <li><a href="/search"><img src="/images/search-icon.png" alt="search-icon"></a></li>
+        <li><a href="/users/profile"><img src="/images/profile-icon.png" alt="profile-icon"></a></li>
+        {{else}}
+        <div class="li-no-user">
+        <li> <p> Made with love </p></li>
+        </div>
+        {{/if}}
+      </ul>
+    </nav>
 </body>
 </html>

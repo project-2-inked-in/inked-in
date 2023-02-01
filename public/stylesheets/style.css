@@ -21,6 +21,8 @@
 
 body {
   background-color: var(--primary-white);
+  width: 100vw;
+  margin-bottom: 100px;
 }
 
 h2 {
@@ -32,6 +34,12 @@ a {
   font-family: 'Manrope', sans-serif;
   text-decoration: none;
   color: var(--primary-black);
+}
+
+li {
+  font-family: 'Manrope', sans-serif;
+  text-decoration: none;
+  color: var(--secondary-gold);
 }
 
 /*---------------INDEX PAGE---------------*/
@@ -140,5 +148,29 @@ div#form form button:hover {
   margin-left: 2rem;
 }
 
+/*---------------NAVBAR LAYOUT---------------*/
+nav.navbar-layout{
+  width: 100vw;
+  padding: 20px;
+  background-color: var(--primary-white);
+  position: fixed;
+  bottom: 0;
+  border-top: solid 0.5px;
+  border-color: var(--secondary-grey);
+}
+
+nav.navbar-layout ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav.navbar-layout ul .li-no-user {
+  display: flex;
+  justify-content: center;
+}
+
+nav.navbar-layout ul li a img {
+  width: 48px;
+}
 
 
