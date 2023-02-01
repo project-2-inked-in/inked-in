@@ -182,3 +182,7 @@ section.profile-image-container img{
  border-radius: 50%;
 }
 
+img.profile-photos {
+  width: 100vw;
+}
+
