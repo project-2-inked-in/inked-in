@@ -30,6 +30,9 @@ h2 {
   font-size: 5.2rem;
 }
 
+p{
+  font-family: 'Manrope', sans-serif;
+}
 a {
   font-family: 'Manrope', sans-serif;
   text-decoration: none;
@@ -173,4 +176,9 @@ nav.navbar-layout ul li a img {
   width: 48px;
 }
 
+/*---------------PROFILE PAGE---------------*/
+section.profile-image-container img{
+ width: 120px;
+ border-radius: 50%;
+}
 

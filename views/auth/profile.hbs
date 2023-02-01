@@ -1,16 +1,31 @@
-<h1>Welcome {{ username }}</h1>
+<div class="profile-main-container">
+  <section class="profile-image-container">
+    <img src={{user.profileImage}} alt="{{user.username}}"/>
+    <p>{{toUpperCase user.username}}</p>
+  </section>
+  <section>
+    <p>City: {{user.city}}</p>
+    {{#if user.tattooNumber}}
+      <p>I have {{user.tattooNumber}} tattoos</p>
+    {{/if}}
+    {{#if user.profileDescription}}
+      <p>About me: {{user.profileDescription}}</p>
+    {{/if}}
+    {{#if tattooerUser}}
+        <p>I work these styles:</p>
+          <ul>
+      {{#each user.tattooStyle}}
+            <li>- {{this}} </li>
+      {{/each}}
+          </ul>
+      {{#if studio}}
+        <p>I work in: {{studio}}</p>
+      {{/if}}
+      {{#if nextJourneys}}
+        <p>Soon I will be in: {{nextJourneys}}</p>
+      {{/if}}
+    {{/if}}
+  </section>
 
-<img src={{profileImage}} alt="{{username}}"/>
-{{!-- ¿Quedaría bien poner el rol debajo del avatar?
-<p>{{userRole}}</p> --}}
-<p>City: {{city}}</p>
-<p>I have {{tattooNumber}} tattoos</p>
-<p>About me: {{profileDescription}}</p>
-
-{{!-- {{#ifeq user.role 'tattoer'}}
-<p>I work these styles: {{tattooSyle}}</p>
-<p>I work in: {{studio}}</p>
-<p>Soon I will be in: {{nextJourneys}}</p>
-{{/ifeq}} --}}
-
-<a href="/">Edit profile</a>
+  <a href="/users/profile/edit">Complete profile</a>
+</div>

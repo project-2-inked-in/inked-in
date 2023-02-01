@@ -8,15 +8,24 @@ const User = require('../models/User');
 // @access Private
 router.get('/profile', /*middleware here */ function (req, res, next) {
     const user = req.session.currentUser;
-    res.render('/auth/profile', user);
+    if (user.userRole == "tattooer") {
+        const tattooerUser = user.userRole
+        console.log('This is tattooer user', tattooerUser)
+        console.log('This is user', user )
+        res.render('auth/profile', { user, tattooerUser });
+    } else {
+       res.render('auth/profile', { user }); 
+    } 
 });
+
 
 // @desc Profile user EDIT
 // @route GET user/profile/edit
 // @access Private
 router.get('/profile/edit', /*middleware here */ function (req, res, next) {
     const user = req.session.currentUser;
-    res.render('/editProfile', user);
+    console.log(user)
+    res.render('editProfile', {user});
 });
 
 // @desc Profile user EDIT
@@ -28,7 +37,7 @@ router.post('/profile/edit', /*middleware here */ async function (req, res, next
     try {
         const userInDB = await User.findByIdAndUpdate(user._id, { username }, { new: true });
         req.session.currentUser = userInDB;
-        res.redirect('/profile');
+        res.redirect('users/profile');
     } catch (error) {
         next(error);
     }
