@@ -1,35 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Tattooer = require('../models/Tattoo')
+const fileUploader = require('../config/cloudinary.config');
+
 // const isLoggedIn = require('../middlewares')
 
 // @desc Profile user
 // @route GET user/profile
 // @access Private
-router.get('/profile', /*middleware here */ function (req, res, next) {
+router.get('/profile', /*middleware here */ async function (req, res, next) {
     const user = req.session.currentUser;
-    if (user.userRole == "tattooer") {
+    try {
+        const dataUser = await Tattooer.find({ user: user._id });
+        console.log('caca', user)
+         if (user.userRole == "tattooer") {
         const tattooerUser = user.userRole
-        console.log('This is tattooer user', tattooerUser)
-        console.log('This is user', user )
-        res.render('auth/profile', { user, tattooerUser });
+        res.render('auth/profile', { user, tattooerUser, dataUser });
     } else {
-       res.render('auth/profile', { user }); 
-    } 
+       res.render('auth/profile', { user, dataUser }); 
+    }
+    } catch (error) {
+       next(error) 
+    }
 });
 
-
 // @desc Profile user EDIT
-// @route GET user/profile/edit
+// @route GET users/profile/edit
 // @access Private
 router.get('/profile/edit', /*middleware here */ function (req, res, next) {
     const user = req.session.currentUser;
     console.log(user)
-    res.render('editProfile', {user});
+    res.render('auth/editProfile', {user});
 });
 
 // @desc Profile user EDIT
-// @route POST user/profile/edit
+// @route POST users/profile/edit
 // @access Private
 router.post('/profile/edit', /*middleware here */ async function (req, res, next) {
     const { username } = req.body;
@@ -40,6 +46,34 @@ router.post('/profile/edit', /*middleware here */ async function (req, res, next
         res.redirect('users/profile');
     } catch (error) {
         next(error);
+    }
+});
+
+// @desc User upload photo and photo info
+// @route GET users/upload
+// @access Private
+router.get('/upload', (req, res, next) => {
+    const user = req.session.currentUser;
+    if (user.userRole == "tattooer") {
+        const tattooerUser = user.userRole;
+        res.render('uploadContent', { user, tattooerUser })
+    } if (user.userRole == "user") {
+        const userUser = user.userRole;
+        res.render('uploadContent', { user, userUser }); 
+    }  
+});
+
+// @desc Sends user data to database to update user info
+// @route POST users/upload
+// @access Private
+router.post('/upload', fileUploader.single('tattooImage'), async (req, res, next) => {
+    const { tattooPhotoStyle, year, tattooer, place } = req.body;
+    const userSession = req.session.currentUser;
+    try {
+        await Tattooer.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
+       res.redirect('/users/profile')
+    } catch (error) {
+       next(error) 
     }
 });
 

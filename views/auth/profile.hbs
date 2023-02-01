@@ -26,7 +26,14 @@
       {{/if}}
     {{/if}}
   </section>
+  {{#each dataUser}}
+  <img src={{tattooImage}} alt="tatoo">
+  <p>{{year}}</p>
+  <p>{{tattooer}}</p>
+  
+  {{/each}}
 
-  <a href="/users/profile/edit">Complete profile</a>ç
-  <a href="/users/profile/upload">Upload photo</a>
+
+  <a href="/users/profile/edit">Complete profile</a>
+  <a href="/users/upload">Upload photo</a>
 </div>

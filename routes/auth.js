@@ -104,8 +104,10 @@ router.post('/tattooer', isLoggedTattooer ,async (req, res, next) => {
     return;
   }
   try {
-    const updateUser = await User.findByIdAndUpdate(userId, { tattooStyle, city });
-    res.redirect('/welcome');
+    const updateUser = await User.findByIdAndUpdate(userId, { tattooStyle, city }, { new: true });
+    req.session.currentUser = updateUser;
+    //res.redirect('/welcome');
+    res.render('welcome', {user: updateUser})
     } catch (error) {
     next(error);
   }
