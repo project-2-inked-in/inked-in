@@ -1,5 +1,5 @@
 const isLoggedIn = (req, res, next) => {
-  if (req.session.currentUser.userRole === "user" || req.session.currentUser.userRole === "tattooer") {
+  if (req.session.currentUser) {
     next();
   } else {
     res.redirect('auth/login');

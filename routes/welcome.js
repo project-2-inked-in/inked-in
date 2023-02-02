@@ -9,7 +9,7 @@ const { isLoggedIn } = require('../middlewares');
 // @access  Private
 //No sé perquè aquí està aquest middleware, però la cosa és que no
 //funciona
-router.get('/', isLoggedTattooer, isLoggedIn, async (req, res, next) => {
+router.get('/', isLoggedIn, isLoggedTattooer, async (req, res, next) => {
   const user = req.session.currentUser;
   console.log('This is from welcome', user)
   try {
