@@ -186,3 +186,7 @@ img.profile-photos {
   width: 100vw;
 }
 
+/*---------------WELCOME PAGE---------------*/
+section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {
+  width: 100vw;
+}

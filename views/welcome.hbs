@@ -1,3 +1,13 @@
 <section class="main-welcome-title">
   <h2> Welcome {{user.username}}</h2>
 </section>
+<section class="tattoer-photos-container">
+  <div>
+    {{#each justTattooersPhotos}}
+      <div class="tattoo-photo-div">
+        <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
+        <a href="/"><p>{{user.username}}</p></a>
+      </div>
+    {{/each}}
+  </div>
+</section>

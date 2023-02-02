@@ -7,7 +7,6 @@ const isLoggedIn = (req, res, next) => {
 };
 
 const isLoggedTattooer = (req, res, next) => {
-  console.log('Això és del middleware', req.session.currentUser)
   if (!req.session.currentUser.userRole === "tattooer") {
     res.redirect('auth/login');
   } else {
