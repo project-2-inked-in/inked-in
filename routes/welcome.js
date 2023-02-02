@@ -3,13 +3,14 @@ const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
 const { isLoggedTattooer } = require('../middlewares');
 const { isLoggedIn } = require('../middlewares');
+const { isLoggedUser } = require('../middlewares');
 
 // @desc    App home page
 // @route   GET /welcome
 // @access  Private
 //No sé perquè aquí està aquest middleware, però la cosa és que no
 //funciona
-router.get('/', isLoggedIn, isLoggedTattooer, async (req, res, next) => {
+router.get('/', isLoggedIn, async (req, res, next) => {
   const user = req.session.currentUser;
   console.log('This is from welcome', user)
   try {

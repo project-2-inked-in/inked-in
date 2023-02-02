@@ -7,18 +7,23 @@ const isLoggedIn = (req, res, next) => {
 };
 
 const isLoggedTattooer = (req, res, next) => {
-  if (!req.session.currentUser.userRole === "tattooer") {
-    res.redirect('auth/login');
-  } else {
+  console.log(req.session.currentUser)
+  if (req.session.currentUser.userRole === "tattooer") {
+    console.log("no soy tattooer")
     next();
+  } else {
+    console.log("sí soy tattooer")
+    res.redirect('auth/login');
   }
 };
 
 const isLoggedUser = (req, res, next) => {
-  if (!req.session.currentUser.userRole === "user") {
-    res.redirect('auth/login');
-  } else {
+  if (req.session.currentUser.userRole === "user") {
+    console.log("sí soy user")
     next();
+  } else {
+    console.log("no soy user")
+    res.redirect('auth/login');
   }
 };
 

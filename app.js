@@ -13,6 +13,7 @@ const hbs = require('hbs')
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const welcomeRouter = require('./routes/welcome');
+const tattooerRouter = require('./routes/tattooer');
 const usersRouter = require('./routes/users');
 const reviewRouter = require('./routes/reviews');
 const searchRoute = require('./routes/search');
@@ -62,6 +63,7 @@ app.use('/welcome', welcomeRouter);
 app.use('/users', usersRouter);
 app.use('/reviews', reviewRouter);
 app.use('/search', searchRoute);
+app.use('/tattooer', tattooerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
