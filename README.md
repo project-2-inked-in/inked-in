@@ -77,27 +77,105 @@ const userSchema = new Schema(
     username: {
       type: String,
       trim: true,
-      required: [true, 'Username is required.'],
-      unique: true
+      required: [true, 'Username is required. Please add a username.'],
+      unique: true,
+      lowercase: true
     },
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: [true, 'Email is required.Please add an email.'],
       unique: true,
       lowercase: true,
       trim: true
     },
     hashedPassword: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'Password is required. Please add a password.']
+    },
+    userRole: {
+      type: String,
+      enum: ['tattooer', 'user'],
+      default: 'Choose between user o tattooer role',
+      required: [true, 'Role is required. Please choose a user role.']
+    },
+    city: {
+      type: String,
+    },
+    tattooNumber: {
+      type: Number,
+    },
+    profileImage: {
+      type: String,
+      default: 'https://www.idsplus.net/wp-content/uploads/default-placeholder.png'
+    },
+    profileDescription: {
+      type: String,
+    },
+    tattooStyle: {
+      enum: ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant']
+    },
+    studio: {
+      type: String
+    },
+    nextJourneys: {
+      type: String
     }
   },
   {
     timestamps: true
   }
 );
-```
+´´´
+Tattoo:
 
+```js
+const tattooSchema = new Schema(
+    {
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: [true]
+        },
+        tattooImage: {
+            type: String,
+            required: [true, 'Image is required. Please add a image.'],
+        },
+        tattooPhotoStyle: {
+            enum: ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant']
+        },
+        year: {
+            type: Number
+        },
+        tattooer: {
+            type: String
+        },
+        place: {
+            type: String
+        },
+    },
+    {
+        timestamps: true
+    });
+´´´
+Review:
+```js
+
+const reviewSchema = new Schema(
+    {
+    username: {
+        type: String      
+    },
+    stars: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 5
+    },
+    comment: {
+        type: String
+    }
+    });
+´´´
 ---
 
 ## Routes

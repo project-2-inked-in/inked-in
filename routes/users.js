@@ -3,32 +3,31 @@ const router = express.Router();
 const User = require('../models/User');
 const Tattooer = require('../models/Tattoo')
 const fileUploader = require('../config/cloudinary.config');
-
-// const isLoggedIn = require('../middlewares')
+const { isLoggedIn } = require('../middlewares');
 
 // @desc Profile user
 // @route GET user/profile
 // @access Private
-router.get('/profile', /*middleware here */ async function (req, res, next) {
+router.get('/profile', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
     try {
         const dataUser = await Tattooer.find({ user: user._id });
         console.log('caca', user)
-         if (user.userRole == "tattooer") {
+            if (user.userRole == "tattooer") {
         const tattooerUser = user.userRole
         res.render('auth/profile', { user, tattooerUser, dataUser });
     } else {
-       res.render('auth/profile', { user, dataUser }); 
+        res.render('auth/profile', { user, dataUser }); 
     }
     } catch (error) {
-       next(error) 
+        next(error) 
     }
 });
 
 // @desc Profile user EDIT
 // @route GET users/profile/edit
 // @access Private
-router.get('/profile/edit', /*middleware here */ function (req, res, next) {
+router.get('/profile/edit', isLoggedIn, function (req, res, next) {
     const user = req.session.currentUser;
     console.log(user)
     res.render('auth/editProfile', {user});
@@ -37,7 +36,7 @@ router.get('/profile/edit', /*middleware here */ function (req, res, next) {
 // @desc Profile user EDIT
 // @route POST users/profile/edit
 // @access Private
-router.post('/profile/edit', /*middleware here */ async function (req, res, next) {
+router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
     const { username } = req.body;
     const user = req.session.currentUser;
     try {
@@ -52,7 +51,7 @@ router.post('/profile/edit', /*middleware here */ async function (req, res, next
 // @desc User upload photo and photo info
 // @route GET users/upload
 // @access Private
-router.get('/upload', (req, res, next) => {
+router.get('/upload', isLoggedIn, (req, res, next) => {
     const user = req.session.currentUser;
     if (user.userRole == "tattooer") {
         const tattooerUser = user.userRole;
@@ -71,9 +70,9 @@ router.post('/upload', fileUploader.single('tattooImage'), async (req, res, next
     const userSession = req.session.currentUser;
     try {
         await Tattooer.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
-       res.redirect('/users/profile')
+        res.redirect('/users/profile')
     } catch (error) {
-       next(error) 
+        next(error) 
     }
 });
 
