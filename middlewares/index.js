@@ -8,7 +8,7 @@ const isLoggedIn = (req, res, next) => {
 
 const isLoggedTattooer = (req, res, next) => {
   if (!req.session.currentUser.userRole === "tattooer") {
-    res.redirect('/search');
+    res.redirect('auth/login');
   } else {
     next();
   }

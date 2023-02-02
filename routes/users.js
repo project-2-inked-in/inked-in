@@ -68,7 +68,7 @@ router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (r
     const { tattooPhotoStyle, year, tattooer, place } = req.body;
     const userSession = req.session.currentUser;
     try {
-        await Tattooer.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
+        await Tattoo.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
         res.redirect('/users/profile')
     } catch (error) {
         next(error) 
