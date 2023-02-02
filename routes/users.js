@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const Tattooer = require('../models/Tattoo')
+const Tattoo = require('../models/Tattoo')
 const fileUploader = require('../config/cloudinary.config');
 const { isLoggedIn } = require('../middlewares');
 
@@ -11,7 +11,7 @@ const { isLoggedIn } = require('../middlewares');
 router.get('/profile', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
     try {
-        const dataUser = await Tattooer.find({ user: user._id });
+        const dataUser = await Tattoo.find({ user: user._id });
             if (user.userRole == "tattooer") {
         const tattooerUser = user.userRole
         res.render('auth/profile', { user, tattooerUser, dataUser });
