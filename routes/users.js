@@ -12,7 +12,6 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
     try {
         const dataUser = await Tattooer.find({ user: user._id });
-        console.log('caca', user)
             if (user.userRole == "tattooer") {
         const tattooerUser = user.userRole
         res.render('auth/profile', { user, tattooerUser, dataUser });
@@ -65,7 +64,7 @@ router.get('/upload', isLoggedIn, (req, res, next) => {
 // @desc Sends user data to database to update user info
 // @route POST users/upload
 // @access Private
-router.post('/upload', fileUploader.single('tattooImage'), async (req, res, next) => {
+router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (req, res, next) => {
     const { tattooPhotoStyle, year, tattooer, place } = req.body;
     const userSession = req.session.currentUser;
     try {
