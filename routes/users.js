@@ -13,7 +13,7 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
     try {
         const dataUser = await Tattooer.find({ user: user._id });
             if (user.userRole == "tattooer") {
-        const tattooerUser = user.userRole
+                const tattooerUser = user.userRole
         res.render('auth/profile', { user, tattooerUser, dataUser });
     } else {
         res.render('auth/profile', { user, dataUser }); 
