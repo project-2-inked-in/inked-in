@@ -83,7 +83,8 @@ router.post('/login', async (req, res, next) => {
       const passwordMatch = await bcrypt.compare(password, isUserInDB.hashedPassword);
       if (passwordMatch) {
         req.session.currentUser = isUserInDB;
-        res.render('welcome', { user: isUserInDB });
+        //res.render('welcome', { user: isUserInDB });
+        res.redirect('/welcome')
       } else {
         res.render('auth/login', { error: "Unable to authenticate user" });
       }
@@ -106,17 +107,17 @@ router.post('/tattooer', isLoggedTattooer ,async (req, res, next) => {
   try {
     const updateUser = await User.findByIdAndUpdate(userId, { tattooStyle, city }, { new: true });
     req.session.currentUser = updateUser;
-    //res.redirect('/welcome');
-    res.render('welcome', {user: updateUser})
+    res.redirect('/welcome');
+    //res.render('welcome', {user: updateUser})
     } catch (error) {
     next(error);
   }
 });
 
 // @desc    Destroy user session and log out
-// @route   POST /auth/logout
+// @route   GET /auth/logout
 // @access  Private 
-router.post('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       next(err)

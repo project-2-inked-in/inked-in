@@ -2,12 +2,16 @@ const router = require('express').Router();
 const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
 const { isLoggedTattooer } = require('../middlewares');
+const { isLoggedIn } = require('../middlewares');
 
 // @desc    App home page
 // @route   GET /welcome
 // @access  Private
-router.get('/', isLoggedTattooer, async (req, res, next) => {
+//No sé perquè aquí està aquest middleware, però la cosa és que no
+//funciona
+router.get('/', isLoggedTattooer, isLoggedIn, async (req, res, next) => {
   const user = req.session.currentUser;
+  console.log('This is from welcome', user)
   try {
     const allTattooes = await Tattoo.find({}).populate('user');
     const justTattooersPhotos = allTattooes.filter(({ user }) => user.userRole == 'tattooer');
