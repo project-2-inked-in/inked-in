@@ -1,21 +1,24 @@
-<h1>Editing {{username}}'s profile</h1>
+<h1>Editing {{user.username}}'s profile</h1>
 
 <form method="POST" action="/profile/edit">
-    <label>New avatar</label>
-    <input type="image" name="profileImage" required="false" value="{{profileImage}}" />
+    <label>Profile image</label>
+    <input type="file" name="profileImage" value="{{user.profileImage}}"required />
     <label>City:</label>
-    <input type="text" name="city" required="true" value="{{city}}" />
+    <input type="text" name="city" required="true" value="{{user.city}}" />
     <label>How many tattoos do you have?</label>
-    <input type="text" name="tattooNumber" required="false" value="{{tatooNumber}}" />
+    <input type="text" name="tattooNumber" required="false" value="{{user.tatooNumber}}" />
     <label>About you</label>
-    <input type="text" name="profileDescription" required="false" value="{{profileDescription}}" />
-    {{#if tattooerUser}}
+    <input type="text" name="profileDescription" required="false" value="{{user.profileDescription}}" />
     <label>What style do you work?</label>
-    <input type="enum" name="tattooStyle" required="true" value="{{tatooStyle}}" />
+    <select name="tattooStyle" multiple required>
+        {{#each user.tattooStyle}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
     <label>Where do you work?</label>
-    <input type="text" name="studio" required="true" value="{{studio}}" />
+    <input type="text" name="studio" required="true" value="{{user.studio}}" />
     <label>Next journey?</label>
-    <input type="text" name="nextJourneys" required="true" value="{{nextJourneys}}" />    
-    {{/if}}
+    <input type="text" name="nextJourneys" required="true" value="{{user.nextJourneys}}" />    
+
     <button type="submit">Save changes</button>
 </form>

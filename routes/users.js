@@ -28,20 +28,21 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
 // @access Private
 router.get('/profile/edit', isLoggedIn, function (req, res, next) {
     const user = req.session.currentUser;
-    console.log(user)
-    res.render('auth/editProfile', {user});
+    console.log('user', user)
+    res.render('auth/editProfile', {user})
 });
 
 // @desc Profile user EDIT
 // @route POST users/profile/edit
 // @access Private
 router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
-    const { username } = req.body;
+    const { profileImage, city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
+    console.log('hello', user._id)
     try {
-        const userInDB = await User.findByIdAndUpdate(user._id, { username }, { new: true });
+        const userInDB = await User.findByIdAndUpdate(user._id, {profileImage, city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });
         req.session.currentUser = userInDB;
-        res.redirect('users/profile');
+        res.render('auth/profile', userInDB);
     } catch (error) {
         next(error);
     }

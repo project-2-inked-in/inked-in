@@ -4,7 +4,9 @@
     <p>{{toUpperCase user.username}}</p>
   </section>
   <section>
+    {{#if user.city}}
     <p>City: {{user.city}}</p>
+    {{/if}}
     {{#if user.tattooNumber}}
       <p>I have {{user.tattooNumber}} tattoos</p>
     {{/if}}
