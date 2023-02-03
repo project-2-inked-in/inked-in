@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Tattoo = require('../models/Tattoo')
 const fileUploader = require('../config/cloudinary.config');
 const { isLoggedIn } = require('../middlewares');
+const { isLoggedTattooer } = require('../middlewares');
 
 // @desc Profile user
 // @route GET user/profile
@@ -28,21 +29,32 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
 // @access Private
 router.get('/profile/edit', isLoggedIn, function (req, res, next) {
     const user = req.session.currentUser;
-    console.log('user', user)
-    res.render('auth/editProfile', {user})
+    if (user.userRole === "tattooer") {
+        const tattooerUser = user.userRole;
+        res.render('auth/editProfile', { user, tattooerUser })
+    } else {
+        res.render('auth/editProfile', { user })
+    }
 });
 
 // @desc Profile user EDIT
 // @route POST users/profile/edit
 // @access Private
-router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
-    const { profileImage, city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
+router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, async function (req, res, next) {
+    const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
-    console.log('hello', user._id)
+    console.log('user123', user)
+    console.log('This is req.file.path', req.file)
     try {
-        const userInDB = await User.findByIdAndUpdate(user._id, {profileImage, city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });
-        req.session.currentUser = userInDB;
-        res.render('auth/profile', userInDB);
+        if (req.file === undefined) {
+            const userInDB = await User.findByIdAndUpdate(user._id, {city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });  
+            req.session.currentUser = userInDB;
+        } else {
+            const userInDB = await User.findByIdAndUpdate(user._id, { profileImage: req.file.path, city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });
+            req.session.currentUser = userInDB;
+        }
+        //res.render('auth/profile', userInDB);
+        res.redirect('/users/profile')
     } catch (error) {
         next(error);
     }
@@ -73,6 +85,57 @@ router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (r
         res.redirect('/users/profile')
     } catch (error) {
         next(error) 
+    }
+});
+
+// @desc Photos user EDIT 
+// @route GET users/profile/edit/:id
+// @access Private
+router.get('/profile/edit/:photoId', isLoggedIn, async function (req, res, next) {
+    const { photoId } = req.params;
+    const user = req.session.currentUser;
+    try {
+        const photoData = await Tattoo.findById(photoId);
+        if (user.userRole === "tattooer") {
+        const tattooerUser = user.userRole;
+        res.render('editPhotosContent', { user, tattooerUser, photoData })
+    } if (user.userRole == "user") {
+        const userUser = user.userRole;
+        res.render('editPhotosContent', { user, userUser, photoData });
+        } 
+    } catch (error) {
+        next(error)
+    }
+});
+
+// @desc Profile user EDIT
+// @route POST users/profile/edit/:id
+// @access Private
+router.post('/profile/edit/:photoId', isLoggedIn, async function (req, res, next) {
+    const { tattooPhotoStyle, year, place, tattooer } = req.body;
+    const { photoId } = req.params;
+    const user = req.session.currentUser;
+    console.log('user123', user)
+    try {
+        await Tattoo.findByIdAndUpdate(photoId, {tattooPhotoStyle, year, place, tattooer }, { new: true });
+        //res.render('auth/profile', userInDB);
+        res.redirect('/users/profile')
+    } catch (error) {
+        next(error);
+    }
+});
+
+// @desc Photos user DELETE 
+// @route GET users/profile/delete/:id
+// @access Private
+router.get('/profile/delete/:photoId', isLoggedIn, async function (req, res, next) {
+    const { photoId } = req.params;
+    const user = req.session.currentUser;
+    try {
+        const photoData = await Tattoo.findByIdAndDelete(photoId);
+        res.redirect('/users/profile');
+    } catch (error) {
+        next(error)
     }
 });
 

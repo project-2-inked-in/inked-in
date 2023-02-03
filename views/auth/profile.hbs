@@ -1,6 +1,8 @@
 <div class="profile-main-container">
   <section class="profile-image-container">
+    <div>
     <img src={{user.profileImage}} alt="{{user.username}}"/>
+    </div>
     <p>{{toUpperCase user.username}}</p>
   </section>
   <section>
@@ -29,10 +31,14 @@
     {{/if}}
   </section>
   {{#each dataUser}}
-  <img class="profile-photos" src={{tattooImage}} alt="tatoo">
+  <img class="profile-photos" src={{tattooImage}} alt="tattoo">
   <p>{{year}}</p>
   <p>{{tattooer}}</p>
-  
+  <p>{{place}}</p>
+    {{#each tattooPhotoStyle}}
+    <p> - {{this}}</p>
+    {{/each}}
+  <a href="/users/profile/edit/{{_id}}">Edit</a>
   {{/each}}
 
 

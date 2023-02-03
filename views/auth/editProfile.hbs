@@ -1,16 +1,17 @@
 <h1>Editing {{user.username}}'s profile</h1>
 
-<form method="POST" action="/profile/edit">
+<form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
     <label>Profile image</label>
-    <input type="file" name="profileImage" value="{{user.profileImage}}"required />
+    <input type="file" name="profileImage" value="{{user.profileImage}}"/>
     <label>City:</label>
     <input type="text" name="city" required="true" value="{{user.city}}" />
     <label>How many tattoos do you have?</label>
-    <input type="text" name="tattooNumber" required="false" value="{{user.tatooNumber}}" />
+    <input type="text" name="tattooNumber" required="false" value="{{user.tattooNumber}}" />
     <label>About you</label>
     <input type="text" name="profileDescription" required="false" value="{{user.profileDescription}}" />
+    {{#if tattooerUser}}
     <label>What style do you work?</label>
-    <select name="tattooStyle" multiple required>
+    <select name="tattooStyle" multiple>
         {{#each user.tattooStyle}}
         <option value="{{this}}">{{this}}</option>
         {{/each}}
@@ -18,7 +19,7 @@
     <label>Where do you work?</label>
     <input type="text" name="studio" required="true" value="{{user.studio}}" />
     <label>Next journey?</label>
-    <input type="text" name="nextJourneys" required="true" value="{{user.nextJourneys}}" />    
-
+    <input type="text" name="nextJourneys" required="true" value="{{user.nextJourneys}}" />   
+    {{/if}}
     <button type="submit">Save changes</button>
 </form>

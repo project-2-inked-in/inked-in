@@ -177,9 +177,11 @@ nav.navbar-layout ul li a img {
 }
 
 /*---------------PROFILE PAGE---------------*/
-section.profile-image-container img{
- width: 120px;
- border-radius: 50%;
+section.profile-image-container img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 
 img.profile-photos {
