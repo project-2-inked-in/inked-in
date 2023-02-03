@@ -1,13 +1,21 @@
-<h3>Tattoers</h3>
+<h2>Find by tattoo style</h2>
 
 <form method="GET" action="/search/tattooer"> 
-    <input type="text" name="tattooPhotoStyle" placeholder="find by tatto style or tattooer username"/>
-    <input type="text" name="username" placeholder="or username" />
+    <!--<input type="text" name="tattooPhotoStyle" placeholder="find by tatto style or tattooer username"/>
+    <input type="text" name="username" placeholder="or username" />-->
+    <input type="checkbox" name="tattooPhotoStyle" value="traditionalOldSchool">
+    <label for="traditionalOldSchool">traditional Old School</label>
+    <input type="checkbox" name="tattooPhotoStyle" value="realism">
+    <label for="realism">Realism</label>
+    <input type="checkbox" name="tattooPhotoStyle" value="illustrative">
+    <label for="illustrative">Illustrative</label>
+    <input type="checkbox" name="tattooPhotoStyle" value="sketch">
+    <label for="sketch">Sketch</label>
+    </div>
     <button type="submit">Search</button>
 </form>
 <section class="result-tattooes">
     {{#each tattoo}}
-    
     <img src="{{this.tattooImage}}" alt="">
     <a href="/tattooer/{{this.user._id}}"><p>name: {{this.user.username}}</p></a>
     {{/each}}

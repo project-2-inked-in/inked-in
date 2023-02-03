@@ -22,11 +22,11 @@
             <li>- {{this}} </li>
       {{/each}}
           </ul>
-      {{#if studio}}
-        <p>I work in: {{studio}}</p>
+      {{#if user.studio}}
+        <p>I work in: {{user.studio}}</p>
       {{/if}}
-      {{#if nextJourneys}}
-        <p>Soon I will be in: {{nextJourneys}}</p>
+      {{#if user.nextJourneys}}
+        <p>Soon I will be in: {{user.nextJourneys}}</p>
       {{/if}}
     {{/if}}
   </section>

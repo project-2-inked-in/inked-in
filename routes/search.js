@@ -17,19 +17,20 @@ router.get('/', isLoggedIn, function (req, res, next) {
 // @access Private
 router.get('/tattooer', isLoggedIn, async function (req, res, next) {
     console.log('caca')
-    const { tattooPhotoStyle, username } = req.query;
+    //const { username } = req.query;
+    const { tattooPhotoStyle } = req.query;
     console.log('this is tattooerResult', tattooPhotoStyle)
-    console.log('this is username1', username)
+    //console.log('this is username1', username)
     const user = req.session.currentUser;
     try {
         const tattoo = await Tattoo.find({ tattooPhotoStyle: tattooPhotoStyle }).populate('user');
-        const tattooUserName = tattoo.filter((userName) => {
-            console.log(userName)
-            return userName.user.username == username
-    });
-        console.log('this is USERNAME', tattooUserName)
-        console.log('this is TATTOO', tattoo)
-        res.render('search', { tattoo, user, tattooUserName });
+    //     const tattooUserName = tattoo.filter((userName) => {
+    //         console.log(userName)
+    //         return userName.user.username == username
+    // });
+        // console.log('this is USERNAME', tattooUserName)
+        // console.log('this is TATTOO', tattoo)
+        res.render('search', { tattoo, user, /*tattooUserName*/ });
     } catch (error) {
         next(error)
     }
