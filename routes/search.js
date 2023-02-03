@@ -4,14 +4,32 @@ const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
 const { isLoggedIn } = require('../middlewares');
 
-// @desc Search
+// @desc Search view
 // @route GET /search
 // @access Private
-router.get('/views/search', isLoggedIn, async function (req, res, next) {
-    const { username } = req.query;
+router.get('/', isLoggedIn, function (req, res, next) {
+    const user = req.session.currentUser;
+    res.render('search', {user});
+});
+
+// @desc get search query 
+// @route GET /search
+// @access Private
+router.get('/tattooer', isLoggedIn, async function (req, res, next) {
+    console.log('caca')
+    const { tattooPhotoStyle, username } = req.query;
+    console.log('this is tattooerResult', tattooPhotoStyle)
+    console.log('this is username1', username)
+    const user = req.session.currentUser;
     try {
-        const tattooer = await User.findOne({ username: username, tattooer: tattooer });
-        res.render('search', { query: username });
+        const tattoo = await Tattoo.find({ tattooPhotoStyle: tattooPhotoStyle }).populate('user');
+        const tattooUserName = tattoo.filter((userName) => {
+            console.log(userName)
+            return userName.user.username == username
+    });
+        console.log('this is USERNAME', tattooUserName)
+        console.log('this is TATTOO', tattoo)
+        res.render('search', { tattoo, user, tattooUserName });
     } catch (error) {
         next(error)
     }

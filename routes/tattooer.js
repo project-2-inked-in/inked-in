@@ -33,7 +33,7 @@ module.exports = router;
 router.get('/profile', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
     try {
-        const dataUser = await Tattooer.find({ user: user._id });
+        const dataUser = await Tattoo.find({ user: user._id });
         console.log('caca', user)
             if (user.userRole == "tattooer") {
         const tattooerUser = user.userRole
