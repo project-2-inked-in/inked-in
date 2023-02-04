@@ -13,14 +13,13 @@
 }
 
 :root {
-  --primary-black: #010101;
-  --primary-white: #f7f7f7;
-  --secondary-grey: #595959;
+  --primary-grey: #242424;
+  --primary-white: #ebebeb;
   --secondary-gold: #AB882E;
 }
 
 body {
-  background-color: var(--primary-white);
+  background-color: var(--primary-grey);
   width: 100vw;
   margin-bottom: 100px;
 }
@@ -28,6 +27,7 @@ body {
 h2 {
   font-family: porlane;
   font-size: 5.2rem;
+  color: var(--primary-white);
 }
 
 p{
@@ -36,13 +36,17 @@ p{
 a {
   font-family: 'Manrope', sans-serif;
   text-decoration: none;
-  color: var(--primary-black);
+  color: var(--primary-white);
 }
 
 li {
   font-family: 'Manrope', sans-serif;
   text-decoration: none;
   color: var(--secondary-gold);
+}
+
+input, label, select, button {
+  font-family: 'Manrope', sans-serif;
 }
 
 /*---------------INDEX PAGE---------------*/
@@ -70,23 +74,18 @@ section.index-container div.main-buttons-container {
   gap: 2rem
 }
 
-section.index-container div.main-buttons-container button {
+section.index-container div.main-buttons-container a{
   border: 1px solid var(--secondary-gold);
   width: 200px;
-  background-color: var(--primary-white);
-  padding: 0.6rem 0;
-}
-
-section.index-container div.main-buttons-container button:hover {
-  border: 1px solid var(--primary-black);
-  width: 205px;
-}
-
-section.index-container div.main-buttons-container button a {
+  background-color: var(--primary-grey);
+  padding: 1rem 0;
   text-transform: uppercase;
+  text-align: center;
 }
 
-section.index-container div.main-buttons-container button a:hover {
+section.index-container div.main-buttons-container a:hover {
+  border: 1px solid var(--primary-white);
+  width: 205px;
   color: var(--secondary-gold)
 }
 
@@ -97,39 +96,39 @@ section.form-container {
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
-  height: 100vh;
+  padding-top: 2rem;
 }
 
 section.form-container h2 {
-  margin-left: 1rem;
-}
-
-input, label {
-  font-family: 'Manrope', sans-serif;
+  text-align: center;
 }
 
 div#form form{
   display: flex;
   flex-direction: column;
   padding: 0 2rem;
-}
-
-div#form form label {
-  margin: 0.5rem 0 1rem 0;
+  justify-content: center;
 }
 
 div#form form input {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-style: solid;
   border-width: 0px 0px 1px;
   border-color: var(--secondary-gold);
-  background-color: var(--primary-white);
+  background-color: var(--primary-grey);
+}
+
+div#form form input::placeholder {
+  color: var(--primary-white);
 }
 
 div#form form select {
-  border-color: var(--secondary-gold);
   margin-bottom: 1rem;
-  background-color: var(--primary-white);
+  background-color: var(--primary-grey);
+  border-style: solid;
+  border-width: 0px 0px 1px;
+  border-color: var(--secondary-gold);
+  color: var(--primary-white);
 }
 
 div.button-form-container {
@@ -141,25 +140,28 @@ div.button-form-container {
 div#form form button {
   border: 1px solid var(--secondary-gold);
   width: 200px;
-  background-color: var(--primary-white);
-  padding: 0.6rem 0;
+  background-color: var(--primary-grey);
+  padding: 1rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--primary-white);
 }
 
 div#form form button:hover {
-  border: 1px solid var(--primary-black);
+  border: 1px solid var(--primary-white);
   width: 205px;
-  margin-left: 2rem;
+  color: var(--secondary-gold)
 }
 
 /*---------------NAVBAR LAYOUT---------------*/
 nav.navbar-layout{
   width: 100vw;
   padding: 20px;
-  background-color: var(--primary-white);
+  background-color: var(--primary-grey);
   position: fixed;
   bottom: 0;
   border-top: solid 0.5px;
-  border-color: var(--secondary-grey);
+  border-color: var(--secondary-gold);
 }
 
 nav.navbar-layout ul {
