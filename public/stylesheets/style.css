@@ -89,69 +89,6 @@ section.index-container div.main-buttons-container a:hover {
   color: var(--secondary-gold)
 }
 
-/*---------------SIGN UP PAGE---------------*/
-
-section.form-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
-  padding-top: 2rem;
-}
-
-section.form-container h2 {
-  text-align: center;
-}
-
-div#form form{
-  display: flex;
-  flex-direction: column;
-  padding: 0 2rem;
-  justify-content: center;
-}
-
-div#form form input {
-  margin-bottom: 2rem;
-  border-style: solid;
-  border-width: 0px 0px 1px;
-  border-color: var(--secondary-gold);
-  background-color: var(--primary-grey);
-}
-
-div#form form input::placeholder {
-  color: var(--primary-white);
-}
-
-div#form form select {
-  margin-bottom: 1rem;
-  background-color: var(--primary-grey);
-  border-style: solid;
-  border-width: 0px 0px 1px;
-  border-color: var(--secondary-gold);
-  color: var(--primary-white);
-}
-
-div.button-form-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-div#form form button {
-  border: 1px solid var(--secondary-gold);
-  width: 200px;
-  background-color: var(--primary-grey);
-  padding: 1rem 0;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--primary-white);
-}
-
-div#form form button:hover {
-  border: 1px solid var(--primary-white);
-  width: 205px;
-  color: var(--secondary-gold)
-}
 
 /*---------------NAVBAR LAYOUT---------------*/
 nav.navbar-layout{
@@ -178,6 +115,11 @@ nav.navbar-layout ul li a img {
   width: 48px;
 }
 
+/*---------------WELCOME PAGE---------------*/
+section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {
+  width: 100vw;
+}
+
 /*---------------PROFILE PAGE---------------*/
 section.profile-image-container img {
   border-radius: 50%;
@@ -187,10 +129,5 @@ section.profile-image-container img {
 }
 
 img.profile-photos {
-  width: 100vw;
-}
-
-/*---------------WELCOME PAGE---------------*/
-section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {
   width: 100vw;
 }

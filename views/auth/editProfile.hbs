@@ -1,25 +1,30 @@
+<section class="form-container">
 <h1>Editing {{user.username}}'s profile</h1>
-
-<form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
-    <label>Profile image</label>
-    <input type="file" name="profileImage" value="{{user.profileImage}}"/>
-    <label>City:</label>
-    <input type="text" name="city" required="true" value="{{user.city}}" />
-    <label>How many tattoos do you have?</label>
-    <input type="text" name="tattooNumber" required="false" value="{{user.tattooNumber}}" />
-    <label>About you</label>
-    <input type="text" name="profileDescription" required="false" value="{{user.profileDescription}}" />
-    {{#if tattooerUser}}
-    <label>What style do you work?</label>
-    <select name="tattooStyle" multiple>
-        {{#each user.tattooStyle}}
-        <option value="{{this}}" selected >{{this}}</option>
-        {{/each}}
-    </select>
-    <label>Where do you work?</label>
-    <input type="text" name="studio" required="true" value="{{user.studio}}" />
-    <label>Next journey?</label>
-    <input type="text" name="nextJourneys" required="true" value="{{user.nextJourneys}}" />   
-    {{/if}}
-    <button type="submit">Save changes</button>
-</form>
+<div id="form">
+    <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
+        <label>Profile image</label>
+        <input type="file" name="profileImage" value="{{user.profileImage}}"/>
+        <label>City:</label>
+        <input type="text" name="city" required="true" value="{{user.city}}" />
+        <label>How many tattoos do you have?</label>
+        <input type="text" name="tattooNumber" value="{{user.tattooNumber}}" />
+        <label>About you</label>
+        <input type="text" name="profileDescription" value="{{user.profileDescription}}" />
+        {{#if tattooerUser}}
+            <label>What style do you work?</label>
+            <select name="tattooStyle" multiple>
+            {{#each user.tattooStyle}}
+                <option value="{{this}}" selected >{{this}}</option>
+            {{/each}}
+            </select>
+            <label>Where do you work?</label>
+            <input type="text" name="studio" required="true" value="{{user.studio}}" />
+            <label>Next journey?</label>
+            <input type="text" name="nextJourneys" value="{{user.nextJourneys}}" />   
+        {{/if}}
+        <div class="button-form-container">
+            <button type="submit">Save changes</button>
+        </div>
+    </form>
+</div>
+</section>

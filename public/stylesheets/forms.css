@@ -1,0 +1,98 @@
+/*---------------GENERAL---------------*/
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500&display=swap');
+
+@font-face {
+    font-family: porlane;
+    src: url("/fonts/porlane/Porlane.ttf")
+}
+
+* {
+    font-size: 16px;
+    font-family:'Manrope', sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-grey: #242424;
+    --primary-white: #ebebeb;
+    --secondary-gold: #AB882E;
+}
+
+/*-------SIGN UP PAGE / EDIT PROFILE / UPLOADCONTENT / LOG IN ----------*/
+
+section.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 2rem;
+}
+
+section.form-container h1 {
+    text-align: center;
+    font-family: porlane;
+    font-size: 5.2rem;
+    color: var(--primary-white);
+}
+
+section.form-container h2 {
+    text-align: center;
+}
+
+div#form form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    justify-content: center;
+}
+
+div#form form input {
+    margin-bottom: 2rem;
+    border-style: solid;
+    border-width: 0px 0px 1px;
+    border-color: var(--secondary-gold);
+    background-color: var(--primary-grey);
+}
+
+div#form form input::placeholder {
+    color: var(--primary-white);
+}
+
+div#form form select {
+    margin-bottom: 1rem;
+    background-color: var(--primary-grey);
+    border-style: solid;
+    border-width: 0px 0px 1px;
+    border-color: var(--secondary-gold);
+    color: var(--primary-white);
+}
+
+div.button-form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+div#form form button {
+    border: 1px solid var(--secondary-gold);
+    width: 200px;
+    background-color: var(--primary-grey);
+    padding: 1rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--primary-white);
+}
+
+div#form form button:hover {
+    border: 1px solid var(--primary-white);
+    width: 205px;
+    color: var(--secondary-gold)
+}
+
+section.form-container h1 {
+    text-align: center;
+    font-family: porlane;
+    font-size: 5.2rem;
+    color: var(--primary-white);
+}
+
