@@ -23,7 +23,7 @@ router.get('/tattooer', isLoggedIn, async function (req, res, next) {
     //console.log('this is username1', username)
     const user = req.session.currentUser;
     try {
-        const tattoo = await Tattoo.find({ tattooPhotoStyle: tattooPhotoStyle }).populate('user');
+        const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }}).populate('user');
     //     const tattooUserName = tattoo.filter((userName) => {
     //         console.log(userName)
     //         return userName.user.username == username
