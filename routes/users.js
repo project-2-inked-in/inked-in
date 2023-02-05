@@ -27,14 +27,32 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
 // @desc Profile user EDIT
 // @route GET users/profile/edit
 // @access Private
-router.get('/profile/edit', isLoggedIn, function (req, res, next) {
+router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
-    if (user.userRole === "tattooer") {
+    try {
+        const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
+        const selectStyles = user.tattooStyle;
+        const resultSelectStyles = [];
+        const resultNoSelect = [];
+        styles.filter(style => {
+            if (selectStyles.includes(style)) {
+                resultSelectStyles.push(style)
+            } else {
+                resultNoSelect.push(style)
+            }
+        });
+        console.log('this is selected', resultSelectStyles)
+console.log('this no selected', resultNoSelect)
+        if (user.userRole === "tattooer") {
         const tattooerUser = user.userRole;
-        res.render('auth/editProfile', { user, tattooerUser })
+        res.render('auth/editProfile', { user, tattooerUser, resultNoSelect, resultSelectStyles })
     } else {
         res.render('auth/editProfile', { user })
     }
+    } catch (error) {
+        
+    }
+
 });
 
 // @desc Profile user EDIT
@@ -96,9 +114,20 @@ router.get('/profile/edit/:photoId', isLoggedIn, async function (req, res, next)
     const user = req.session.currentUser;
     try {
         const photoData = await Tattoo.findById(photoId);
+        const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
+        const selectStyles = photoData.tattooPhotoStyle;
+        const resultSelectStyles = [];
+        const resultNoSelect = [];
+        styles.filter(style => {
+            if (selectStyles.includes(style)) {
+                resultSelectStyles.push(style)
+            } else {
+                resultNoSelect.push(style)
+            }
+        });
         if (user.userRole === "tattooer") {
         const tattooerUser = user.userRole;
-        res.render('editPhotosContent', { user, tattooerUser, photoData })
+        res.render('editPhotosContent', { user, tattooerUser, photoData, resultSelectStyles, resultNoSelect })
     } if (user.userRole == "user") {
         const userUser = user.userRole;
         res.render('editPhotosContent', { user, userUser, photoData });

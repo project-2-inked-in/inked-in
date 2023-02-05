@@ -4,26 +4,12 @@
   {{#if tattooerUser}}
   <label>Tattoo Style</label>
   <select name="tattooPhotoStyle" multiple required>
-    <option value="traditionalOldSchool">Traditional OldSchool</option>
-    <option value="realism">Realism</option>
-    <option value="watercolor">Watercolor</option>
-    <option value="tribal">Tribal</option>
-    <option value="newSchool">New School</option>
-    <option value="neoTraditional">Neo Traditional</option>
-    <option value="japanese">Japanese</option>
-    <option value="blackwork">Blackwork</option>
-    <option value="dotwork">Dotwork</option>
-    <option value="geometric">Geometric</option>
-    <option value="illustrative">Illustrative</option>
-    <option value="sketch">Sketch</option>
-    <option value="anime">Anime</option>
-    <option value="lettering">Lettering</option>
-    <option value="minimalism">Minimalism</option>
-    <option value="surrealism">Surrealism</option>
-    <option value="trashPolka">TrashPolka</option>
-    <option value="blackAndGrey">Black and Grey</option>
-    <option value="ignorant">Ignorant</option>
-    <option value="other">Other</option>
+    {{#each resultSelectStyles}}
+    <option value="{{this}}" selected>{{this}}</option>
+    {{/each}}
+    {{#each resultNoSelect}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
   </select>
   {{/if}}
   <label>Year</label>
