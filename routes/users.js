@@ -29,6 +29,7 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
 // @access Private
 router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
+    console.log("TEST USER", user)
     try {
         const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
         const selectStyles = user.tattooStyle;
@@ -41,8 +42,6 @@ router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
                 resultNoSelect.push(style)
             }
         });
-        console.log('this is selected', resultSelectStyles)
-console.log('this no selected', resultNoSelect)
         if (user.userRole === "tattooer") {
         const tattooerUser = user.userRole;
         res.render('auth/editProfile', { user, tattooerUser, resultNoSelect, resultSelectStyles })

@@ -1,33 +1,41 @@
 <section class="form-container">
-<h1>Editing {{user.username}}'s profile</h1>
-<div id="form">
-    <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
-        <label>Profile image</label>
-        <input type="file" name="profileImage" value="{{user.profileImage}}"/>
-        <label>City:</label>
-        <input type="text" name="city" required="true" value="{{user.city}}" />
-        <label>How many tattoos do you have?</label>
-        <input type="text" name="tattooNumber" value="{{user.tattooNumber}}" />
-        <label>About you</label>
-        <input type="text" name="profileDescription" value="{{user.profileDescription}}" />
-        {{#if tattooerUser}}
-            <label>What style do you work?</label>
-            <select name="tattooStyle" multiple>
-            {{#each resultSelectStyles}}
-                <option value="{{this}}" selected >{{this}}</option>
-            {{/each}}
-            {{#each resultNoSelect}}
-            <option value="{{this}}">{{this}}</option>
-            {{/each}}
-            </select>
-            <label>Where do you work?</label>
-            <input type="text" name="studio" required="true" value="{{user.studio}}" />
-            <label>Next journey?</label>
-            <input type="text" name="nextJourneys" value="{{user.nextJourneys}}" />   
-        {{/if}}
-        <div class="button-form-container">
-            <button type="submit">Save changes</button>
-        </div>
-    </form>
-</div>
+    <h2>Editing {{user.username}}'s profile</h2>
+    <div id="form">
+        <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
+            <div class="upload-profile-photo-container">
+                {{#if user.profileImage}}
+                <input type="file" id="upload" name="profileImage" hidden />
+                <label class="upload-photo" for="upload">
+                    <img src={{user.profileImage}} alt="">
+                </label>
+                {{else}}
+                <input type="file" id="upload" name="profileImage" hidden />
+                <label class="upload-photo" for="upload">
+                    
+                    <img src="/images/profile-icon.png" alt="">
+                </label>
+                {{/if}}
+            </div>
+            <!--<input class="file" type="file" name="profileImage" value="{{user.profileImage}}"/>-->
+            <input type="text" name="city" required="true" value="{{user.city}}" placeholder="Where are you living?" />
+            <input type="text" name="tattooNumber" value="{{user.tattooNumber}}" placeholder="How many tattoos do you have?"/>
+            <input type="text" name="profileDescription" value="{{user.profileDescription}}" placeholder="About you"/>
+            {{#if tattooerUser}}
+                <label>What style do you work?</label>
+                <select name="tattooStyle" multiple>
+                {{#each resultSelectStyles}}
+                    <option value="{{this}}" selected >{{this}}</option>
+                {{/each}}
+                {{#each resultNoSelect}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+                </select>
+                <input type="text" name="studio" required="true" value="{{user.studio}}" placeholder="In witch studio do you work?"/>
+                <input type="text" name="nextJourneys" value="{{user.nextJourneys}}" placeholder="Next journey?"/>   
+            {{/if}}
+            <div class="button-form-container">
+                <button type="submit">Save changes</button>
+            </div>
+        </form>
+    </div>
 </section>

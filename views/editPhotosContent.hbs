@@ -1,25 +1,30 @@
-<h2>{{user.username}} edit content</h2>
-
-<form action="/users/profile/edit/{{photoData._id}}" method="POST">
-  {{#if tattooerUser}}
-  <label>Tattoo Style</label>
-  <select name="tattooPhotoStyle" multiple required>
-    {{#each resultSelectStyles}}
-    <option value="{{this}}" selected>{{this}}</option>
-    {{/each}}
-    {{#each resultNoSelect}}
-    <option value="{{this}}">{{this}}</option>
-    {{/each}}
-  </select>
-  {{/if}}
-  <label>Year</label>
-  <input type="number" name="year" value="{{photoData.year}}" required />
-  <label>Where?</label>
-  <input type="text" name="place" value="{{photoData.place}}" required />
-  {{#if userUser}}
-  <label>Tattooer</label>
-  <input type="text" name="tattooer" value="{{photoData.tattooer}}" required />
-  {{/if}}
-  <button type="submit">Upload</button>
-</form>
+<section class="form-container">
+  <h2>{{user.username}} edit content</h2>
+  <div id="form">
+    <form action="/users/profile/edit/{{photoData._id}}" method="POST">
+      {{#if tattooerUser}}
+      <label>Tattoo Style</label>
+      <select name="tattooPhotoStyle" multiple required>
+        {{#each resultSelectStyles}}
+        <option value="{{this}}" selected>{{this}}</option>
+        {{/each}}
+        {{#each resultNoSelect}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+      {{/if}}
+      <label>Year</label>
+      <input type="number" name="year" value="{{photoData.year}}" placeholder="Year" required />
+      <label>Where?</label>
+      <input type="text" name="place" value="{{photoData.place}}" placeholder="Where?" required />
+      {{#if userUser}}
+      <label>Tattooer</label>
+      <input type="text" name="tattooer" value="{{photoData.tattooer}}" required />
+      {{/if}}
+      <div class="button-form-container"></div>
+        <button type="submit">Upload</button>
+      </div>
+    </form>
+  </div>
+</section>
 <a href="/users/profile/delete/{{photoData._id}}">Delete content</a>

@@ -4,7 +4,6 @@
     <form action="/auth/tattooer" method="POST">
       <label>Select your tattoo style</label>
       <select name="tattooStyle" multiple required>
-        <option value="" disabled selected>Choose your styles</option>
         <option value="traditionalOldSchool">Traditional OldSchool</option>
         <option value="realism">Realism</option>
         <option value="watercolor">Watercolor</option>
@@ -26,8 +25,7 @@
         <option value="ignorant">Ignorant</option>
         <option value="other">Other</option>
       </select>
-      <label>Where are you living?</label>
-      <input type="text" name="city" placeholder="Barcelona" required />
+      <input type="text" name="city" placeholder="Where are you living?" required />
       {{#if error}}
       <p style="color: red;">{{error}}</p>
       {{/if}}

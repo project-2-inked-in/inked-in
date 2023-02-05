@@ -2,14 +2,16 @@
   <a href="/users/profile/edit">Complete profile</a>
   <a href="/users/upload">Upload photo</a>
   <section class="profile-image-container">
+    {{#if user.profileImage}}
     <div>
     <img src={{user.profileImage}} alt="{{user.username}}"/>
     </div>
+    {{/if}}
     <p>{{toUpperCase user.username}}</p>
   </section>
   <section>
     {{#if user.city}}
-    <p>City: {{user.city}}</p>
+    <p>{{user.city}}</p>
     {{/if}}
     {{#if user.tattooNumber}}
       <p>I have {{user.tattooNumber}} tattoos</p>
@@ -18,12 +20,14 @@
       <p>About me: {{user.profileDescription}}</p>
     {{/if}}
     {{#if tattooerUser}}
+      {{#if user.tattooStyle}}
         <p>I work these styles:</p>
           <ul>
       {{#each user.tattooStyle}}
             <li>- {{this}} </li>
       {{/each}}
           </ul>
+      {{/if}}
       {{#if user.studio}}
         <p>I work in: {{user.studio}}</p>
       {{/if}}
