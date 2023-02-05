@@ -13,8 +13,11 @@
         {{#if tattooerUser}}
             <label>What style do you work?</label>
             <select name="tattooStyle" multiple>
-            {{#each user.tattooStyle}}
+            {{#each resultSelectStyles}}
                 <option value="{{this}}" selected >{{this}}</option>
+            {{/each}}
+            {{#each resultNoSelect}}
+            <option value="{{this}}">{{this}}</option>
             {{/each}}
             </select>
             <label>Where do you work?</label>
