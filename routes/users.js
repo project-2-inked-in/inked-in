@@ -29,7 +29,6 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
 // @access Private
 router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
     const user = req.session.currentUser;
-    console.log("TEST USER", user)
     try {
         const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
         const selectStyles = user.tattooStyle;
@@ -51,7 +50,6 @@ router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
     } catch (error) {
         
     }
-
 });
 
 // @desc Profile user EDIT
@@ -60,8 +58,6 @@ router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
 router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, async function (req, res, next) {
     const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
-    console.log('user123', user)
-    console.log('This is req.file.path', req.file)
     try {
         if (req.file === undefined) {
             const userInDB = await User.findByIdAndUpdate(user._id, {city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });  
@@ -143,7 +139,7 @@ router.post('/profile/edit/:photoId', isLoggedIn, async function (req, res, next
     const { tattooPhotoStyle, year, place, tattooer } = req.body;
     const { photoId } = req.params;
     const user = req.session.currentUser;
-    console.log('user123', user)
+
     try {
         await Tattoo.findByIdAndUpdate(photoId, {tattooPhotoStyle, year, place, tattooer }, { new: true });
         //res.render('auth/profile', userInDB);

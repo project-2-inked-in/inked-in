@@ -4,6 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const { isLoggedTattooer } = require('../middlewares');
+const { isLoggedIn } = require('../middlewares');
 
 // @desc    Displays form view to sign up
 // @route   GET /auth/signup
@@ -117,7 +118,7 @@ router.post('/tattooer', isLoggedTattooer ,async (req, res, next) => {
 // @desc    Destroy user session and log out
 // @route   GET /auth/logout
 // @access  Private 
-router.get('/logout', (req, res, next) => {
+router.get('/logout', isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       next(err)
