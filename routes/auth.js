@@ -44,6 +44,11 @@ router.post('/signup', async (req, res, next) => {
     res.render('auth/signup', { error: 'Password needs to containe at lesat 7 characters, one number, one lowercase an one uppercase letter.' })
     return;
   }
+  const regex2 = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regex2.test(email)) {
+    res.render('auth/signup', { error: 'Error. Invalid email.' })
+    return;
+  }
   try {
     const isUserInDB = await User.findOne({ email: email });
     if (isUserInDB) {
