@@ -22,7 +22,7 @@ router.get('/:tattoerId', isLoggedIn, async (req, res, next) => {
 // @desc Profile user
 // @route GET user/profile
 // @access Private
-router.get('/profile', isLoggedIn, async function (req, res, next) {
+router.get('/profile', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const dataUser = await Tattoo.find({ user: user._id });

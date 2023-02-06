@@ -7,7 +7,7 @@ const { isLoggedIn } = require('../middlewares');
 // @desc Search view
 // @route GET /search
 // @access Private
-router.get('/', isLoggedIn, function (req, res, next) {
+router.get('/', isLoggedIn, (req, res, next) => {
     const user = req.session.currentUser;
     res.render('search', {user});
 });
@@ -15,7 +15,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
 // @desc get search query 
 // @route GET /search
 // @access Private
-router.get('/tattooer', isLoggedIn, async function (req, res, next) {
+router.get('/tattooer', isLoggedIn, async (req, res, next) => {
     //const { username } = req.query;
     const { tattooPhotoStyle } = req.query;
     const user = req.session.currentUser;

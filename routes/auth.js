@@ -34,7 +34,7 @@ router.get('/tattooer', isLoggedTattooer, async (req, res, next) => {
 // @route   POST /auth/signup
 // @access  Public
 router.post('/signup', async (req, res, next) => {
-  const { username, email, password, userRole, city, tattooNumber } = req.body;
+  const { username, email, password, userRole } = req.body;
   if (!email || !password || !username || !userRole ) {
     res.render('auth/signup', { error: 'All fields are necessary.' })
     return;

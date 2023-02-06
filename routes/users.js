@@ -9,7 +9,7 @@ const { isLoggedTattooer } = require('../middlewares');
 // @desc Profile user
 // @route GET user/profile
 // @access Private
-router.get('/profile', isLoggedIn, async function (req, res, next) {
+router.get('/profile', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const dataUser = await Tattoo.find({ user: user._id });
@@ -27,7 +27,7 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
 // @desc Profile user EDIT
 // @route GET users/profile/edit
 // @access Private
-router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
+router.get('/profile/edit', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
@@ -55,7 +55,7 @@ router.get('/profile/edit', isLoggedIn, async function (req, res, next) {
 // @desc Profile user EDIT
 // @route POST users/profile/edit
 // @access Private
-router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, async function (req, res, next) {
+router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, async (req, res, next) => {
     const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
     try {
@@ -104,7 +104,7 @@ router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (r
 // @desc Photos user EDIT 
 // @route GET users/profile/edit/:id
 // @access Private
-router.get('/profile/edit/:photoId', isLoggedIn, async function (req, res, next) {
+router.get('/profile/edit/:photoId', isLoggedIn, async (req, res, next) => {
     const { photoId } = req.params;
     const user = req.session.currentUser;
     try {
@@ -135,7 +135,7 @@ router.get('/profile/edit/:photoId', isLoggedIn, async function (req, res, next)
 // @desc Profile user EDIT
 // @route POST users/profile/edit/:id
 // @access Private
-router.post('/profile/edit/:photoId', isLoggedIn, async function (req, res, next) {
+router.post('/profile/edit/:photoId', isLoggedIn, async (req, res, next) => {
     const { tattooPhotoStyle, year, place, tattooer } = req.body;
     const { photoId } = req.params;
     const user = req.session.currentUser;
@@ -152,7 +152,7 @@ router.post('/profile/edit/:photoId', isLoggedIn, async function (req, res, next
 // @desc Photos user DELETE 
 // @route GET users/profile/delete/:id
 // @access Private
-router.get('/profile/delete/:photoId', isLoggedIn, async function (req, res, next) {
+router.get('/profile/delete/:photoId', isLoggedIn, async(req, res, next) => {
     const { photoId } = req.params;
     const user = req.session.currentUser;
     try {

@@ -8,7 +8,7 @@ const { isLoggedIn } = require('../middlewares');
 // @desc Get Reviews
 // @route GET /users/reviews
 // @access Private
-router.get('/reviews/:tattoerId', isLoggedIn, async function (req, res, next) {
+router.get('/reviews/:tattoerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
     const user = req.session.currentUser;
     try {
@@ -23,7 +23,7 @@ router.get('/reviews/:tattoerId', isLoggedIn, async function (req, res, next) {
 // @desc Reviews
 // @route POST /users/reviews
 // @access Private
-router.post('/reviews/:tattooerId', isLoggedIn, async function (req, res, next) {
+router.post('/reviews/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
     const { username } = req.session.currentUser;
     const { tattooerId } = req.params;
@@ -38,7 +38,7 @@ router.post('/reviews/:tattooerId', isLoggedIn, async function (req, res, next) 
 // @desc Edit Reviews
 // @route GET /users/reviews/edit
 // @access Private
-router.get('/reviews/edit/:tattoerId', isLoggedIn, async function (req, res, next) {
+router.get('/reviews/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
     try {
         const review = await Review.findById(tattooerId);
@@ -51,7 +51,7 @@ router.get('/reviews/edit/:tattoerId', isLoggedIn, async function (req, res, nex
 // @desc Edit Reviews
 // @route POST /users/reviews/edit
 // @access Private
-router.post('/reviews/edit/:tattoerId', isLoggedIn, async function (req, res, next) {
+router.post('/reviews/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
     const { tattooerId } = req.params;
     try {
