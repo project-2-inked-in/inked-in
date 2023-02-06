@@ -118,7 +118,7 @@ router.post('/tattooer', isLoggedTattooer ,async (req, res, next) => {
 // @desc    Destroy user session and log out
 // @route   GET /auth/logout
 // @access  Private 
-router.get('/logout', isLoggedIn, (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       next(err)
