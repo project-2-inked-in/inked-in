@@ -24,10 +24,6 @@ const tattooSchema = new Schema(
         place: {
             type: String
         },
-        // likes: {
-        //     type: [Schema.Types.ObjectId],
-        //     ref: 'User'
-        // }
     },
     {
         timestamps: true

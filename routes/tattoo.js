@@ -25,8 +25,13 @@ router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (r
     const { tattooPhotoStyle, year, tattooer, place } = req.body;
     const userSession = req.session.currentUser;
     try {
+        if (year > 2023) {
+        res.render('tattooesPhotos/uploadContent', { error: "This year is impossible dude!" })
+        return;
+    } else {
         await Tattoo.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
-        res.redirect('/users/profile')
+            res.redirect('/users/profile')
+            }
     } catch (error) {
         next(error) 
     }

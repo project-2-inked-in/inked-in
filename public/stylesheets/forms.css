@@ -94,3 +94,8 @@ section.form-container div#form form div.button-form-container button:hover {
     display: flex;
     justify-content: center;
 }
+
+/*FORM 2*/
+section.form-container div#form2 label {
+    color: var(--primary-white)
+}

@@ -4,12 +4,12 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const { isLoggedTattooer } = require('../middlewares');
-const { isLoggedIn } = require('../middlewares');
+const { isLoggedButOut } = require('../middlewares');
 
 // @desc    Displays form view to sign up
 // @route   GET /auth/signup
 // @access  Public
-router.get('/signup', async (req, res, next) => {
+router.get('/signup', isLoggedButOut, async (req, res, next) => {
   const user = req.session.currentUser;
   res.render('auth/signup', user);
 });
@@ -17,7 +17,7 @@ router.get('/signup', async (req, res, next) => {
 // @desc    Displays form view to log in
 // @route   GET /auth/login
 // @access  Public
-router.get('/login', async (req, res, next) => {
+router.get('/login', isLoggedButOut, async (req, res, next) => {
   const user = req.session.currentUser;
   res.render('auth/login', user);
 });
@@ -33,7 +33,7 @@ router.get('/tattooer', isLoggedTattooer, async (req, res, next) => {
 // @desc    Sends user auth data to database to create a new user
 // @route   POST /auth/signup
 // @access  Public
-router.post('/signup', async (req, res, next) => {
+router.post('/signup', isLoggedButOut, async (req, res, next) => {
   const { username, email, password, userRole } = req.body;
   if (!email || !password || !username || !userRole ) {
     res.render('auth/signup', { error: 'All fields are necessary.' })
@@ -74,7 +74,7 @@ router.post('/signup', async (req, res, next) => {
 // @desc    Sends user auth data to database to authenticate user
 // @route   POST /auth/login
 // @access  Public
-router.post('/login', async (req, res, next) => {
+router.post('/login', isLoggedButOut, async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     res.render('auth/login', { error: 'email or password do not match.' })
@@ -103,18 +103,24 @@ router.post('/login', async (req, res, next) => {
 // @desc    Sends tattooer auth data to database to update user info
 // @route   POST /auth/tattooer
 // @access  just for tattoer role
-router.post('/tattooer', isLoggedTattooer ,async (req, res, next) => {
+router.post('/tattooer', isLoggedTattooer, async (req, res, next) => {
   const { tattooStyle, city } = req.body;
   const userId = req.session.currentUser._id
   if (!tattooStyle || !city) {
-    res.render('auth/login', { error: 'Tattoo style or city fields are necessary.' })
+    res.render('auth/signTattooer', { error: 'Tattoo style or city fields are necessary.' })
     return;
   }
+  // const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
+  // tattooStyle.map((OneStyle) => {
+  //   if (!styles.includes(OneStyle)) {
+  //     res.render('auth/signTattooer', { error: 'Please, select correct tattoo style .' })
+  //     return;
+  //   }
+  // });
   try {
     const updateUser = await User.findByIdAndUpdate(userId, { tattooStyle, city }, { new: true });
     req.session.currentUser = updateUser;
     res.redirect('/welcome');
-    //res.render('welcome', {user: updateUser})
     } catch (error) {
     next(error);
   }

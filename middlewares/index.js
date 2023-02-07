@@ -6,6 +6,14 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
+const isLoggedButOut = (req, res, next) => {
+  if (req.session.currentUser) {
+    res.redirect('/welcome');
+  } else {
+    next();
+  }
+};
+
 const isLoggedTattooer = (req, res, next) => {
   if (req.session.currentUser.userRole === "tattooer") {
     next();
@@ -25,5 +33,6 @@ const isLoggedUser = (req, res, next) => {
 module.exports = {
   isLoggedIn,
   isLoggedTattooer,
-  isLoggedUser
+  isLoggedUser,
+  isLoggedButOut
 }
