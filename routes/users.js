@@ -73,4 +73,25 @@ router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, as
     }
 });
 
+// @desc Unsubscribe profile user EDIT
+// @route GET users/unsubscribe
+// @access Private
+router.get('/unsubscribe', isLoggedIn, async (req, res, next) => {
+    const user = req.session.currentUser;
+    try {
+        await Tattoo.deleteMany({ user: user._id });
+        await User.deleteOne({ _id: user._id });
+        req.session.destroy((err) => {
+            if (err) {
+                next(err)
+            } else {
+                res.clearCookie('inked-in-cookie');
+                res.redirect('/auth/login');
+            }
+        });
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = router;
