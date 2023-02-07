@@ -4,7 +4,7 @@ const User = require('../models/User');
 const Tattoo = require('../models/Tattoo')
 const fileUploader = require('../config/cloudinary.config');
 const { isLoggedIn } = require('../middlewares');
-const { isLoggedTattooer } = require('../middlewares');
+
 
 // @desc Profile user
 // @route GET user/profile

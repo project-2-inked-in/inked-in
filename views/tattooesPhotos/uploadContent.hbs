@@ -40,6 +40,9 @@
     <div class="button-form-container">
       <button type="submit">Upload</button>
     </div>
+    {{#if error}}
+    <p style="color: red;">{{error}}</p>
+    {{/if}}
   </form>
 </div>
 </section>
