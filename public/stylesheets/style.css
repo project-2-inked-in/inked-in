@@ -194,7 +194,35 @@ img.profile-photos {
   width: 100vw;
 }
 
+div.profile-main-container {
+  color: var(--primary-white)
+}
+
 /*---------------WELCOME PAGE---------------*/
 section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {
   width: 100vw;
+}
+
+/*---------------SEARCH PAGE---------------*/
+
+section.form-container {
+  color: var(--primary-white)
+}
+
+div#form2 form{
+  display: flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+  justify-content: flex-start;
+}
+
+button.buttonsearch{
+  border: 1px solid var(--secondary-gold);
+  width: 150px;
+  background-color: var(--primary-grey);
+  padding: 1rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--primary-white);
 }
