@@ -1,7 +1,7 @@
 <section class="form-container">
   <h2>{{user.username}} upload a photo</h2>
 <div id="form">
-  <form action="/users/upload" method="POST" enctype="multipart/form-data">
+  <form action="/tattoo/upload" method="POST" enctype="multipart/form-data">
     <label>Tattoo photo</label>
     <input type="file" name="tattooImage" required/>
     {{#if tattooerUser}}

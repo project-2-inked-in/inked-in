@@ -1,7 +1,7 @@
 <section class="form-container">
   <h2>{{user.username}} edit content</h2>
   <div id="form">
-    <form action="/users/profile/edit/{{photoData._id}}" method="POST">
+    <form action="/tattoo/edit/{{photoData._id}}" method="POST">
       {{#if tattooerUser}}
       <label>Tattoo Style</label>
       <select name="tattooPhotoStyle" multiple required>
@@ -27,4 +27,4 @@
     </form>
   </div>
 </section>
-<a href="/users/profile/delete/{{photoData._id}}">Delete content</a>
+<a href="/tattoo/delete/{{photoData._id}}">Delete content</a>

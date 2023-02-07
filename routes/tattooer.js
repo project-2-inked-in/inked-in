@@ -3,6 +3,7 @@ const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
 const { isLoggedIn } = require('../middlewares');
 
+
 // @desc User can see tattooer detail profile
 // @route GET tattooer/:id
 // @access Private
@@ -13,7 +14,7 @@ router.get('/:tattoerId', isLoggedIn, async (req, res, next) => {
     const allTattooerData = await Tattoo.findOne({ user: tattoerId }).populate('user');
     const allTattoPhotos = await Tattoo.find({ user: tattoerId })
 
-    res.render('tattooer', { user, allTattooerData, allTattoPhotos })
+    res.render('tattooesPhotos/tattooer', { user, allTattooerData, allTattoPhotos })
   } catch (error) {
     next(error)
   }

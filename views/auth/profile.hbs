@@ -1,6 +1,6 @@
 <div class="profile-main-container">
   <a href="/users/profile/edit">Edit profile</a>
-  <a href="/users/upload">Upload photo</a>
+  <a href="/tattoo/upload">Upload photo</a>
   <section class="profile-image-container">
     {{#if user.profileImage}}
     <div>
@@ -44,7 +44,7 @@
     {{#each tattooPhotoStyle}}
     <p> - {{this}}</p>
     {{/each}}
-  <a href="/users/profile/edit/{{_id}}">Edit</a>
+  <a href="/tattoo/edit/{{_id}}">Edit</a>
   {{/each}}
 
 </div>
