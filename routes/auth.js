@@ -111,13 +111,23 @@ router.post('/tattooer', isLoggedTattooer, async (req, res, next) => {
     res.render('auth/signTattooer', { error: 'Tattoo style or city fields are necessary.' })
     return;
   }
-  // const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
-  // tattooStyle.map((OneStyle) => {
-  //   if (!styles.includes(OneStyle)) {
-  //     res.render('auth/signTattooer', { error: 'Please, select correct tattoo style .' })
-  //     return;
-  //   }
-  // });
+  const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
+  if (typeof tattooStyle === "string") {
+    const tattooStyleArray = tattooStyle.split();
+     tattooStyleArray.map((OneStyle) => {
+    if (!styles.includes(OneStyle)) {
+      res.render('auth/signTattooer', { error: 'Please, select correct tattoo style .' })
+      return;
+    }
+  });
+  } else {
+     tattooStyle.map((OneStyle) => {
+    if (!styles.includes(OneStyle)) {
+      res.render('auth/signTattooer', { error: 'Please, select correct tattoo style .' })
+      return;
+    }
+  });
+  };
   try {
     const updateUser = await User.findByIdAndUpdate(userId, { tattooStyle, city }, { new: true });
     req.session.currentUser = updateUser;
