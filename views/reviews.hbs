@@ -1,0 +1,14 @@
+{{#if user}}
+    <form method="POST" action="/review/{{tattooer._id}}">
+    <label>Stars to the artist:</label>
+    <input type="number" placeholder="5" name="stars"/>
+    <label>Comment:</label>
+    <input type="text" placeholder="I love this tattooer" name="comment"/>
+    <button type="submit">Add review</button>
+    </form>
+{{/if}}
+{{#if review}}
+    {{#each review}}
+        <p><strong>{{this.username}}</strong>: {{this.comment}}. Stars: {{this.stars}}/5</p>
+    {{/each}}
+{{/if}}
