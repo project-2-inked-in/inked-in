@@ -3,10 +3,15 @@
 </section>
 <section class="tattoer-photos-container">
   <div>
-    {{#each justTattooersPhotos}}
+    {{#each justTattooersPhotosAndLike}}
       <div class="tattoo-photo-div">
         <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
         <a href="/tattooer/{{user._id}}"><p>{{user.username}}</p></a>
+        {{#if isLikedPhoto}}
+        <p>Ja te Like!</p>
+       {{else}}
+      <a href="/likes/{{_id}}">Fes un like!</a>
+       {{/if}}
       </div>
     {{/each}}
   </div>

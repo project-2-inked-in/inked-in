@@ -86,7 +86,7 @@ router.get('/unsubscribe', isLoggedIn, async (req, res, next) => {
                 next(err)
             } else {
                 res.clearCookie('inked-in-cookie');
-                res.redirect('/auth/login');
+                res.redirect('/auth/signup');
             }
         });
     } catch (error) {
