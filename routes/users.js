@@ -59,6 +59,7 @@ router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, as
     const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
     try {
+        console.log("this is description", profileDescription )
         if (req.file === undefined) {
             const userInDB = await User.findByIdAndUpdate(user._id, {city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });  
             req.session.currentUser = userInDB;

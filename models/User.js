@@ -38,6 +38,7 @@ const userSchema = new Schema(
     },
     profileDescription: {
       type: String,
+      match: [/^[A-Za-z0-9]+$/g, 'Description just allaw characters and numbers.']
     },
     tattooStyle: {
       type: [String],
