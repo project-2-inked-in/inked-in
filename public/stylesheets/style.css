@@ -191,7 +191,9 @@ section.profile-image-container img {
 }
 
 img.profile-photos {
-  width: 100vw;
+  width: 100vw;  
+  height: 35vh;
+  object-fit: cover;
 }
 
 div.profile-main-container {
@@ -199,8 +201,16 @@ div.profile-main-container {
 }
 
 /*---------------WELCOME PAGE---------------*/
+section.tattoer-photos-container div div.like-and-username {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.1rem 0.8rem 1.3rem 0.8rem;
+}
 section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {
   width: 100vw;
+  height: 35vh;
+  object-fit: cover;
 }
 
 /*---------------SEARCH PAGE---------------*/
@@ -225,4 +235,10 @@ button.buttonsearch{
   text-transform: uppercase;
   text-align: center;
   color: var(--primary-white);
+}
+
+/*---------------LIKE ICONS---------------*/
+
+.like-icon {
+  width: 29px;
 }

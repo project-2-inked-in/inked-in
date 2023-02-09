@@ -23,19 +23,25 @@ router.get('/upload', isLoggedIn, (req, res, next) => {
 // @access Private
 router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (req, res, next) => {
     const { tattooPhotoStyle, year, tattooer, place } = req.body;
-    const userSession = req.session.currentUser;
+    const user = req.session.currentUser;
     try {
         if (year > 2023) {
-        res.render('tattooesPhotos/uploadContent', { error: "This year is impossible dude!" })
-        return;
+               if (user.userRole == "tattooer") {
+                const tattooerUser = user.userRole;
+                res.render('tattooesPhotos/uploadContent', { user, tattooerUser, error: "This year is impossible dude!" });
+            } if (user.userRole == "user") {
+                const userUser = user.userRole;
+                res.render('tattooesPhotos/uploadContent', { user, userUser, error: "This year is impossible dude!" }); 
+            }
     } else {
-        await Tattoo.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
+        await Tattoo.create({user: user._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
             res.redirect('/users/profile')
             }
     } catch (error) {
         next(error) 
     }
 });
+
 
 // @desc Photos user EDIT 
 // @route GET tattoo/edit/:id

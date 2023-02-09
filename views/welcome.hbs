@@ -6,12 +6,14 @@
     {{#each justTattooersPhotosAndLike}}
       <div class="tattoo-photo-div">
         <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
-        <a href="/tattooer/{{user._id}}"><p>{{user.username}}</p></a>
-        {{#if isLikedPhoto}}
-        <p>Ja te Like!</p>
-       {{else}}
-      <a href="/likes/{{_id}}">Fes un like!</a>
-       {{/if}}
+        <div class="like-and-username">
+          <a href="/tattooer/{{user._id}}"><p>{{user.username}}</p></a>
+          {{#if isLikedPhoto}}
+          <img class="like-icon" src="/images/Like.png" alt="filled heart">
+          {{else}}
+          <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
+          {{/if}}
+        </div>
       </div>
     {{/each}}
   </div>

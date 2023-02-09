@@ -6,13 +6,13 @@
                 {{#if user.profileImage}}
                 <input type="file" id="upload" name="profileImage" hidden />
                 <label class="upload-photo" for="upload">
-                    <img src={{user.profileImage}} alt="">
+                    <img src={{user.profileImage}} alt="profile-photo">
                 </label>
                 {{else}}
                 <input type="file" id="upload" name="profileImage" hidden />
                 <label class="upload-photo" for="upload">
                     
-                    <img src="/images/profile-icon.png" alt="">
+                    <img src="/images/profile-icon.png" alt="profile-photo">
                 </label>
                 {{/if}}
             </div>
@@ -21,9 +21,9 @@
             <input type="text" name="profileDescription" value="{{user.profileDescription}}" placeholder="About you"/>
             {{#if tattooerUser}}
                 <label>What style do you work?</label>
-                <select name="tattooStyle" multiple>
+                <select class="select" name="tattooStyle" multiple>
                 {{#each resultSelectStyles}}
-                    <option value="{{this}}" selected >{{this}}</option>
+                    <option value="{{this}}" selected>{{this}}</option>
                 {{/each}}
                 {{#each resultNoSelect}}
                 <option value="{{this}}">{{this}}</option>

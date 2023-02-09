@@ -88,12 +88,34 @@ section.form-container div#form form div.button-form-container button:hover {
     margin-top: 1rem;
     width: 4rem;
     height: 4rem;
+    object-fit: cover;
 }
 
 .upload-profile-photo-container {
     display: flex;
     justify-content: center;
 }
+
+select.select option:checked {
+    color: var(--primary-white);
+    background-color: var(--secondary-gold);
+}
+
+input:focus {
+    color: var(--primary-white);
+    outline: 1px solid var(--secondary-gold);
+}
+
+select.select {
+    color: var(--primary-white);
+    outline: 1px solid var(--secondary-gold);
+}
+
+select.select option:focus {
+    background-color: beige;
+}
+
+
 
 /*FORM 2*/
 section.form-container div#form2 label {
