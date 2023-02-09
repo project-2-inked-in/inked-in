@@ -14,7 +14,7 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
     try {
         const tattooer = await Tattooer.findById(tattooerId).populate('reviews');
         const reviews = await Review.find({ tattooer: tattooerId });
-        res.render('detail', { user, reviews });
+        res.render('reviews/detail', { user, reviews });
     } catch (error) {
         next(error)
     }

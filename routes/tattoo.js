@@ -68,7 +68,7 @@ router.get('/edit/:photoId', isLoggedIn, async (req, res, next) => {
     }
 });
 
-// @desc Profile user EDIT
+// @desc Photos user EDIT
 // @route POST tattoo/edit/:id
 // @access Private
 router.post('/edit/:photoId', isLoggedIn, async (req, res, next) => {

@@ -20,22 +20,22 @@ router.get('/:tattoerId', isLoggedIn, async (req, res, next) => {
   }
 });
 
-// @desc Profile user
-// @route GET user/profile
-// @access Private
-router.get('/profile', isLoggedIn, async (req, res, next) => {
-    const user = req.session.currentUser;
-    try {
-        const dataUser = await Tattoo.find({ user: user._id });
-            if (user.userRole == "tattooer") {
-        const tattooerUser = user.userRole
-        res.render('auth/profile', { user, tattooerUser, dataUser });
-    } else {
-        res.render('auth/profile', { user, dataUser }); 
-    }
-    } catch (error) {
-        next(error) 
-    }
-});
+// // @desc Profile user
+// // @route GET user/profile
+// // @access Private
+// router.get('/profile', isLoggedIn, async (req, res, next) => {
+//     const user = req.session.currentUser;
+//     try {
+//         const dataUser = await Tattoo.find({ user: user._id });
+//             if (user.userRole == "tattooer") {
+//         const tattooerUser = user.userRole
+//         res.render('auth/profile', { user, tattooerUser, dataUser });
+//     } else {
+//         res.render('auth/profile', { user, dataUser }); 
+//     }
+//     } catch (error) {
+//         next(error) 
+//     }
+// });
 
 module.exports = router;
