@@ -1,0 +1,5 @@
+{{#if reviews}}
+    {{#each reviews}}
+        <p><strong>{{this.username}}</strong>: {{this.comment}}. Stars: {{this.stars}}/5</p>
+    {{/each}}
+{{/if}}
