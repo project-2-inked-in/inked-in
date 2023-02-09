@@ -15,7 +15,6 @@ router.get('/profile', isLoggedIn, async (req, res, next) => {
         const dataUser = await Tattoo.find({ user: user._id });
             if (user.userRole == "tattooer") {
                 const tattooerUser = user.userRole
-                console.log(tattooerUser)
         res.render('auth/profile', { user, tattooerUser, dataUser });
     } else {
         res.render('auth/profile', { user, dataUser }); 
@@ -60,7 +59,6 @@ router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, as
     const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
     try {
-        console.log("this is description", profileDescription )
         if (req.file === undefined) {
             const userInDB = await User.findByIdAndUpdate(user._id, {city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });  
             req.session.currentUser = userInDB;

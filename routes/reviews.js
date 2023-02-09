@@ -35,11 +35,8 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
 router.post('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
     const user = req.session.currentUser;
-    console.log("USERNAME ID", user)
     const { tattooerId } = req.params;
-    console.log("TATTOOER ID", tattooerId)
     try {
-        //console.log("no funsssssiona",username._id,tattooerId._id )
     await Review.create({ stars, comment, userId: user._id, tattooerId: tattooerId });
     res.redirect(`/tattooer/${tattooerId}`)
     } catch (error) {
