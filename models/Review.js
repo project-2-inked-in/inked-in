@@ -2,10 +2,13 @@ const { Schema, model } = require('mongoose');
 
 const reviewSchema = new Schema(
     {
-    username: {
+    userId: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: [true]
+        ref: 'User'
+        },
+    tattooerId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User' 
     },
     stars: {
         type: Number,

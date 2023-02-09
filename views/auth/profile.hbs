@@ -2,6 +2,9 @@
   <a href="/users/profile/edit">Edit profile</a>
   <a href="/tattoo/upload">Upload photo</a>
   <a href="/users/unsubscribe">Unsubscribe</a>
+  {{#if tattooerUser}}
+  <a href="/reviews/{{user._id}}">Reviews</a>
+  {{/if}}
   <section class="profile-image-container">
     {{#if user.profileImage}}
     <div>

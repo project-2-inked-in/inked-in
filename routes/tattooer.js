@@ -2,19 +2,19 @@ const router = require('express').Router();
 const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
 const { isLoggedIn } = require('../middlewares');
+const { ifTattooerOut } = require('../middlewares');
 
 
 // @desc User can see tattooer detail profile
 // @route GET tattooer/:id
 // @access Private
-router.get('/:tattoerId', isLoggedIn, async (req, res, next) => {
+router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => {
   const user = req.session.currentUser;
-  const {tattoerId } = req.params;
+  const {tattooerId } = req.params;
   try {
-    const allTattooerData = await Tattoo.findOne({ user: tattoerId }).populate('user');
-    const allTattoPhotos = await Tattoo.find({ user: tattoerId })
-
-    res.render('tattooesPhotos/tattooer', { user, allTattooerData, allTattoPhotos })
+    const allTattooerData = await Tattoo.findOne({ user: tattooerId }).populate('user');
+    const allTattoPhotos = await Tattoo.find({ user: tattooerId });
+    res.render('tattooesPhotos/tattooer', { user, allTattooerData, allTattoPhotos, tattooerId })
   } catch (error) {
     next(error)
   }

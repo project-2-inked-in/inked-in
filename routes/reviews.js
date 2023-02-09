@@ -1,42 +1,54 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const Tattooer = require('../models/Tattoo');
+const Tattoo = require('../models/Tattoo');
 const Review = require('../models/Review')
 const { isLoggedIn } = require('../middlewares');
 
-// @desc Get Reviews
-// @route GET /users/reviews
+// @desc Get Reviews view
+// @route GET /reviews/tattooerId
 // @access Private
 router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
     const user = req.session.currentUser;
     try {
-        const tattooer = await Tattooer.findById(tattooerId).populate('reviews');
-        const reviews = await Review.find({ tattooer: tattooerId });
-        res.render('reviews/detail', { user, reviews, tattooer});
+        const tattooer = await User.findById(tattooerId);
+        const reviews = await Review.find({ tattooerId: tattooerId }).populate('userId');
+        const userCanedit = [];
+        const userCanTedit = [];
+        reviews.filter(review => {
+            if (user._id.includes(review.userId._id)) {
+                userCanedit.push(review)
+            } else {
+                userCanTedit.push(review)
+            }
+        });
+        res.render('reviews/reviews', { user, tattooer, reviews, userCanedit, userCanTedit}); 
     } catch (error) {
         next(error)
     }
 });
 
-// @desc Reviews
-// @route POST /users/reviews
+// @desc Reviews data to database
+// @route POST /reviews/tattooerId
 // @access Private
 router.post('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
-    const { username } = req.session.currentUser;
+    const user = req.session.currentUser;
+    console.log("USERNAME ID", user)
     const { tattooerId } = req.params;
+    console.log("TATTOOER ID", tattooerId)
     try {
-    await Review.create({ stars, comment, username, tattooer: tattooerId });
+        //console.log("no funsssssiona",username._id,tattooerId._id )
+    await Review.create({ stars, comment, userId: user._id, tattooerId: tattooerId });
     res.redirect(`/tattooer/${tattooerId}`)
     } catch (error) {
         next(error)
     }
 });
 
-// @desc Edit Reviews
-// @route GET /users/reviews/edit
+// @desc Edit Reviews view
+// @route GET /reviews/edit/tattooerId
 // @access Private
 router.get('/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
@@ -48,8 +60,8 @@ router.get('/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
     }
 });
 
-// @desc Edit Reviews
-// @route POST /users/reviews/edit
+// @desc Edit Reviews data to database
+// @route POST /reviews/edit/tattooerId
 // @access Private
 router.post('/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;

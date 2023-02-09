@@ -30,9 +30,19 @@ const isLoggedUser = (req, res, next) => {
   }
 };
 
+const ifTattooerOut = (req, res, next) => {
+  const { tattooerId } = req.params;
+  if (req.session.currentUser._id === tattooerId) {
+    res.redirect('/users/profile');
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   isLoggedIn,
   isLoggedTattooer,
   isLoggedUser,
-  isLoggedButOut
+  isLoggedButOut,
+  ifTattooerOut
 }
