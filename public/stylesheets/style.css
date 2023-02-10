@@ -33,10 +33,27 @@ h2 {
   letter-spacing: 0.7px;
 }
 
+h3 {
+  font-family: porlane;
+  font-size: 1.7rem;
+  color: var(--secondary-gold);
+  font-weight: 900;
+  line-height: 1.5rem;
+}
+
+h4 {
+  font-family: porlane;
+  font-size: 4.5rem;
+  color: var(--secondary-gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 p{
   font-family: 'Manrope', sans-serif;
   color: var(--primary-white)
 }
+
 a {
   font-family: 'Manrope', sans-serif;
   text-decoration: none;
@@ -157,34 +174,25 @@ div#form form button:hover {
   color: var(--secondary-gold)
 }
 
-    /*---------------NAVBAR UP LAYOUT---------------*/
-    nav.navbar-layout2{
-      width: 100vw;
-      padding: 15px 25px 6px 25px;
-      background-color: var(--primary-grey);
-      border-bottom: solid 0.5px;
-      border-color: var(--secondary-gold);
-    }
-    
-    nav.navbar-layout2 ul {
-      display: flex;
-      justify-content: space-between;
-    }
-    
-    nav.navbar-layout2 ul .li-no-user {
-      display: flex;
-      justify-content: center;
-    }
-    
-    /* nav.navbar-layout2 ul li a img{
-      width: 55px;
-    } */
-    img.max-icon {
-      width: 72px;
-    }
-    img.mini-icon {
-      width: 35px;
-    }
+/*---------------NAVBAR UP LAYOUT---------------*/
+
+nav.navbar-layout2{
+  width: 100vw;
+  padding: 20px 25px 6px 25px;
+  background-color: var(--primary-grey);
+  border-color: var(--secondary-gold);
+  margin: 0 0 1rem 0;
+}
+
+nav.navbar-layout2 ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img.max-icon {
+  width: 72px;
+}
 
 /*---------------NAVBAR LAYOUT---------------*/
 nav.navbar-layout{
@@ -289,18 +297,23 @@ section.main-section div.profile-main-container section.profile-image-container{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 section.main-section div.profile-main-container section.profile-info-container{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3rem;
 }
 
-section.profile-image-container img {
+section.profile-image-container img.profile-image {
   border-radius: 50%;
   width: 75px;
   height: 75px;
   object-fit: cover;
+  border: 1px solid var(--secondary-gold);
 }
 
 img.profile-photos {
@@ -310,10 +323,31 @@ img.profile-photos {
 }
 
 div.user-info-div {
-  margin-right: 0.5rem;
+  margin: 0 0.4rem 0 0.4rem;
+}
+
+.ul-tattoo-styles {
+  display: flex;
+  gap: 0.5rem;
+}
+
+div.reviews-stars-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.starts-reviews {
+  width: 90px;
 }
 
 /*---------------WELCOME PAGE---------------*/
+section.main-welcome-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 section.tattoer-photos-container div div.like-and-username {
   display: flex;
   justify-content: space-between;

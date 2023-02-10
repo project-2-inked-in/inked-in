@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
+const Like = require('../models/Like');
 const { isLoggedIn } = require('../middlewares');
 const { ifTattooerOut } = require('../middlewares');
+
+
 
 
 // @desc User can see tattooer detail profile
@@ -10,32 +13,29 @@ const { ifTattooerOut } = require('../middlewares');
 // @access Private
 router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => {
   const user = req.session.currentUser;
-  const {tattooerId } = req.params;
+  const { tattooerId } = req.params;
+  console.log("tattoerId",tattooerId )
   try {
     const allTattooerData = await Tattoo.findOne({ user: tattooerId }).populate('user');
     const allTattoPhotos = await Tattoo.find({ user: tattooerId });
-    res.render('tattooesPhotos/tattooer', { user, allTattooerData, allTattoPhotos, tattooerId })
+    //
+    const justTattooersPhotosAndLike =  await Promise.all( allTattoPhotos.map( async (tattooo) => {
+      // Transform your mongoose object to standard javascript object 
+      let tatu = tattooo.toObject();
+      const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
+      if (like != null) {
+        tatu.isLikedPhoto = true;
+      } else {
+        tatu.isLikedPhoto = false;
+      }
+      return tatu
+    }));
+    //
+    console.log("JUS TATOOTWERS", justTattooersPhotosAndLike)
+    res.render('tattooesPhotos/tattooer', { user, allTattooerData, allTattoPhotos, tattooerId, justTattooersPhotosAndLike })
   } catch (error) {
     next(error)
   }
 });
-
-// // @desc Profile user
-// // @route GET user/profile
-// // @access Private
-// router.get('/profile', isLoggedIn, async (req, res, next) => {
-//     const user = req.session.currentUser;
-//     try {
-//         const dataUser = await Tattoo.find({ user: user._id });
-//             if (user.userRole == "tattooer") {
-//         const tattooerUser = user.userRole
-//         res.render('auth/profile', { user, tattooerUser, dataUser });
-//     } else {
-//         res.render('auth/profile', { user, dataUser }); 
-//     }
-//     } catch (error) {
-//         next(error) 
-//     }
-// });
 
 module.exports = router;

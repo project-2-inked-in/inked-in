@@ -18,51 +18,68 @@
       <section class="profile-image-container">
         {{#if user.profileImage}}
         <div class="user-info-div">
-          <img src={{user.profileImage}} alt="{{user.username}}"/>
+          <img class="profile-image" src={{user.profileImage}} alt="{{user.username}}"/>
         </div>
         {{/if}}
-        <p>{{toUpperCase user.username}}</p>
+        <h4>{{toUpperCase user.username}}</h4>
       </section>
       <section class="profile-info-container">
         {{#if user.city}}
         <div class="user-info-div">
           <p>{{user.city}}</p>
         </div>
+        <div class="separator">
+          <h3>|</h3>
+        </div>
         {{/if}}
         {{#if user.tattooNumber}}
         <div class="user-info-div">
           <p>I have {{user.tattooNumber}} tattoos</p>
         </div>
+        <div class="separator">
+          <h3>|</h3>
+        </div>
         {{/if}}
         {{#if user.profileDescription}}
         <div class="user-info-div">
-          <p>About me: {{user.profileDescription}}</p>
+          <p>{{user.profileDescription}}</p>
+        </div>
+        <div class="separator">
+          <h3>|</h3>
         </div>
         {{/if}}
         {{#if tattooerUser}}
           {{#if user.studio}}
           <div class="user-info-div">
-            <p>I work in: {{user.studio}}</p>
+            <p>I work in {{user.studio}}</p>
+          </div>
+          <div class="separator">
+            <h3>|</h3>
           </div>
           {{/if}}
           {{#if user.nextJourneys}}
           <div class="user-info-div">
-            <p>Soon I will be in: {{user.nextJourneys}}</p>
+            <p>Soon I will be in {{user.nextJourneys}}</p>
+          </div>
+          <div class="separator">
+            <h3>|</h3>
           </div>
           {{/if}}
           {{#if user.tattooStyle}}
-            <p>I work these styles:</p>
-              <ul>
+            <p>I work these styles&nbsp; </p>
+              <ul class="ul-tattoo-styles">
           {{#each user.tattooStyle}}
-                <li>- {{this}} </li>
+                <li> {{this}} </li>
           {{/each}}
               </ul>
           {{/if}}
         {{/if}}
-        {{#if tattooerUser}}
-        <a href="/reviews/{{user._id}}">Reviews</a>
-        {{/if}}
       </section>
+      {{#if tattooerUser}}
+      <div class="reviews-stars-container">
+        <a href="/reviews/{{user._id}}"><img class="starts-reviews" src="/images/stars-review.png" alt="review-stars"></a>
+      </div>
+      {{/if}}
       {{#each dataUser}}
       <img class="profile-photos" src={{tattooImage}} alt="tattoo">
       <p>{{year}}</p>

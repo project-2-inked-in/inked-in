@@ -21,14 +21,19 @@
     </ul>
     {{/if}}
     {{#if allTattooerData.user.studio}}
-    <p>I work in: {{allTattooerData.user.studio}}</p>
+    <p>I work in {{allTattooerData.user.studio}}</p>
     {{/if}}
     {{#if allTattooerData.user.nextJourneys}}
-    <p>Soon I will be in: {{allTattooerData.user.nextJourneys}}</p>
+    <p>Soon I will be in{{allTattooerData.user.nextJourneys}}</p>
     {{/if}}
   </section>
-  {{#each allTattoPhotos}}
+  {{#each justTattooersPhotosAndLike}}
   <img class="profile-photos" src={{tattooImage}} alt="tatoo">
+  {{#if isLikedPhoto}}
+  <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
+  {{else}}
+  <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
+  {{/if}}
   <p>{{year}}</p>
   <p>{{place}}</p>
   {{#each tattooPhotoStyle}}

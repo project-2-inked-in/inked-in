@@ -23,6 +23,7 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
                 userCanTedit.push(review)
             }
         });
+        
         res.render('reviews/reviews', { user, tattooer, reviews, userCanedit, userCanTedit}); 
     } catch (error) {
         next(error)
