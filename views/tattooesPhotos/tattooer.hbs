@@ -1,7 +1,14 @@
+{{#if user}}
+<nav class="navbar-layout2">
+    <ul>
+        <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
+    </ul>
+</nav>
+{{/if}}
 <section class="tattoer-detail-container">
   <a href="/reviews/{{tattooerId}}">Reviews</a>
   <section class="profile-image-container">
-    <img src={{allTattooerData.user.profileImage}} alt="{{allTattooerData.user.username}}" />
+    <img src={{allTattooerData.user.profileImage}} alt="{{allTattooerData.user.username}}"/>
     <p>{{toUpperCase allTattooerData.user.username}}</p>
   </section>
   <section>

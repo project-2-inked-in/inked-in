@@ -308,7 +308,7 @@ section.main-section div.profile-main-container section.profile-info-container{
   line-height: 1.3rem;
 }
 
-section.profile-image-container img.profile-image {
+section.profile-image-container img{
   border-radius: 50%;
   width: 75px;
   height: 75px;
