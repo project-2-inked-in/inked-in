@@ -81,6 +81,16 @@ section.form-container div#form form div.button-form-container button:hover {
     color: var(--secondary-gold)
 }
 
+section.form-container div#form div.form-end-question{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+section.form-container div#form div.form-end-question p.form-end-question-p {
+    font-size: 0.8rem;
+}
+
 .upload-photo img {
     background-color: var(--primary-white);
     border-radius: 50%;
@@ -115,9 +125,50 @@ select.select option:focus {
     background-color: beige;
 }
 
-
-
 /*FORM 2*/
 section.form-container div#form2 label {
     color: var(--primary-white)
+}
+
+section.form-container-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 0.3rem;
+}
+
+section.form-container-search div#form-search {
+    color: var(--primary-white);
+    margin: 0 2rem;
+}
+
+section.form-container-search div#form-search ul.ul-checkbox-search {
+    display:flex;
+    gap: 1rem;
+}
+
+/*section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li input {
+    accent-color: #9d3039;
+    height: 15px;
+     not needed
+    width: 15px;
+     not needed      
+}*/
+
+section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-white);
+}
+
+section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li input[type="checkbox"]:checked {
+    background-color: var(--secondary-gold);
+}
+
+.error {
+    color: var(--secondary-gold);
 }

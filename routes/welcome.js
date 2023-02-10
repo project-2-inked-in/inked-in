@@ -12,7 +12,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
   try {
     const allTattooes = await Tattoo.find({}).populate('user');
     const justTattooersPhotos = allTattooes.filter(({ user }) => user.userRole == 'tattooer');
-    const justTattooersPhotosAndLike =  await Promise.all(justTattooersPhotos.map( async (tattooo) => {
+    const justTattooersPhotosAndLike = await Promise.all(justTattooersPhotos.map(async (tattooo) => {
       // Transform your mongoose object to standard javascript object 
       let tatu = tattooo.toObject();
       const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
@@ -23,7 +23,6 @@ router.get('/', isLoggedIn, async (req, res, next) => {
       }
       return tatu
     }));
-    //console.log("justTattooersPhotosAndLike", justTattooersPhotosAndLike)
     res.render('welcome', { user, justTattooersPhotosAndLike});
   } catch (error) {
     next(error)
