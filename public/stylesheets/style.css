@@ -157,6 +157,35 @@ div#form form button:hover {
   color: var(--secondary-gold)
 }
 
+    /*---------------NAVBAR UP LAYOUT---------------*/
+    nav.navbar-layout2{
+      width: 100vw;
+      padding: 15px 25px 6px 25px;
+      background-color: var(--primary-grey);
+      border-bottom: solid 0.5px;
+      border-color: var(--secondary-gold);
+    }
+    
+    nav.navbar-layout2 ul {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    nav.navbar-layout2 ul .li-no-user {
+      display: flex;
+      justify-content: center;
+    }
+    
+    /* nav.navbar-layout2 ul li a img{
+      width: 55px;
+    } */
+    img.max-icon {
+      width: 72px;
+    }
+    img.mini-icon {
+      width: 35px;
+    }
+
 /*---------------NAVBAR LAYOUT---------------*/
 nav.navbar-layout{
   width: 100vw;
