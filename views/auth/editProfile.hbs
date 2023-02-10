@@ -1,5 +1,5 @@
 <section class="form-container">
-    <h2>Editing {{user.username}}'s profile</h2>
+    <h2>Edit profile</h2>
     <div id="form">
         <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
             <div class="upload-profile-photo-container">
@@ -11,7 +11,6 @@
                 {{else}}
                 <input type="file" id="upload" name="profileImage" hidden />
                 <label class="upload-photo" for="upload">
-                    
                     <img src="/images/profile-icon.png" alt="profile-photo">
                 </label>
                 {{/if}}

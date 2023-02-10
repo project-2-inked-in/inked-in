@@ -183,10 +183,94 @@ nav.navbar-layout ul li a img {
 }
 
 /*---------------PROFILE PAGE---------------*/
+
+nav.profile-navbar {
+  display: flex;
+  top: 0;
+  height: 8.5vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  background: var(--primary-grey);
+}
+
+nav.profile-navbar div.title a img.profile-icon {
+  width: 44px;
+}
+
+.list-item {
+  padding: 10px;
+}
+
+.nav-link {
+  color: inherit;
+}
+
+/*Properties for Hamburger*/
+.ham {
+  display: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  display: block;
+  width: 35px;
+  height: 2px;
+  margin: 5px auto;
+  background-color: var(--secondary-gold);
+  transition: 0.4s;
+}
+
+.nav-sub {
+  display: none;
+}
+
+.nav-subthis{
+  display: flex;
+  position: absolute;
+  top: 7vh;
+  right: 0px;
+  flex-direction: column;
+  background-color: var(--primary-grey);
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.ham {
+  display: block;
+}
+
+.change .bar1 {
+  transform: rotate(45deg) translate(8px, 3px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: rotate(-45deg) translate(8px, -3px);
+}
+
+section.main-section div.profile-main-container section.profile-image-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section.main-section div.profile-main-container section.profile-info-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 section.profile-image-container img {
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
 }
 
@@ -196,8 +280,8 @@ img.profile-photos {
   object-fit: cover;
 }
 
-div.profile-main-container {
-  color: var(--primary-white)
+div.user-info-div {
+  margin-right: 0.5rem;
 }
 
 /*---------------WELCOME PAGE---------------*/

@@ -9,7 +9,7 @@
         <div class="like-and-username">
           <a href="/tattooer/{{user._id}}"><p>{{user.username}}</p></a>
           {{#if isLikedPhoto}}
-          <img class="like-icon" src="/images/Like.png" alt="filled heart">
+          <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
           {{else}}
           <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
           {{/if}}

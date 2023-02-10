@@ -14,10 +14,10 @@ router.get('/:tattooId', isLoggedIn, async (req, res, next) => {
   try {
     const isLiked = await Like.findOne({ user: user._id, tattoo: tattooId });
     if (isLiked) {
-      console.log('ja té el meu like!')
+      // console.log('ja té el meu like!')
       res.redirect('/welcome');
     } else {
-      console.log('no té el meu like!')
+      // console.log('no té el meu like!')
       await Like.create({ user: user._id, tattoo: tattooId });
       res.redirect('/welcome');
     }
@@ -26,24 +26,21 @@ router.get('/:tattooId', isLoggedIn, async (req, res, next) => {
   }
 });
 
-// @desc Sends user data to database to update user info
-// @route POST tattoo/upload
+// @desc Users delete their likes
+// @route GET likes/delete/tattooId
 // @access Private
-// router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (req, res, next) => {
-//     const { tattooPhotoStyle, year, tattooer, place } = req.body;
-//     const userSession = req.session.currentUser;
-//     try {
-//         if (year > 2023) {
-//         res.render('tattooesPhotos/uploadContent', { error: "This year is impossible dude!" })
-//         return;
-//     } else {
-//         await Tattoo.create({user: userSession._id, tattooPhotoStyle, year, tattooer, place, tattooImage: req.file.path})
-//             res.redirect('/users/profile')
-//             }
-//     } catch (error) {
-//         next(error) 
-//     }
-// });
+router.get('/delete/:tattooId', isLoggedIn, async (req, res, next) => {
+  const user = req.session.currentUser;
+  const { tattooId } = req.params;
+  try {
+    const findLikeAndDelete = await Like.findOneAndDelete({ user: user._id, tattoo: tattooId });
+    // const likeToDelete = await Like.findByIdAndDelete(findLike._id);
+    console.log('jborrrar likeeeeee!', findLikeAndDelete)
+    res.redirect('/welcome');
+  } catch (error) {
+    next(error)
+  }
+});
 
 
 

@@ -1,5 +1,5 @@
 <section class="form-container">
-  <h2>{{user.username}} upload a photo</h2>
+  <h2>Upload a photo</h2>
 <div id="form">
   <form action="/tattoo/upload" method="POST" enctype="multipart/form-data">
     <label>Tattoo photo</label>
@@ -29,13 +29,10 @@
         <option value="other">Other</option>
       </select>
     {{/if}}
-    <label>Year</label>
-    <input type="number" name="year" required/>
-    <label>Where?</label>
-    <input type="text" name="place" required/>
+    <input type="number" name="year" placeholder="Year" required/>
+    <input type="text" name="place" placeholder="Where?" required/>
     {{#if userUser}}
-      <label>Tattooer</label>
-      <input type="text" name="tattooer" required/>
+      <input type="text" name="tattooer" placeholder="Tattoers name" required/>
     {{/if}}
     <div class="button-form-container">
       <button type="submit">Upload</button>

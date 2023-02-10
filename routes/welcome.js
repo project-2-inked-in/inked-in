@@ -23,6 +23,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
       }
       return tatu
     }));
+    //console.log("justTattooersPhotosAndLike", justTattooersPhotosAndLike)
     res.render('welcome', { user, justTattooersPhotosAndLike});
   } catch (error) {
     next(error)
