@@ -19,11 +19,13 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
         reviews.filter(review => {
             if (user._id.includes(review.userId._id)) {
                 userCanedit.push(review)
-            } else {
+            } 
+            else {
                 userCanTedit.push(review)
-            }
+            } 
         });
-        res.render('reviews/reviews', { user, tattooer, reviews, userCanedit, userCanTedit}); 
+        const userNoReview = !(tattooerId === user._id );
+        res.render('reviews/reviews', { user, tattooer, reviews, userCanedit, userCanTedit, userNoReview}); 
     } catch (error) {
         next(error)
     }
