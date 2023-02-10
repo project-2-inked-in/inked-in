@@ -11,10 +11,13 @@
         <option value="user">Tattoed User</option>
       </select>
       {{#if error}}
-      <p style="color: red;">{{error}}</p>
+      <p class="error">{{error}}</p>
       {{/if}}
       <div class="button-form-container">
         <button type="submit">Join us</button>
+      </div>
+      <div class="form-end-question">
+        <p class="form-end-question-p">Do you have an account? <a href="/auth/login">Log in!</a></p>
       </div>
     </form>
     <p>You do have an account? <a href="/auth/login">Log In!</a></p>

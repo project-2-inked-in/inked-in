@@ -2,17 +2,17 @@
 <h2>Login</h2>
 <div id="form">
   <form action="/auth/login" method="POST">
-    <label>Email</label>
-    <input type="email" name="email" placeholder="love@tattooes.com" />
-    <label>Password</label>
-    <input type="password" name="password" placeholder="********" />
+    <input type="email" name="email" placeholder="Email" />
+    <input type="password" name="password" placeholder="Password" />
     {{#if error}}
-    <p style="color:rgb(218, 90, 90)">{{ error }}</p>
+    <p class="error">{{ error }}</p>
     {{/if}}
     <div class="button-form-container">
       <button type="submit">Login</button>
     </div>
   </form>
-<p>You do not have an account? <a href="/auth/signup">Join us!</a></p>
+  <div class="form-end-question">
+    <p class="form-end-question-p">Don't have an account yet? <a href="/auth/signup">Join us!</a></p>
+  </div>
 </div>
 </section>
