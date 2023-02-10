@@ -389,3 +389,15 @@ button.buttonsearch{
 .like-icon {
   width: 29px;
 }
+
+/*---------------REVIEWS PAGE---------------*/
+
+section.review {
+  color: var(--primary-white);
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.min-icon {
+  width: 29px;
+}
