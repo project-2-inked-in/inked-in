@@ -17,7 +17,6 @@ router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => 
   try {
     const allTattooerData = await Tattoo.findOne({ user: tattooerId }).populate('user');
     const allTattoPhotos = await Tattoo.find({ user: tattooerId });
-    //
     const justTattooersPhotosAndLike =  await Promise.all( allTattoPhotos.map( async (tattooo) => {
       let tatu = tattooo.toObject();
       const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
