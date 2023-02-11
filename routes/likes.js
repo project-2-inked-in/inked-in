@@ -14,10 +14,10 @@ router.get('/:tattooId', isLoggedIn, async (req, res, next) => {
   try {
     const isLiked = await Like.findOne({ user: user._id, tattoo: tattooId });
     if (isLiked) {
-      res.redirect('/welcome');
+      res.redirect('back');
     } else {
       await Like.create({ user: user._id, tattoo: tattooId });
-      res.redirect('/welcome');
+      res.redirect('back');
     }
   } catch (error) {
     next(error)
@@ -32,7 +32,7 @@ router.get('/delete/:tattooId', isLoggedIn, async (req, res, next) => {
   const { tattooId } = req.params;
   try {
     const findLikeAndDelete = await Like.findOneAndDelete({ user: user._id, tattoo: tattooId });
-    res.redirect('/welcome');
+    res.redirect('back');
   } catch (error) {
     next(error)
   }

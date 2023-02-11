@@ -18,11 +18,17 @@ router.get('/', isLoggedIn, async (req, res, next) => {
       const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
       if (like != null) {
         tatu.isLikedPhoto = true;
+        tatu.numberLikes = []
       } else {
         tatu.isLikedPhoto = false;
       }
       return tatu
     }));
+    // const Likes = await Promise.all(justTattooersPhotos.map(async (photoTattoo) => {
+    //   const findLikes = await Like.find({ tattoo: photoTattoo._id });
+    //   const likesPerPhoto = findLikes.length
+    //   return likesPerPhoto
+    // }));
     res.render('welcome', { user, justTattooersPhotosAndLike});
   } catch (error) {
     next(error)
