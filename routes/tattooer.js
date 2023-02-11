@@ -14,13 +14,11 @@ const { ifTattooerOut } = require('../middlewares');
 router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => {
   const user = req.session.currentUser;
   const { tattooerId } = req.params;
-  console.log("tattoerId",tattooerId )
   try {
     const allTattooerData = await Tattoo.findOne({ user: tattooerId }).populate('user');
     const allTattoPhotos = await Tattoo.find({ user: tattooerId });
     //
     const justTattooersPhotosAndLike =  await Promise.all( allTattoPhotos.map( async (tattooo) => {
-      // Transform your mongoose object to standard javascript object 
       let tatu = tattooo.toObject();
       const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
       if (like != null) {
@@ -31,7 +29,6 @@ router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => 
       return tatu
     }));
     //
-    console.log("JUS TATOOTWERS", justTattooersPhotosAndLike)
     res.render('tattooesPhotos/tattooer', { user, allTattooerData, allTattoPhotos, tattooerId, justTattooersPhotosAndLike })
   } catch (error) {
     next(error)

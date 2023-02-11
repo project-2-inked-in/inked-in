@@ -15,7 +15,7 @@ const reviewSchema = new Schema(
         required: true,
         min: 0,
         max: 5
-    }, //mirar si se puede hacer media para el perfil
+    },
     comment: {
         type: String
     }
