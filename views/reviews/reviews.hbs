@@ -6,7 +6,7 @@
     </nav>
 {{/if}}
 {{#if userNoReview}}
-
+    <section class="formrev">
         <form method="POST" action="/reviews/{{tattooer._id}}">
             <label>Stars to the artist:</label>
             <input type="number" placeholder="5" name="stars" max="5"/>
@@ -14,7 +14,7 @@
             <input type="text" placeholder="I love this tattooer" name="comment"/>
             <button type="submit">Add review</button>
         </form>
-    
+    </section>
 {{/if}}
 {{#if userCanedit}}
     {{#each userCanedit}}

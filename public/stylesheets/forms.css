@@ -148,14 +148,6 @@ section.form-container-search div#form-search ul.ul-checkbox-search {
     gap: 1rem;
 }
 
-/*section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li input {
-    accent-color: #9d3039;
-    height: 15px;
-     not needed
-    width: 15px;
-     not needed      
-}*/
-
 section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -171,4 +163,8 @@ section.form-container-search div#form-search ul.ul-checkbox-search section.colu
 
 .error {
     color: var(--secondary-gold);
+}
+
+section.formrev input {
+    color:black
 }
