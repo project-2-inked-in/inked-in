@@ -103,7 +103,7 @@
     <section class="result-tattooes">
         {{#each tattoo}}
             <img src="{{this.tattooImage}}" alt="">
-            <a href="/tattooer/{{this.user._id}}"><p>name: {{this.user.username}}</p></a>
+            <a href="/tattooer/{{this.user._id}}"><p>{{toUpperCase this.user.username}}</p></a>
         {{/each}}
     </section>
 </section>

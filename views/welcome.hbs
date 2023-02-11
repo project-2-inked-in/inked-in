@@ -6,7 +6,7 @@
 </nav>
 {{/if}}
 <section class="main-welcome-title">
-  <h2> Welcome {{user.username}}</h2>
+  <h2> Welcome {{toUpperCase user.username}}</h2>
 </section>
 <section class="tattoer-photos-container">
   <div>
@@ -14,7 +14,7 @@
       <div class="tattoo-photo-div">
         <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
         <div class="like-and-username">
-          <a href="/tattooer/{{user._id}}"><p>{{user.username}}</p></a>
+          <a href="/tattooer/{{user._id}}"><p>{{toUpperCase user.username}}</p></a>
           {{#if isLikedPhoto}}
           <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
           {{else}}

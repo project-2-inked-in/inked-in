@@ -384,6 +384,12 @@ button.buttonsearch{
   color: var(--primary-white);
 }
 
+section.result-tattooes img{
+  width: 100vw;  
+  height: 35vh;
+  object-fit: cover;
+}
+
 /*---------------LIKE ICONS---------------*/
 
 .like-icon {
