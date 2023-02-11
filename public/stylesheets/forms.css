@@ -168,3 +168,8 @@ section.form-container-search div#form-search ul.ul-checkbox-search section.colu
 section.formrev input {
     color:black
 }
+
+section.formrev label {
+    color: var(--primary-white)
+}
+
