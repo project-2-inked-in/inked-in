@@ -437,3 +437,16 @@ section.review {
 .min-icon {
   width: 29px;
 }
+
+/*---------------ERROR 404 PAGE---------------*/
+
+section.error {
+  margin: 20px;
+}
+
+img.gucci {
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  margin: 0px 20px 20px 20px;
+}
