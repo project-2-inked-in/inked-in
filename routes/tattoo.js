@@ -26,7 +26,7 @@ router.post('/upload', fileUploader.single('tattooImage'), isLoggedIn,  async (r
     const user = req.session.currentUser;
     try {
         if (year > 2023) {
-               if (user.userRole == "tattooer") {
+                if (user.userRole == "tattooer") {
                 const tattooerUser = user.userRole;
                 res.render('tattooesPhotos/uploadContent', { user, tattooerUser, error: "This year is impossible dude!" });
             } if (user.userRole == "user") {

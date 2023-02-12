@@ -1,10 +1,11 @@
+
 <nav class="navbar-layout2">
     <ul>
         <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
     </ul>
 </nav>
 <section class="formrev">
-    <form method="POST" action="/reviews/edit/{{tattooer._id}}">
+    <form method="POST" action="/reviews/edit/{{review._id}}">
         <label>Stars to the artist:</label>
         <input type="number" value="{{stars}}" name="stars" max="5"/>
         <label>Comment:</label>
