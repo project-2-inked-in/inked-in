@@ -429,9 +429,18 @@ section.result-tattooes img{
 /*---------------REVIEWS PAGE---------------*/
 
 section.review {
-  color: var(--primary-white);
   margin-left: 2rem;
   margin-bottom: 1rem;
+  margin: 1rem;
+  padding-left: 2rem;
+}
+section.review h5 {
+  color: var(--secondary-gold);
+  font-family:'Manrope', sans-serif;
+  font-weight: bolder;
+}
+section.review p {
+  color: var(--primary-white);
 }
 
 .min-icon {

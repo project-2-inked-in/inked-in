@@ -165,11 +165,30 @@ section.form-container-search div#form-search ul.ul-checkbox-search section.colu
     color: var(--secondary-gold);
 }
 
+section.formrev {
+    margin: 3rem 2rem 2rem 1rem;
+    padding-left: 2rem;
+    overflow: hidden;
+}
+
 section.formrev input {
-    color:black
+    color:black;
+    width: 16rem;;
 }
 
 section.formrev label {
-    color: var(--primary-white)
+    color: var(--secondary-gold);
+    width: 200px;
+    padding-right: 5px;
 }
 
+section.formrev button {
+    border: 1px solid var(--secondary-gold);
+    width: 150px;
+    background-color: var(--primary-grey);
+    padding: 0.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--primary-white);
+    margin: 1rem 2rem 0rem 3.5rem;
+}

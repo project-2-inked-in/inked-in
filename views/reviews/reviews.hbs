@@ -9,7 +9,7 @@
     <section class="formrev">
         <form method="POST" action="/reviews/{{tattooer._id}}">
             <label>Stars to the artist:</label>
-            <input type="number" placeholder="5" name="stars" max="5"/>
+            <input type="number" class="input1" placeholder="5" name="stars" max="5"/>
             <label>Comment:</label>
             <input type="text" placeholder="I love this tattooer" name="comment"/>
             <button type="submit">Add review</button>
@@ -19,13 +19,15 @@
 {{#if userCanedit}}
     {{#each userCanedit}}
     <section class="review">
-        <p>{{toUpperCase this.userId.username}}: {{this.comment}}. Stars: {{this.stars}}/5</p>
-       <!-- <a href=""><img class="min-icon" src="/images/editrev.png" alt="logo-edit"></a>-->
+        <h5>{{toUpperCase this.userId.username}} <p>{{this.comment}}.</p> <p>Stars: {{this.stars}}/5</p>
+        <a href=""><img class="min-icon" src="/images/editrev.png" alt="logo-edit"></a>
     </section>
     {{/each}}
 {{/if}}
 {{#if userCanTedit}}
     {{#each userCanTedit}}
-        <p>{{toUpperCase this.userId.username}}: {{this.comment}}. Stars: {{this.stars}}/5</p>
+        <section class="review">
+        <h5>{{toUpperCase this.userId.username}}</h5> <p>{{this.comment}}. </p> <p>Stars: {{this.stars}}/5</p>
+    </section>
     {{/each}}
 {{/if}}
