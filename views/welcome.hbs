@@ -20,6 +20,9 @@
           {{else}}
           <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
           {{/if}}
+          {{#if numberLikes }}
+          <p>{{numberLikes}}</p>
+          {{/if}}
         </div>
       </div>
     {{/each}}
