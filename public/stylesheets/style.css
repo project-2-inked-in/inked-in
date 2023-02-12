@@ -204,7 +204,7 @@ nav.navbar-layout-other-pages {
   margin: 0 0 1rem 0;
 }
 
-nav.navbar--other-pages ul {
+nav.navbar-layout-other-pages ul {
   display: flex;
   justify-content: center;
   align-items: center;
