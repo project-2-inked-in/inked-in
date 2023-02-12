@@ -25,6 +25,8 @@ router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => 
       } else {
         tatu.isLikedPhoto = false;
       }
+      const findLikes = await Like.find({ tattoo: tatu._id });
+      tatu.numberLikes = findLikes.length;
       return tatu
     }));
     //

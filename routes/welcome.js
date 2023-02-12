@@ -22,8 +22,8 @@ router.get('/', isLoggedIn, async (req, res, next) => {
         tatu.isLikedPhoto = false;
       }
       const findLikes = await Like.find({ tattoo: tatu._id });
-      tatu.numberLikes = findLikes.length
-      return tatu
+      tatu.numberLikes = findLikes.length;
+      return tatu;
     }));
     res.render('welcome', { user, justTattooersPhotosAndLike});
   } catch (error) {

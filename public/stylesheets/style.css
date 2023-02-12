@@ -174,7 +174,7 @@ div#form form button:hover {
   color: var(--secondary-gold)
 }
 
-/*---------------NAVBAR UP LAYOUT---------------*/
+/*---------------TOP NAVBAR LAYOUT---------------*/
 
 nav.navbar-layout2{
   width: 100vw;
@@ -185,6 +185,26 @@ nav.navbar-layout2{
 }
 
 nav.navbar-layout2 ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img.max-icon {
+  width: 72px;
+}
+
+/*---------------TOP NAVBAR OTHER PAGES---------------*/
+
+nav.navbar-layout-other-pages {
+  width: 100vw;
+  padding: 20px 25px 6px 25px;
+  background-color: var(--primary-grey);
+  border-color: var(--secondary-gold);
+  margin: 0 0 1rem 0;
+}
+
+nav.navbar--other-pages ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -329,6 +349,9 @@ div.user-info-div {
 .ul-tattoo-styles {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  /*line-height: 1rem;*/
 }
 
 div.reviews-stars-container {
@@ -354,6 +377,13 @@ section.tattoer-photos-container div div.like-and-username {
   align-items: center;
   margin: 0.1rem 0.8rem 1.3rem 0.8rem;
 }
+
+section.tattoer-photos-container div div.like-and-username section.likes-numbers-section {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {
   width: 100vw;
   height: 35vh;

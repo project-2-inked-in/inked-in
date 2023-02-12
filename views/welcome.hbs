@@ -15,14 +15,16 @@
         <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
         <div class="like-and-username">
           <a href="/tattooer/{{user._id}}"><p>{{toUpperCase user.username}}</p></a>
-          {{#if isLikedPhoto}}
-          <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
-          {{else}}
-          <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
-          {{/if}}
-          {{#if numberLikes }}
-          <p>{{numberLikes}}</p>
-          {{/if}}
+          <section class="likes-numbers-section">
+            {{#if numberLikes }}
+            <p>{{numberLikes}}</p>
+            {{/if}}
+            {{#if isLikedPhoto}}
+            <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
+            {{else}}
+            <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
+            {{/if}}
+          </section>
         </div>
       </div>
     {{/each}}

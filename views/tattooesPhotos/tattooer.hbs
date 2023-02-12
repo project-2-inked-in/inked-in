@@ -1,50 +1,90 @@
 {{#if user}}
-<nav class="navbar-layout2">
+<nav class="navbar-layout-other-pages">
     <ul>
         <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
     </ul>
 </nav>
 {{/if}}
-<section class="tattoer-detail-container">
-  <a href="/reviews/{{tattooerId}}">Reviews</a>
-  <section class="profile-image-container">
-    <img src={{allTattooerData.user.profileImage}} alt="{{allTattooerData.user.username}}"/>
-    <p>{{toUpperCase allTattooerData.user.username}}</p>
-  </section>
-  <section>
-    <p>Lives in {{allTattooerData.user.city}}</p>
-    {{#if allTattooerData.user.tattooNumber}}
-    <p>I have {{allTattooerData.user.tattooNumber}} tattoos</p>
+<section class="main-section">
+  <div class="profile-main-container">
+    <section class="profile-image-container">
+      {{#if user.profileImage}}
+      <div class="user-info-div">
+        <img src={{allTattooerData.user.profileImage}} alt="{{allTattooerData.user.username}}"/>
+      </div>
+      {{/if}}
+      <h4>{{toUpperCase allTattooerData.user.username}}</h4>
+    </section>
+    <section class="profile-info-container">
+      {{#if allTattooerData.user.city}}
+      <div class="user-info-div">
+        <p>{{allTattooerData.user.city}}</p>
+      </div>
+      <div class="separator">
+        <h3>|</h3>
+      </div>
+      {{/if}}
+      {{#if allTattooerData.user.tattooNumber}}
+      <div class="user-info-div">
+        <p>I have {{allTattooerData.user.tattooNumber}} tattoos</p>
+      </div>
+      <div class="separator">
+        <h3>|</h3>
+      </div>
+      {{/if}}
+      {{#if allTattooerData.user.profileDescription}}
+      <div class="user-info-div">
+        <p>{{allTattooerData.user.profileDescription}}</p>
+      </div>
+      <div class="separator">
+        <h3>|</h3>
+      </div>
+      {{/if}}
+      {{#if allTattooerData.user.studio}}
+      <div class="user-info-div">
+        <p>Work in {{allTattooerData.user.studio}}</p>
+      </div>
+      <div class="separator">
+        <h3>|</h3>
+      </div>
+      {{/if}}
+      {{#if allTattooerData.user.nextJourneys}}
+      <div class="user-info-div">
+        <p>Soon in {{allTattooerData.user.nextJourneys}}</p>
+      </div>
+      <div class="separator">
+        <h3>|</h3>
+      </div>
+      {{/if}}
+      {{#if allTattooerData.user.tattooStyle}}
+      <p>&nbsp;Tattoo styles&nbsp; </p>
+      <ul class="ul-tattoo-styles">
+        {{#each allTattooerData.user.tattooStyle}}
+        <li>{{this}} </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </section>
+    <div class="reviews-stars-container">
+      <a href="/reviews/{{tattooerId}}"><img class="starts-reviews" src="/images/stars-review.png" alt="review-stars"></a>
+    </div>
+    <section class="photos-info-tattooes-section">
+    {{#each justTattooersPhotosAndLike}}
+    <img class="profile-photos" src={{tattooImage}} alt="tatoo">
+    {{#if numberLikes }}
+    <p>{{numberLikes}}</p>
     {{/if}}
-    {{#if allTattooerData.user.profileDescription}}
-    <p>About me: {{user.profileDescription}}</p>
+    {{#if isLikedPhoto}}
+    <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
+    {{else}}
+    <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
     {{/if}}
-    {{#if allTattooerData.user.tattooStyle}}
-    <p>I work these styles:</p>
-    <ul>
-      {{#each allTattooerData.user.tattooStyle}}
-      <li>- {{this}} </li>
-      {{/each}}
-    </ul>
-    {{/if}}
-    {{#if allTattooerData.user.studio}}
-    <p>I work in {{allTattooerData.user.studio}}</p>
-    {{/if}}
-    {{#if allTattooerData.user.nextJourneys}}
-    <p>Soon I will be in{{allTattooerData.user.nextJourneys}}</p>
-    {{/if}}
-  </section>
-  {{#each justTattooersPhotosAndLike}}
-  <img class="profile-photos" src={{tattooImage}} alt="tatoo">
-  {{#if isLikedPhoto}}
-  <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
-  {{else}}
-  <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
-  {{/if}}
-  <p>{{year}}</p>
-  <p>{{place}}</p>
-  {{#each tattooPhotoStyle}}
-  <p> {{this}}</p>
-  {{/each}}
-  {{/each}}
+    <p>{{year}}</p>
+    <p>{{place}}</p>
+    {{#each tattooPhotoStyle}}
+    <p> {{this}}</p>
+    {{/each}}
+    {{/each}}
+    </section>
+  </div>
 </section>
