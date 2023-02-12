@@ -60,6 +60,17 @@ router.get('/profile/edit', isLoggedIn, async (req, res, next) => {
 router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, async (req, res, next) => {
     const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
+    //PREGUNTAR A LA MARINA
+    /*if (profileDescription.length > 120) {
+        if (user.userRole === "tattooer") {
+            const tattooerUser = user.userRole; 
+            res.render('auth/editProfile', { user, tattooerUser, error: `Description just allow 120 characters` });
+            return;
+        } else {
+        res.render('auth/editProfile', { user, tattooerUser, error: `Description just allow 120 characters` });
+            return;
+        };
+    };*/
     try {
         if (req.file === undefined) {
             const userInDB = await User.findByIdAndUpdate(user._id, {city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });  

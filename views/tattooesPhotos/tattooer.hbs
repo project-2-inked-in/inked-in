@@ -68,23 +68,33 @@
     <div class="reviews-stars-container">
       <a href="/reviews/{{tattooerId}}"><img class="starts-reviews" src="/images/stars-review.png" alt="review-stars"></a>
     </div>
-    <section class="photos-info-tattooes-section">
-    {{#each justTattooersPhotosAndLike}}
-    <img class="profile-photos" src={{tattooImage}} alt="tatoo">
-    {{#if numberLikes }}
-    <p>{{numberLikes}}</p>
-    {{/if}}
-    {{#if isLikedPhoto}}
-    <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
-    {{else}}
-    <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
-    {{/if}}
-    <p>{{year}}</p>
-    <p>{{place}}</p>
-    {{#each tattooPhotoStyle}}
-    <p> {{this}}</p>
-    {{/each}}
-    {{/each}}
+    <section class="tattoer-photos-container">
+      <div>
+      {{#each justTattooersPhotosAndLike}}
+        <div class="tattoo-photo-div">
+          <img class="welcome-tattoo-photo" src={{tattooImage}} alt="tatoo">
+          <div class="like-and-tattoer-info">
+            <p>{{year}}</p>
+            <p>{{place}}</p>
+            <div class="like-and-number-tattooer">
+              {{#if numberLikes }}
+              <p>{{numberLikes}}</p>
+              {{/if}}
+              {{#if isLikedPhoto}}
+              <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
+              {{else}}
+              <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
+              {{/if}}
+            </div>
+          </div>
+          <section class="styles-tattooer-section">
+            {{#each tattooPhotoStyle}}
+            <p>{{this}}</p>
+            {{/each}}
+          </section>
+        </div>
+      {{/each}}
+      </div>
     </section>
   </div>
 </section>

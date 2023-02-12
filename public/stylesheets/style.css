@@ -364,6 +364,30 @@ div.reviews-stars-container {
   width: 90px;
 }
 
+/*---------------PROFILE TATTOOER PAGE---------------*/
+section.profile-info-container {
+  padding: 0 0.5rem;
+}
+section.tattoer-photos-container div div.tattoo-photo-div div.like-and-tattoer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.1rem 0.8rem 0rem 0.8rem;
+}
+
+section.tattoer-photos-container div div.tattoo-photo-div div.like-and-number-tattooer {
+  display:flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.styles-tattooer-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.3rem;
+}
+
 /*---------------WELCOME PAGE---------------*/
 section.main-welcome-title {
   display: flex;
@@ -381,7 +405,7 @@ section.tattoer-photos-container div div.like-and-username {
 section.tattoer-photos-container div div.like-and-username section.likes-numbers-section {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 section.tattoer-photos-container div div.tattoo-photo-div img.welcome-tattoo-photo {

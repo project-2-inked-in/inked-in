@@ -17,7 +17,7 @@
             </div>
             <input type="text" name="city" required="true" value="{{user.city}}" placeholder="Where are you living?" />
             <input type="text" name="tattooNumber" value="{{user.tattooNumber}}" placeholder="How many tattoos do you have?"/>
-            <input type="text" name="profileDescription" value="{{user.profileDescription}}" placeholder="About you"/>
+            <input type="text" name="profileDescription" value="{{user.profileDescription}}" maxlength="120" placeholder="About you"/>
             {{#if tattooerUser}}
                 <label>What style do you work?</label>
                 <select class="select" name="tattooStyle" multiple>
@@ -34,6 +34,9 @@
             <div class="button-form-container">
                 <button type="submit">Save changes</button>
             </div>
+            {{#if error}}
+            <p class="error">{{ error }}</p>
+            {{/if}}
         </form>
     </div>
 </section>
