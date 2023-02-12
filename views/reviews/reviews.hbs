@@ -20,7 +20,9 @@
     {{#each userCanedit}}
     <section class="review">
         <h5>{{toUpperCase this.userId.username}} <p>{{this.comment}}.</p> <p>Stars: {{this.stars}}/5</p>
-        <a href=""><img class="min-icon" src="/images/editrev.png" alt="logo-edit"></a>
+        <a href="/reviews/edit/{{tattooerId}}"><img class="min-icon" src="/images/editrev.png" alt="logo-edit"></a>
+        {{!-- BOTON DELETE REVIEW
+        <a href=""><img class="min-icon" src="/images/cancel.png" alt="logo-edit"></a> --}}
     </section>
     {{/each}}
 {{/if}}

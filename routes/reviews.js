@@ -49,11 +49,11 @@ router.post('/:tattooerId', isLoggedIn, async (req, res, next) => {
 // @desc Edit Reviews view
 // @route GET /reviews/edit/tattooerId
 // @access Private
-router.get('/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
+router.get('/edit/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
     try {
         const review = await Review.findById(tattooerId);
-        res.render('editReview', review);
+        res.render('reviews/editReview', review);
     } catch (error) {
         next(error)
     }
@@ -62,12 +62,12 @@ router.get('/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
 // @desc Edit Reviews data to database
 // @route POST /reviews/edit/tattooerId
 // @access Private
-router.post('/edit/:tattoerId', isLoggedIn, async (req, res, next) => {
+router.post('/edit/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
     const { tattooerId } = req.params;
     try {
-        const editedReview = await Review.findByIdAndUpdate(tattooerId, { stars, comment }, { new: true });
-        res.redirect(`/${editedReview._id}`);
+        await Review.findByIdAndUpdate(tattooerId, { stars, comment }, { new: true });
+        res.redirect(`/tattooer/${tattooerId}`);
     } catch (error) {
         next(error)
     }
