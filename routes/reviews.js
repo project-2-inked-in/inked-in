@@ -40,7 +40,7 @@ router.post('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
     try {
     await Review.create({ stars, comment, userId: user._id, tattooerId: tattooerId });
-    res.redirect(`/tattooer/${tattooerId}`)
+    res.redirect(`/reviews/${tattooerId}`)
     } catch (error) {
         next(error)
     }
@@ -54,7 +54,7 @@ router.get('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const review = await Review.findById(reviewId);
-        res.render('reviews/editReview', review);
+        res.render('reviews/editReview', { review, user });
     } catch (error) {
         next(error)
     }
@@ -65,11 +65,11 @@ router.get('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
 // @access Private
 router.post('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
-    const { reviewId, tattooerId } = req.params;
+    const { reviewId } = req.params;
     const user = req.session.currentUser;
     try {
         const editedReview = await Review.findByIdAndUpdate(reviewId, { stars, comment }, { new: true });
-        res.redirect(`/tattooer/${reviewId}`, editedReview);
+        res.redirect(`/reviews/${tattooerId}`); //Aquí tiene que ir la ID del tatuador,
     } catch (error) {
         next(error)
     }
