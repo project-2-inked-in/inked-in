@@ -35,10 +35,10 @@ const userSchema = new Schema(
     profileImage: {
       type: String,
       default: '/images/profile-icon-default.png',
-      //default: 'https://www.idsplus.net/wp-content/uploads/default-placeholder.png'
     },
     profileDescription: {
       type: String,
+      maxLength: [20, 'Description just allow 120 characters.'],
       match: [/^[A-Za-z0-9]+$/g, 'Description just allow characters and numbers.']
     },
     tattooStyle: {

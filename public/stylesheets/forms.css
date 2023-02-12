@@ -163,6 +163,7 @@ section.form-container-search div#form-search ul.ul-checkbox-search section.colu
 
 .error {
     color: var(--secondary-gold);
+    margin-top: 0.8rem;
 }
 
 section.formrev {
