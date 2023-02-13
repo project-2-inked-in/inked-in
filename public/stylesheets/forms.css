@@ -92,7 +92,7 @@ section.form-container div#form div.form-end-question p.form-end-question-p {
 }
 
 .upload-photo img {
-    background-color: var(--primary-white);
+    border: 1px solid var(--secondary-gold);
     border-radius: 50%;
     cursor: pointer;
     margin-top: 1rem;

@@ -12,15 +12,15 @@
             <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
                 <div class="upload-profile-photo-container">
                     {{#if user.profileImage}}
-                    <input type="file" id="upload" name="profileImage" hidden />
-                    <label class="upload-photo" for="upload">
-                        <img src={{user.profileImage}} alt="profile-photo">
-                    </label>
+                        <input type="file" id="upload" name="profileImage" hidden />
+                        <label class="upload-photo" for="upload">
+                            <img src={{user.profileImage}} alt="profile-photo">
+                        </label>
                     {{else}}
-                    <input type="file" id="upload" name="profileImage" hidden />
-                    <label class="upload-photo" for="upload">
-                        <img src="/images/profile-icon.png" alt="profile-photo">
-                    </label>
+                        <input type="file" id="upload" name="profileImage" hidden />
+                        <label class="upload-photo" for="upload">
+                            <img src="/images/profile-icon.png" alt="profile-photo">
+                        </label>
                     {{/if}}
                 </div>
                 <input type="text" name="city" required="true" value="{{user.city}}" placeholder="Where are you living?" />
