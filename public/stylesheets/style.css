@@ -519,6 +519,36 @@ section.result-tattooes img{
   width: 100vw;  
   height: 35vh;
   object-fit: cover;
+  justify-content: center;
+}
+
+section.result-tattooes a {
+  text-align: center;
+  }
+
+section.result-tattooes p {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
+}
+  
+section.result-tattooes section.styles-tattooer-section img {
+  width: 25px;
+  height: 25px;
+  }
+  
+  section.result-tattooes section.styles-tattooer-section{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
+  }
+
+section.styles-tattooer-section p{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 /*---------------LIKE SAVE ICONS---------------*/

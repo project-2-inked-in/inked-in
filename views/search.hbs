@@ -1,111 +1,126 @@
 {{#if user}}
-<nav class="navbar-back-arrow-save">
-    <ul>
-        <li><button class="back-button"><a href="/"><img class="back-button-image" src="/images/left-arrow.png" alt="back-arrow"></a></button></li>
-        <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
-        <li><a href="/favorites"><img class="save-icon" src="/images/favorites-save.png" alt="save-tattooer-icon"></a></li>
-    </ul>
-</nav>
+    <nav class="navbar-back-arrow-save">
+        <ul>
+            <li><button class="back-button"><a href="/"><img class="back-button-image" src="/images/left-arrow.png" alt="back-arrow"></a></button></li>
+            <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
+            <li><a href="/favorites"><img class="save-icon" src="/images/favorites-save.png" alt="save-tattooer-icon"></a></li>
+        </ul>
+    </nav>
 {{/if}}
-<section class="form-container-search">
-    <h2>Find by tattoo style</h2>
-    <div id="form-search">
-        <form method="GET" action="/search/tattooer"> 
-            <ul class="ul-checkbox-search">
-                <section class="column-search-form">
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="traditionalOldSchool">
-                        <label for="traditionalOldSchool">Tradi Old School</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="realism">
-                        <label for="realism">Realism</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="watercolor">
-                        <label for="watercolor">Watercolor</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="tribal">
-                        <label for="tribal">Tribal</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="newschool">
-                        <label for="newschool">New School</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="neoTraditional">
-                        <label for="neoTraditional">Neo Traditional</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="japanese">
-                        <label for="japanese">Japanese</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="blackwork">
-                        <label for="blackwork">BlackWork</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="dotwork">
-                        <label for="dotwork">Dotwork</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="geometric">
-                        <label for="geometric">Geometric</label>
-                    </li>
+    <section class="form-container-search">
+        <h2>Find by tattoo style</h2>
+        <div id="form-search">
+            <form method="GET" action="/search/tattooer"> 
+                <ul class="ul-checkbox-search">
+                    <section class="column-search-form">
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="traditionalOldSchool">
+                            <label for="traditionalOldSchool">Tradi Old School</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="realism">
+                            <label for="realism">Realism</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="watercolor">
+                            <label for="watercolor">Watercolor</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="tribal">
+                            <label for="tribal">Tribal</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="newschool">
+                            <label for="newschool">New School</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="neoTraditional">
+                            <label for="neoTraditional">Neo Traditional</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="japanese">
+                            <label for="japanese">Japanese</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="blackwork">
+                            <label for="blackwork">BlackWork</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="dotwork">
+                            <label for="dotwork">Dotwork</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="geometric">
+                            <label for="geometric">Geometric</label>
+                        </li>
+                    </section>
+                    <section class="column-search-form">
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="illustrative">
+                            <label for="illustrative">Illustrative</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="sketch">
+                            <label for="sketch">Sketch</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="anime">
+                            <label for="anime">Anime</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="lettering">
+                            <label for="lettering">Lettering</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="minimalism">
+                            <label for="minimalism">Minimalism</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="surrealism">
+                            <label for="surrealism">Surrealism</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="trashPolka">
+                            <label for="trashPolka">TrashPolka</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="blackAndGrey">
+                            <label for="blackAndGrey">Black And Grey</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="ignorant">
+                            <label for="ignorant">Ignorant</label>
+                            </li>
+                        <li>
+                            <input type="checkbox" name="tattooPhotoStyle" value="other">
+                            <label for="other">Other</label>
+                        </li>
+                    </section>
+                </ul>
+                <div class="button-form-container">
+                    <button class="buttonsearch" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        <section class="result-tattooes">
+            {{#each tattoo}}
+                <img src="{{this.tattooImage}}" alt="">            
+                <section class="styles-tattooer-section">
+                    {{#if isFavPhoto}}
+                        <a href="/favorites/delete/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-ON.png" alt="filled save icon"></a>
+                    {{else}}
+                        <a href="/favorites/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-white.png" alt="unfilled save icon"></a>
+                    {{/if}}
+                <a href="/tattooer/{{this.user._id}}"><p>{{toUpperCase this.user.username}}</p></a>
+                {{#if numberLikes }}
+                    <p>{{numberLikes}}</p>
+                {{/if}}
+                {{#if isLikedPhoto}}
+                    <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
+                {{else}}
+                    <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
+                {{/if}}
                 </section>
-                <section class="column-search-form">
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="illustrative">
-                        <label for="illustrative">Illustrative</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="sketch">
-                        <label for="sketch">Sketch</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="anime">
-                        <label for="anime">Anime</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="lettering">
-                        <label for="lettering">Lettering</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="minimalism">
-                        <label for="minimalism">Minimalism</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="surrealism">
-                        <label for="surrealism">Surrealism</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="trashPolka">
-                        <label for="trashPolka">TrashPolka</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="blackAndGrey">
-                        <label for="blackAndGrey">Black And Grey</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="ignorant">
-                        <label for="ignorant">Ignorant</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="tattooPhotoStyle" value="other">
-                        <label for="other">Other</label>
-                    </li>
-                </section>
-            </ul>
-            <div class="button-form-container">
-                <button class="buttonsearch" type="submit">Search</button>
-            </div>
-        </form>
-    </div>
-    <section class="result-tattooes">
-        {{#each tattoo}}
-            <img src="{{this.tattooImage}}" alt="">
-            <a href="/tattooer/{{this.user._id}}"><p>{{toUpperCase this.user.username}}</p></a>
-        {{/each}}
+            {{/each}}
+        </section>
     </section>
-</section>
