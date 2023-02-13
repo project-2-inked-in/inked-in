@@ -172,13 +172,21 @@ section.formrev {
     overflow: hidden;
 }
 
+section.formrev form input{
+    margin-bottom: 2rem;
+    border-style: solid;
+    border-width: 0px 0px 1px;
+    border-color: var(--secondary-gold);
+    background-color: var(--primary-grey);
+}
+
 section.formrev input {
-    color:black;
+    color: var(--primary-white);
     width: 16rem;;
 }
 
 section.formrev label {
-    color: var(--secondary-gold);
+    color: var(--primary-white);
     width: 200px;
     padding-right: 5px;
 }
