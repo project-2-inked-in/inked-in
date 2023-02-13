@@ -12,9 +12,9 @@
 {{#if userNoReview}}
     <section class="formrev">
         <form method="POST" action="/reviews/{{tattooer._id}}">
-            <label>Stars to the artist:</label>
+            <label>Rate to the artist (1-5)</label>
             <input type="number" class="input1" placeholder="5" name="stars" max="5"/>
-            <label>Comment:</label>
+            <label>Review:</label>
             <input type="text" placeholder="I love this tattooer" name="comment"/>
             <button type="submit">Add review</button>
         </form>
@@ -23,17 +23,26 @@
 {{#if userCanedit}}
     {{#each userCanedit}}
     <section class="review">
-        <h5>{{toUpperCase this.userId.username}} <p>{{this.comment}}.</p> <p>Stars: {{this.stars}}/5</p>
-        <a href="/reviews/edit/{{_id}}"><img class="min-icon" src="/images/editrev.png" alt="logo-edit"></a>
-        {{!-- BOTON DELETE REVIEW
-        <a href=""><img class="min-icon" src="/images/cancel.png" alt="logo-edit"></a> --}}
+        <div class="info-review-div">
+        <h5>{{toUpperCase this.userId.username}}</h5> 
+        <p class="comment">{{toUpperCase this.comment}}.</p> 
+        <p class="rate">Rate: {{this.stars}}/5</p>
+        </div>
+        <div class="edit-delete-icons-div">
+            <a href="/reviews/edit/{{_id}}"><img class="min-icon-review" src="/images/edit-review.png" alt="logo-edit"></a>
+            <a href="/reviews/delete/{{_id}}"><img class="min-icon-review" src="/images/delete-icon.png" alt="logo-edit"></a>
+        </div>
     </section>
     {{/each}}
 {{/if}}
 {{#if userCanTedit}}
     {{#each userCanTedit}}
-        <section class="review">
-        <h5>{{toUpperCase this.userId.username}}</h5> <p>{{this.comment}}. </p> <p>Stars: {{this.stars}}/5</p>
+    <section class="review">
+        <div class="info-review-div">
+            <h5>{{toUpperCase this.userId.username}}</h5> 
+            <p class="comment">{{toUpperCase this.comment}}.</p> 
+            <p class="rate">Rate: {{this.stars}}/5</p>
+        </div>
     </section>
     {{/each}}
 {{/if}}

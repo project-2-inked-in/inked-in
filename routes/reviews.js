@@ -13,7 +13,7 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const tattooer = await User.findById(tattooerId);
-        const reviews = await Review.find({ tattooerId: tattooerId }).populate('userId');
+        const reviews = await Review.find({ tattooerId: tattooerId }).populate('userId').sort({createdAt:-1});
         const userCanedit = [];
         const userCanTedit = [];
         reviews.filter(review => {
@@ -47,7 +47,7 @@ router.post('/:tattooerId', isLoggedIn, async (req, res, next) => {
 });
 
 // @desc Edit Reviews view
-// @route GET /reviews/edit/tattooerId
+// @route GET /reviews/edit/reviewId
 // @access Private
 router.get('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
     const { reviewId } = req.params;
@@ -61,7 +61,7 @@ router.get('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
 });
 
 // @desc Edit Reviews data to database
-// @route POST /reviews/edit/tattooerId
+// @route POST /reviews/edit/reviewId
 // @access Private
 router.post('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
@@ -72,6 +72,22 @@ router.post('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
         const findTattooerId = await Review.findById(reviewId);
         const tattooerId = findTattooerId.tattooerId;
         res.redirect(`/reviews/${tattooerId}`); 
+    } catch (error) {
+        next(error)
+    }
+});
+
+// @desc Delete Reviews 
+// @route GET /reviews/delete/reviewId
+// @access Private
+router.get('/delete/:reviewId', isLoggedIn, async (req, res, next) => {
+    const { reviewId } = req.params;
+    const user = req.session.currentUser;
+    try {
+        const findTattooerId = await Review.findById(reviewId);
+        const tattooerId = findTattooerId.tattooerId;
+        const review = await Review.findByIdAndDelete(reviewId);
+        res.redirect(`/reviews/${tattooerId}`);
     } catch (error) {
         next(error)
     }
