@@ -6,10 +6,10 @@
       <label>Tattoo Style</label>
       <select name="tattooPhotoStyle" multiple required>
         {{#each resultSelectStyles}}
-        <option value="{{this}}" selected>{{this}}</option>
+          <option value="{{this}}" selected>{{this}}</option>
         {{/each}}
         {{#each resultNoSelect}}
-        <option value="{{this}}">{{this}}</option>
+          <option value="{{this}}">{{this}}</option>
         {{/each}}
       </select>
       {{/if}}
@@ -18,8 +18,8 @@
       <label>Where?</label>
       <input type="text" name="place" value="{{photoData.place}}" placeholder="Where?" required />
       {{#if userUser}}
-      <label>Tattooer</label>
-      <input type="text" name="tattooer" value="{{photoData.tattooer}}" required />
+        <label>Tattooer</label>
+        <input type="text" name="tattooer" value="{{photoData.tattooer}}" required />
       {{/if}}
       <div class="button-form-container"></div>
         <button type="submit">Upload</button>

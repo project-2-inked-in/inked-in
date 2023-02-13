@@ -1,51 +1,50 @@
 {{#if user}}
 <nav class="navbar-back-arrow-save">
     <ul>
-        <li><button class="back-button"><a href="/users/profile"><img class="back-button-image" src="/images/left-arrow.png"
-                        alt="back-arrow"></a></button></li>
+        <li><button class="back-button"><a href="/users/profile"><img class="back-button-image" src="/images/left-arrow.png" alt="back-arrow"></a></button></li>
         <li><a href="/"><img class="min-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
     </ul>
 </nav>
 {{/if}}
-<section class="form-container">
-    <h2>Edit profile</h2>
-    <div id="form">
-        <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
-            <div class="upload-profile-photo-container">
-                {{#if user.profileImage}}
-                <input type="file" id="upload" name="profileImage" hidden />
-                <label class="upload-photo" for="upload">
-                    <img src={{user.profileImage}} alt="profile-photo">
-                </label>
-                {{else}}
-                <input type="file" id="upload" name="profileImage" hidden />
-                <label class="upload-photo" for="upload">
-                    <img src="/images/profile-icon.png" alt="profile-photo">
-                </label>
-                {{/if}}
-            </div>
-            <input type="text" name="city" required="true" value="{{user.city}}" placeholder="Where are you living?" />
-            <input type="text" name="tattooNumber" value="{{user.tattooNumber}}" placeholder="How many tattoos do you have?"/>
-            <input type="text" name="profileDescription" value="{{user.profileDescription}}" maxlength="120" placeholder="About you"/>
-            {{#if tattooerUser}}
-                <label>What style do you work?</label>
-                <select class="select" name="tattooStyle" multiple>
+    <section class="form-container">
+        <h2>Edit profile</h2>
+        <div id="form">
+            <form method="POST" action="/users/profile/edit" enctype="multipart/form-data">
+                <div class="upload-profile-photo-container">
+                    {{#if user.profileImage}}
+                    <input type="file" id="upload" name="profileImage" hidden />
+                    <label class="upload-photo" for="upload">
+                        <img src={{user.profileImage}} alt="profile-photo">
+                    </label>
+                    {{else}}
+                    <input type="file" id="upload" name="profileImage" hidden />
+                    <label class="upload-photo" for="upload">
+                        <img src="/images/profile-icon.png" alt="profile-photo">
+                    </label>
+                    {{/if}}
+                </div>
+                <input type="text" name="city" required="true" value="{{user.city}}" placeholder="Where are you living?" />
+                <input type="text" name="tattooNumber" value="{{user.tattooNumber}}" placeholder="How many tattoos do you have?"/>
+                <input type="text" name="profileDescription" value="{{user.profileDescription}}" maxlength="120" placeholder="About you"/>
+                {{#if tattooerUser}}
+                    <label>What style do you work?</label>
+                    <select class="select" name="tattooStyle" multiple>
                 {{#each resultSelectStyles}}
                     <option value="{{this}}" selected>{{this}}</option>
                 {{/each}}
                 {{#each resultNoSelect}}
-                <option value="{{this}}">{{this}}</option>
+                    <option value="{{this}}">{{this}}</option>
                 {{/each}}
-                </select>
+                    </select>
                 <input type="text" name="studio" required="true" value="{{user.studio}}" placeholder="In witch studio do you work?"/>
                 <input type="text" name="nextJourneys" value="{{user.nextJourneys}}" placeholder="Next journey?"/>   
-            {{/if}}
-            <div class="button-form-container">
-                <button type="submit">Save changes</button>
-            </div>
-            {{#if error}}
-            <p class="error">{{ error }}</p>
-            {{/if}}
-        </form>
-    </div>
-</section>
+                {{/if}}
+                <div class="button-form-container">
+                    <button type="submit">Save changes</button>
+                </div>
+                {{#if error}}
+                    <p class="error">{{ error }}</p>
+                {{/if}}
+            </form>
+        </div>
+    </section>

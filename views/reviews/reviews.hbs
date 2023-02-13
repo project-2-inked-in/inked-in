@@ -24,9 +24,9 @@
     {{#each userCanedit}}
     <section class="review">
         <div class="info-review-div">
-        <h5>{{toUpperCase this.userId.username}}</h5> 
-        <p class="comment">{{toUpperCase this.comment}}.</p> 
-        <p class="rate">Rate: {{this.stars}}/5</p>
+            <h5>{{toUpperCase this.userId.username}}</h5> 
+            <p class="comment">{{toUpperCase this.comment}}.</p> 
+            <p class="rate">Rate: {{this.stars}}/5</p>
         </div>
         <div class="edit-delete-icons-div">
             <a href="/reviews/edit/{{_id}}"><img class="min-icon-review" src="/images/edit-review.png" alt="logo-edit"></a>
@@ -45,4 +45,8 @@
         </div>
     </section>
     {{/each}}
+    {{else}}
+        <section class="placeholder-logo-container">
+            <img src="/images/logo-placeholder.png" alt="logo-placeholder">
+        </section>
 {{/if}}

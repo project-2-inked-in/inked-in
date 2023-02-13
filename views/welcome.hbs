@@ -1,41 +1,45 @@
 {{#if user}}
-<nav class="navbar-layout2">
-  <ul>
-    <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
-  </ul>
-</nav>
-{{/if}}
-<section class="main-welcome-title">
-  <h2> Hi {{toUpperCase user.username}}</h2>
-</section>
-<section class="tattoer-photos-container">
-  <div>
-    {{#each justTattooersPhotosAndLike}}
-      <div class="tattoo-photo-div">
-        <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
-        <div class="like-and-username">
-          <section class="save-and-username">
-            {{#if isFavPhoto}}
-            <a href="/favorites/delete/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-ON.png"
-                alt="filled save icon"></a>
+  <nav class="navbar-layout2">
+    <ul>
+      <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
+    </ul>
+  </nav>
+
+  <section class="main-welcome-title">
+    <h2> Hi {{toUpperCase user.username}}</h2>
+  </section>
+  <section class="tattoer-photos-container">
+    <div>
+      {{#each justTattooersPhotosAndLike}}
+        <div class="tattoo-photo-div">
+          <img class="welcome-tattoo-photo" src={{tattooImage}} alt="">
+          <div class="like-and-username">
+            <section class="save-and-username">
+              {{#if isFavPhoto}}
+              <a href="/favorites/delete/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-ON.png" alt="filled save icon"></a>
             {{else}}
-            <a href="/favorites/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-white.png"
-                alt="unfilled save icon"></a>
+              <a href="/favorites/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-white.png" alt="unfilled save icon"></a>
             {{/if}}
-          <a href="/tattooer/{{user._id}}"><p>{{toUpperCase user.username}}</p></a>
-          </section>
-          <section class="likes-numbers-section">
-            {{#if numberLikes }}
-            <p>{{numberLikes}}</p>
-            {{/if}}
-            {{#if isLikedPhoto}}
-            <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
-            {{else}}
-            <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
-            {{/if}}
-          </section>
+              <a href="/tattooer/{{user._id}}"><p>{{toUpperCase user.username}}</p></a>
+            </section>
+            <section class="likes-numbers-section">
+              {{#if numberLikes }}
+                <p>{{numberLikes}}</p>
+              {{/if}}
+              {{#if isLikedPhoto}}
+                <a href="/likes/delete/{{_id}}"><img class="like-icon" src="/images/Like.png" alt="filled heart"></a>
+              {{else}}
+                <a href="/likes/{{_id}}"><img class="like-icon" src="/images/noLike.png" alt="unfilled heart"></a>
+              {{/if}}
+            </section>
+          </div>
         </div>
-      </div>
-    {{/each}}
-  </div>
-</section>
+      {{/each}}
+    </div>
+  </section>
+
+  {{else}}
+    <section class="placeholder-logo-container">
+        <img src="/images/logo-placeholder.png" alt="logo-placeholder">
+    </section>
+{{/if}}
