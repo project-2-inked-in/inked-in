@@ -1,0 +1,24 @@
+{{#if user}}
+<nav class="navbar-back-arrow-save">
+  <ul>
+    <li><button class="back-button"><a href="/users/profile"><img class="back-button-image" src="/images/left-arrow.png" alt="back-arrow"></a></button></li>
+    <li><a href="/"><img class="min-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
+  </ul>
+</nav>
+{{/if}}
+<section class="main-welcome-title">
+  <h2> YOUR FAVS </h2>
+</section>
+<section class="photo-tattooer-fav-container">
+  {{#each findTattooerNames}}
+  <div class="photo-tattooer-fav-card">
+    <div class="image-fav-container">
+      <img class="fav-photos" src="{{tattoo.tattooImage}}" alt="tattoo-photo">
+    </div>
+    <div class="name-Delete-fav">
+      <a href="/tattooer/{{tattoo.user}}">{{tattooerName}}</a>
+      <a href="/favorites/delete/{{tattoo._id}}"><img class="delete-icon" src="/images/delete-icon.png" alt=""></a>
+    </div>
+  </div>
+  {{/each}}
+</section>

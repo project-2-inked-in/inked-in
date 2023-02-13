@@ -38,6 +38,4 @@ router.get('/delete/:tattooId', isLoggedIn, async (req, res, next) => {
   }
 });
 
-
-
 module.exports = router;

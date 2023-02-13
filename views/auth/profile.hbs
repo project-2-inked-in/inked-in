@@ -8,6 +8,7 @@
       <span class="bar3"></span>
     </div>
     <ul class="nav-sub">
+      <li class="list-item"><a href="/favorites" class="nav-link">My favs</a></li>
       <li class="list-item"><a href="/users/profile/edit" class="nav-link">Edit profile</a></li>
       <li class="list-item"><a href="/users/unsubscribe" class="nav-link">Unsubscribe</a></li>
       <li class="list-item"><a href="/auth/logout" class="nav-link">Log out</a></li>
@@ -80,15 +81,21 @@
         <a href="/reviews/{{user._id}}"><img class="starts-reviews" src="/images/stars-review.png" alt="review-stars"></a>
       </div>
       {{/if}}
-      {{#each dataUser}}
-      <img class="profile-photos" src={{tattooImage}} alt="tattoo">
-      <p>{{year}}</p>
-      <p>{{tattooer}}</p>
-      <p>{{place}}</p>
-        {{#each tattooPhotoStyle}}
-        <p> - {{this}}</p>
+      {{#if dataUser}}
+        {{#each dataUser}}
+        <img class="profile-photos" src={{tattooImage}} alt="tattoo">
+        <p>{{year}}</p>
+        <p>{{tattooer}}</p>
+        <p>{{place}}</p>
+          {{#each tattooPhotoStyle}}
+          <p> - {{this}}</p>
+          {{/each}}
+        <a href="/tattoo/edit/{{_id}}">Edit</a>
         {{/each}}
-      <a href="/tattoo/edit/{{_id}}">Edit</a>
-      {{/each}}
+      {{else}}
+      <section class="placeholder-logo-container">
+        <img src="/images/logo-placeholder.png" alt="logo-placeholder">
+      </section>
+      {{/if}}
   </div>
 </section>

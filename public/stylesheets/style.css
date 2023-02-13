@@ -81,9 +81,6 @@ button.back-button img.back-button-image {
   width: 30px;
 }
 
-img.save-icon {
-  width: 34px;
-}
 /*---------------INDEX PAGE---------------*/
 section.index-container {
   height: 100vh;
@@ -422,6 +419,16 @@ div.reviews-stars-container {
   width: 90px;
 }
 
+section.placeholder-logo-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.placeholder-logo-container img {
+  width: 20rem;
+}
+
 /*---------------PROFILE TATTOOER PAGE---------------*/
 section.profile-info-container {
   padding: 0 0.5rem;
@@ -451,6 +458,12 @@ section.main-welcome-title {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+}
+
+section.tattoer-photos-container div div.like-and-username section.save-and-username {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 section.tattoer-photos-container div div.like-and-username {
@@ -502,10 +515,18 @@ section.result-tattooes img{
   object-fit: cover;
 }
 
-/*---------------LIKE ICONS---------------*/
+/*---------------LIKE SAVE ICONS---------------*/
 
-.like-icon {
-  width: 29px;
+img.like-icon {
+  width: 28px;
+}
+
+img.save-icon-photo {
+  width: 25px;
+}
+
+img.save-icon {
+  width: 34px;
 }
 
 /*---------------REVIEWS PAGE---------------*/
@@ -528,6 +549,42 @@ section.review p {
 .min-icon {
   width: 29px;
 }
+
+/*---------------FAVORITES PAGE---------------*/
+
+section.photo-tattooer-fav-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin:1rem;
+  gap: 1rem;
+}
+
+.image-fav-container {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  height: 20vh;
+}
+
+.fav-photos {
+  width: 40vw;
+  height: 20vh;
+  object-fit: cover;
+}
+
+.name-Delete-fav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.delete-icon {
+  width: 27px;
+}
+
 
 /*---------------ERROR 404 PAGE---------------*/
 

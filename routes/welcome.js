@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../models/User');
 const Tattoo = require('../models/Tattoo');
 const Like = require('../models/Like');
+const Favorite = require('../models/Favorite');
 const { isLoggedIn } = require('../middlewares');
 
 // @desc    App home page
@@ -23,8 +24,16 @@ router.get('/', isLoggedIn, async (req, res, next) => {
       }
       const findLikes = await Like.find({ tattoo: tatu._id });
       tatu.numberLikes = findLikes.length;
+
+      const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
+      if (findFav != null) {
+        tatu.isFavPhoto = true;
+      } else {
+        tatu.isFavPhoto = false;
+      }
       return tatu;
     }));
+    //console.log("justTattooersPhotosAndLike", justTattooersPhotosAndLike)
     res.render('welcome', { user, justTattooersPhotosAndLike});
   } catch (error) {
     next(error)
