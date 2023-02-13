@@ -67,9 +67,11 @@ router.post('/edit/:reviewId', isLoggedIn, async (req, res, next) => {
     const { stars, comment } = req.body;
     const { reviewId } = req.params;
     const user = req.session.currentUser;
-    try {
-        const editedReview = await Review.findByIdAndUpdate(reviewId, { stars, comment }, { new: true });
-        res.redirect(`/reviews/${tattooerId}`); //Aquí tiene que ir la ID del tatuador,
+    try { 
+        await Review.findByIdAndUpdate(reviewId, { stars, comment }, { new: true });
+        const findTattooerId = await Review.findById(reviewId);
+        const tattooerId = findTattooerId.tattooerId;
+        res.redirect(`/reviews/${tattooerId}`); 
     } catch (error) {
         next(error)
     }

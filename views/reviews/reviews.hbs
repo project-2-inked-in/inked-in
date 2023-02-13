@@ -1,8 +1,12 @@
 {{#if user}}
-    <nav class="navbar-layout2">
-        <ul>
-            <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
-        </ul>
+    <nav class="navbar-layout-back-arrow">
+        <button class="back-button"><a href="/tattooer/{{tattooer._id}}"><img class="back-button-image" src="/images/left-arrow.png" alt="back-arrow"></a></button>
+        <section class="logo-nav-section">
+            <ul>
+                <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a>
+                </li>
+            </ul>
+        </section>
     </nav>
 {{/if}}
 {{#if userNoReview}}

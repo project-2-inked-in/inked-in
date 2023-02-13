@@ -70,6 +70,20 @@ input, label, select, button {
   font-family: 'Manrope', sans-serif;
 }
 
+button.back-button {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+}
+
+button.back-button img.back-button-image {
+  width: 30px;
+}
+
+img.save-icon {
+  width: 34px;
+}
 /*---------------INDEX PAGE---------------*/
 section.index-container {
   height: 100vh;
@@ -194,6 +208,42 @@ img.max-icon {
   width: 72px;
 }
 
+img.min-icon {
+  width: 52px;
+}
+
+/*---------------TOP NAVBAR WITH LEFT ARROW---------------*/
+
+nav.navbar-layout-back-arrow {
+  width: 100vw;
+  padding: 20px 25px 6px 25px;
+  background-color: var(--primary-grey);
+  border-color: var(--secondary-gold);
+  margin: 0 0 1rem 0;
+}
+
+nav.navbar-layout-back-arrow section.logo-nav-section ul{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*---------------TOP NAVBAR WITH LEFT ARROW AND SAVE ---------------*/
+
+nav.navbar-back-arrow-save {
+  width: 100vw;
+  padding: 20px 25px 6px 25px;
+  background-color: var(--primary-grey);
+  border-color: var(--secondary-gold);
+  margin: 0 0 1rem 0;
+}
+
+nav.navbar-back-arrow-save ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /*---------------TOP NAVBAR OTHER PAGES---------------*/
 
 nav.navbar-layout-other-pages {
@@ -215,6 +265,7 @@ img.max-icon {
 }
 
 /*---------------NAVBAR LAYOUT---------------*/
+
 nav.navbar-layout{
   width: 100vw;
   padding: 20px;
@@ -251,16 +302,20 @@ nav.profile-navbar {
   background: var(--primary-grey);
 }
 
-nav.profile-navbar div.title a img.profile-icon {
-  width: 44px;
+nav.profile-navbar div.upload-photo-nav a img.upload-photo-icon-nav {
+  width: 38px;
 }
 
 .list-item {
-  padding: 10px;
+  padding: 7px;
 }
 
 .nav-link {
   color: inherit;
+}
+
+.nav-link:hover {
+  color: var(--primary-white);
 }
 
 /*Properties for Hamburger*/
@@ -302,14 +357,17 @@ nav.profile-navbar div.title a img.profile-icon {
 
 .change .bar1 {
   transform: rotate(45deg) translate(8px, 3px);
+  background-color: var(--primary-white);
 }
 
 .change .bar2 {
   opacity: 0;
+  background-color: var(--primary-white);
 }
 
 .change .bar3 {
   transform: rotate(-45deg) translate(8px, -3px);
+  background-color: var(--primary-white);
 }
 
 section.main-section div.profile-main-container section.profile-image-container{
