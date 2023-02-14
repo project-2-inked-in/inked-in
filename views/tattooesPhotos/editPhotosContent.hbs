@@ -4,7 +4,7 @@
     <form action="/tattoo/edit/{{photoData._id}}" method="POST">
       {{#if tattooerUser}}
       <label>Tattoo Style</label>
-      <select name="tattooPhotoStyle" multiple required>
+      <select class="select" name="tattooPhotoStyle" multiple required>
         {{#each resultSelectStyles}}
           <option value="{{this}}" selected>{{this}}</option>
         {{/each}}

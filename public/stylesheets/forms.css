@@ -25,13 +25,10 @@ section.form-container div#form form input {
     border-width: 0px 0px 1px;
     border-color: var(--secondary-gold);
     background-color: var(--primary-grey);
-}
-
-section.form-container div#form form input::placeholder {
     color: var(--primary-white);
 }
 
-section.form-container div#form form input {
+section.form-container div#form form input::placeholder {
     color: var(--primary-white);
 }
 
@@ -56,7 +53,7 @@ section.form-container div#form form select.select-sign-up {
 
 section.form-container div#form form label {
     color: var(--primary-white);
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 section.form-container div#form form div.button-form-container {
@@ -200,4 +197,18 @@ section.formrev button {
     text-align: center;
     color: var(--primary-white);
     margin: 1rem 2rem 0rem 3.5rem;
+}
+
+/* Change autocomplete styles in WebKit */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid var(--secondary-gold);
+    -webkit-text-fill-color: var(--primary-white);
+    -webkit-box-shadow: 0 0 0px 1000px var(--primary-grey) inset;
+    transition: background-color 5000s ease-in-out 0s;
 }

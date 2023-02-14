@@ -6,6 +6,7 @@ const fileUploader = require('../config/cloudinary.config');
 const { isLoggedIn } = require('../middlewares');
 const Review = require('../models/Review');
 const Like = require('../models/Like');
+const Favorite = require('../models/Favorite');
 
 
 // @desc Profile user
@@ -95,6 +96,7 @@ router.get('/unsubscribe', isLoggedIn, async (req, res, next) => {
         await Tattoo.deleteMany({ user: user._id });
         await Review.deleteMany({ userId: user._id });
         await Like.deleteMany({ user: user._id });
+        await Favorite.deleteMany({ user: user._id });
         await User.deleteOne({ _id: user._id });
         req.session.destroy((err) => {
             if (err) {

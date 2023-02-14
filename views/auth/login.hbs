@@ -2,7 +2,7 @@
   <h2>Login</h2>
   <div id="form">
     <form action="/auth/login" method="POST">
-      <input type="email" name="email" placeholder="Email" />
+      <input class="email" type="email" name="email" placeholder="Email" />
       <input type="password" name="password" placeholder="Password" />
       {{#if error}}
         <p class="error">{{ error }}</p>
