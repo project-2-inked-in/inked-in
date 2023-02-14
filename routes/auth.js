@@ -52,9 +52,12 @@ router.post('/signup', isLoggedButOut, async (req, res, next) => {
   }
   try {
     const isUserInDB = await User.findOne({ email: email });
+    const UserInDB = await User.findOne({ username: username });
     if (isUserInDB) {
       res.render('auth/signup', { error: `There already is a user with email ${email}.` })
       return;
+    } else if(UserInDB){
+      res.render('auth/signup', { error: `There already is a user with username ${username}.` })
     } else {
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -64,7 +67,6 @@ router.post('/signup', isLoggedButOut, async (req, res, next) => {
       res.render('auth/signTattooer', user)
     } else {
       res.redirect('/welcome')
-      //res.render('welcome', user)
       };
     } 
   } catch (error) {
