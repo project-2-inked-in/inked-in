@@ -39,12 +39,12 @@
                 <input type="text" name="studio" required="true" value="{{user.studio}}" placeholder="In witch studio do you work?"/>
                 <input type="text" name="nextJourneys" value="{{user.nextJourneys}}" placeholder="Next journey?"/>   
                 {{/if}}
-                <div class="button-form-container">
-                    <button type="submit">Save changes</button>
-                </div>
                 {{#if error}}
                     <p class="error">{{ error }}</p>
                 {{/if}}
+                <div class="button-form-container">
+                    <button type="submit">Save changes</button>
+                </div>
             </form>
         </div>
     </section>

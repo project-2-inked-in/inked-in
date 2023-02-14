@@ -617,6 +617,27 @@ div.no-tattooes-found-div{
   justify-content: center;
   text-align: center;
   line-height: 1.3rem;
+  margin: 0 2rem;
+}
+
+section.input-search-city {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+section.input-search-city input {
+  margin-bottom: 0.5rem;
+  border-style: solid;
+  border-width: 0px 0px 1px;
+  border-color: var(--secondary-gold);
+  background-color: var(--primary-grey);
+  color: var(--primary-white);
+  width: 17rem;
+}
+
+section.input-search-city input::placeholder {
+  color: var(--primary-white);
 }
 
 /*---------------LIKE SAVE ICONS---------------*/

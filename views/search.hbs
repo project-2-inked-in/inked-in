@@ -11,6 +11,9 @@
     <h2>Find by tattoo style</h2>
     <div id="form-search">
         <form method="GET" action="/search/tattooer"> 
+        <section class="input-search-city">
+            <input type="text" name="place" placeholder="City">
+        </section>
             <ul class="ul-checkbox-search">
                 <section class="column-search-form">
                     <li>
@@ -97,7 +100,6 @@
                     </li>
                 </section>
             </ul>
-            <input type="text" name="place" placeholder="City">
             <div class="button-form-container">
                 <button class="buttonsearch" type="submit">Search</button>
             </div>
@@ -135,7 +137,7 @@
         {{/if}}
         {{#if tattooNull}}
         <div class="no-tattooes-found-div">
-            <p>Sorry, no tattooes found by {{tattooPhotoStyle}}. Try again!</p>
+            <p>No tattooes found by {{#if tattooPhotoStyle}}{{tattooPhotoStyle}}{{/if}}&nbsp;{{#if place}}{{place}}{{/if}}. Try again!</p>
         </div>
         {{/if}}
     </div>
