@@ -87,6 +87,12 @@ button.back-button img.back-button-image {
   width: 30px;
 }
 
+p.p-style {
+  font-family: porlane;
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
 /*---------------INDEX PAGE---------------*/
 section.index-container {
   height: 100vh;
@@ -215,6 +221,28 @@ img.min-icon {
   width: 52px;
 }
 
+/*---------------TOP NAVBAR WELCOME---------------*/
+nav.navbar-welcome {
+  width: 100vw;
+  padding: 20px 19px 6px 25px;
+  background-color: var(--primary-grey);
+  border-color: var(--secondary-gold);
+  margin: 0 0 1rem 0;
+}
+
+nav.navbar-welcome ul {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+nav.navbar-welcome ul li.logo li.save {
+  align-self: flex-start;
+}
+
+img.upload-photo-icon-nav {
+  width: 38px;
+}
 /*---------------TOP NAVBAR WITH LEFT ARROW---------------*/
 
 nav.navbar-layout-back-arrow {
@@ -417,7 +445,7 @@ div.user-info-div {
   gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
-  /*line-height: 1rem;*/
+  line-height: 1rem;
 }
 
 div.reviews-stars-container {
@@ -440,7 +468,64 @@ section.placeholder-logo-container img {
   width: 20rem;
 }
 
+div.tattoo-photo-div div.info-photo-user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.1rem 0.8rem 0rem 0.8rem;
+}
+
+div.tattoo-photo-div div.info-photo-user-profile div.info {
+  display: flex;
+  gap: 0.8rem;
+}
+
 /*---------------PROFILE TATTOOER PAGE---------------*/
+
+/* hover effect*/
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-transform: uppercase;
+}
+
+div.container {
+  margin: 0.8rem 0 0.4rem 0;
+}
 
 section.profile-info-container {
   padding: 0 0.5rem;
@@ -450,6 +535,12 @@ div div.tattoo-photo-div div.like-and-tattoer-info {
   justify-content: space-between;
   align-items: center;
   margin: 0.1rem 0.8rem 0rem 0.8rem;
+}
+
+div div.tattoo-photo-div div.like-and-tattoer-info div.save-year {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 div div.tattoo-photo-div div.like-and-number-tattooer {
@@ -503,11 +594,10 @@ section.form-container {
   color: var(--primary-white)
 }
 
-div#form2 form{
+div#form-search form{
   display: flex;
   flex-direction:column;
   flex-wrap: wrap;
-  padding: 0 2rem;
   justify-content: flex-start;
 }
 
@@ -519,42 +609,14 @@ button.buttonsearch{
   text-transform: uppercase;
   text-align: center;
   color: var(--primary-white);
+  margin: 1rem 0 2rem 0;
 }
 
-section.result-tattooes img{
-  width: 100vw;  
-  height: 35vh;
-  object-fit: cover;
+div.no-tattooes-found-div{
+  display: flex;
   justify-content: center;
-}
-
-section.result-tattooes a {
   text-align: center;
-  }
-
-section.result-tattooes p {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 0rem 1rem 1rem 1rem;
-}
-  
-section.result-tattooes section.styles-tattooer-section img {
-  width: 25px;
-  height: 25px;
-  }
-  
-  section.result-tattooes section.styles-tattooer-section{
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 0rem 1rem 1rem 1rem;
-  }
-
-section.styles-tattooer-section p{
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  line-height: 1.3rem;
 }
 
 /*---------------LIKE SAVE ICONS---------------*/

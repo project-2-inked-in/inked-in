@@ -22,7 +22,7 @@ const tattooSchema = new Schema(
             type: String
         },
         place: {
-            type: String
+            type: [String]
         },
     },
     {

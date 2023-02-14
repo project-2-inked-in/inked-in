@@ -1,7 +1,9 @@
 {{#if user}}
-<nav class="navbar-layout2">
+<nav class="navbar-welcome">
   <ul>
-    <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
+    <li class="upload"><a href="/tattoo/upload"><img class="upload-photo-icon-nav" src="/images/uploadPhoto-C.png" alt="upload-photo"></a></li>
+    <li class="logo"><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a></li>
+    <li class="save"><a href="/favorites"><img class="save-icon" src="/images/favorites-save.png" alt="save-tattooer-icon"></a></li>
   </ul>
 </nav>
 {{/if}}
@@ -16,11 +18,9 @@
         <div class="like-and-username">
           <section class="save-and-username">
             {{#if isFavPhoto}}
-            <a href="/favorites/delete/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-ON.png"
-                alt="filled save icon"></a>
+            <a href="/favorites/delete/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-ON.png" alt="filled save icon"></a>
             {{else}}
-            <a href="/favorites/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-white.png"
-                alt="unfilled save icon"></a>
+            <a href="/favorites/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-white.png" alt="unfilled save icon"></a>
             {{/if}}
           <a href="/tattooer/{{user._id}}"><p>{{toUpperCase user.username}}</p></a>
           </section>

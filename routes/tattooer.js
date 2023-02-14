@@ -4,8 +4,7 @@ const Tattoo = require('../models/Tattoo');
 const Like = require('../models/Like');
 const { isLoggedIn } = require('../middlewares');
 const { ifTattooerOut } = require('../middlewares');
-
-
+const Favorite = require('../models/Favorite');
 
 
 // @desc User can see tattooer detail profile
@@ -27,6 +26,13 @@ router.get('/:tattooerId', isLoggedIn, ifTattooerOut, async (req, res, next) => 
       }
       const findLikes = await Like.find({ tattoo: tatu._id });
       tatu.numberLikes = findLikes.length;
+
+      const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
+      if (findFav != null) {
+        tatu.isFavPhoto = true;
+      } else {
+        tatu.isFavPhoto = false;
+      }
       return tatu
     }));
     //

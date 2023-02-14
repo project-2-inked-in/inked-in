@@ -73,11 +73,27 @@
         <div>
           {{#each justTattooersPhotosAndLike}}
           <div class="tattoo-photo-div">
-            <img class="welcome-tattoo-photo" src={{tattooImage}} alt="tatoo">
+            <div class="container">
+              <img class="welcome-tattoo-photo image" src={{tattooImage}} alt="tatoo">
+              <div class="middle">
+                <div class="text">
+                  {{#each tattooPhotoStyle}}
+                    <p class="p-style">{{this}}</p>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
             <div class="like-and-tattoer-info">
-              <p>{{year}}</p>
-              <p>{{place}}</p>
+                <div class="save-year">
+                {{#if isFavPhoto}}
+                <a href="/favorites/delete/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-ON.png" alt="filled save icon"></a>
+                {{else}}
+                <a href="/favorites/{{_id}}"><img class="save-icon-photo" src="/images/favorites-save-white.png" alt="unfilled save icon"></a>
+                {{/if}}
+                <p>{{year}}</p>
+              </div>
               <div class="like-and-number-tattooer">
+                <p>{{place}}</p>
                 {{#if numberLikes }}
                   <p>{{numberLikes}}</p>
                 {{/if}}
@@ -88,11 +104,6 @@
                 {{/if}}
               </div>
             </div>
-            <section class="styles-tattooer-section">
-              {{#each tattooPhotoStyle}}
-              <p>{{this}}</p>
-              {{/each}}
-            </section>
           </div>
         {{/each}}
         </div>

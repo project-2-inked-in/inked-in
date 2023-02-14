@@ -85,16 +85,26 @@
       {{#if dataUser}}
         {{#each dataUser}}
         <div class="tattoo-photo-div">
-          <img class="profile-photos" src={{tattooImage}} alt="tattoo">
-            <div class="like-and-tattoer-info">
+          <div class="container">
+            <img class="profile-photos image" src={{tattooImage}} alt="tattoo">
+            <div class="middle">
+              <div class="text">
+                {{#each tattooPhotoStyle}}
+                <p class="p-style">{{this}}</p>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+          <div class="info-photo-user-profile">
+            <div class="info">
+              {{#if tattooer}}
               <p>{{tattooer}}</p>
-              <div class="like-and-number-tattooer">
+              {{/if}}
               <p>{{place}}</p>
               <p>{{year}}</p>
-              {{#each tattooPhotoStyle}}
-                <p> - {{this}}</p>
-              {{/each}}
-              <a href="/tattoo/edit/{{_id}}"><img class="min-icon-review" src="/images/edit-review.png" alt="edit-photo"></a>
+            </div>
+              <div class="like-and-number-tattooer">
+                <a href="/tattoo/edit/{{_id}}"><img class="min-icon-review" src="/images/edit-review.png" alt="edit-photo"></a>
               </div>
           </div>
         </div>
