@@ -20,35 +20,91 @@ router.get('/', isLoggedIn, (req, res, next) => {
 router.get('/tattooer', isLoggedIn, async (req, res, next) => {
     //const { username } = req.query;
     const { tattooPhotoStyle, place } = req.query;
-    console.log(place)
+    console.log(tattooPhotoStyle)
     const user = req.session.currentUser;
     try {
-        const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }}).populate('user');
-        const tattooesResult =  await Promise.all( tattoo.map( async (tattooo) => {
-        let tatu = tattooo.toObject();
-        const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
-        if (like != null) {
-            tatu.isLikedPhoto = true;
-        } else {
-            tatu.isLikedPhoto = false;
-        }
-        const findLikes = await Like.find({ tattoo: tatu._id });
-        tatu.numberLikes = findLikes.length;
-
-        const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
-        if (findFav != null) {
-            tatu.isFavPhoto = true;
-        } else {
-            tatu.isFavPhoto = false;
-        }
-        return tatu
-        }));
-        if (tattooesResult.length === 0) {
-            const tattooNull = true;
-            res.render('search', { tattooNull, user, tattooPhotoStyle});
-        } else {
-            res.render('search', { tattooesResult, user, tattooPhotoStyle});
+         if (place.length === 0) {
+            const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle } }).populate('user');
+            const tattooesResult =  await Promise.all( tattoo.map( async (tattooo) => {
+            let tatu = tattooo.toObject();
+            const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
+            if (like != null) {
+                tatu.isLikedPhoto = true;
+            } else {
+                tatu.isLikedPhoto = false;
             }
+            const findLikes = await Like.find({ tattoo: tatu._id });
+            tatu.numberLikes = findLikes.length;
+
+            const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
+            if (findFav != null) {
+                tatu.isFavPhoto = true;
+            } else {
+                tatu.isFavPhoto = false;
+            }
+            return tatu
+            }));
+            if (tattooesResult.length === 0) {
+                const tattooNull = true;
+                res.render('search', { tattooNull, user, tattooPhotoStyle});
+            } else {
+                res.render('search', { tattooesResult, user, tattooPhotoStyle});
+                }
+        } if (tattooPhotoStyle === undefined) {
+            const tattoo = await Tattoo.find({ place: { $in: place } }).populate('user');
+            const tattooesResult =  await Promise.all( tattoo.map( async (tattooo) => {
+            let tatu = tattooo.toObject();
+            const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
+            if (like != null) {
+                tatu.isLikedPhoto = true;
+            } else {
+                tatu.isLikedPhoto = false;
+            }
+            const findLikes = await Like.find({ tattoo: tatu._id });
+            tatu.numberLikes = findLikes.length;
+
+            const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
+            if (findFav != null) {
+                tatu.isFavPhoto = true;
+            } else {
+                tatu.isFavPhoto = false;
+            }
+            return tatu
+            }));
+            if (tattooesResult.length === 0) {
+                const tattooNull = true;
+                res.render('search', { tattooNull, user, tattooPhotoStyle});
+            } else {
+                res.render('search', { tattooesResult, user, tattooPhotoStyle});
+                }
+        } else {
+            const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }, place: { $in: place } }).populate('user');
+            const tattooesResult =  await Promise.all( tattoo.map( async (tattooo) => {
+            let tatu = tattooo.toObject();
+            const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
+            if (like != null) {
+                tatu.isLikedPhoto = true;
+            } else {
+                tatu.isLikedPhoto = false;
+            }
+            const findLikes = await Like.find({ tattoo: tatu._id });
+            tatu.numberLikes = findLikes.length;
+            const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
+            if (findFav != null) {
+                tatu.isFavPhoto = true;
+            } else {
+                tatu.isFavPhoto = false;
+            }
+            return tatu
+            }));
+            if (tattooesResult.length === 0) {
+                const tattooNull = true;
+                res.render('search', { tattooNull, user, tattooPhotoStyle});
+            } else {
+                res.render('search', { tattooesResult, user, tattooPhotoStyle});
+                }
+        }
+        
     } catch (error) {
         next(error)
     }
@@ -56,10 +112,10 @@ router.get('/tattooer', isLoggedIn, async (req, res, next) => {
 
 module.exports = router;
 
-//if (place.length === 0) {
-        //     const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }}).populate('user');
-        // } if (tattooPhotoStyle.length === 0) {
-        //     const tattoo = await Tattoo.find({ place: { $in: place } }).populate('user');
-        // } else {
-        //     const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }, place: { $in: place }}).populate('user');
-        // }
+    // if (place.length === 0) {
+    //         const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }}).populate('user');
+    //     } if (tattooPhotoStyle.length === 0) {
+    //         const tattoo = await Tattoo.find({ place: { $in: place } }).populate('user');
+    //     } else {
+    //         const tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }, place: { $in: place }}).populate('user');
+    //     }

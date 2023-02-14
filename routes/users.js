@@ -61,17 +61,29 @@ router.get('/profile/edit', isLoggedIn, async (req, res, next) => {
 router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, async (req, res, next) => {
     const { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } = req.body;
     const user = req.session.currentUser;
-    //PREGUNTAR A LA MARINA
-    /*if (profileDescription.length > 120) {
+    const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
+    const resultNoSelect = [];
+        styles.filter(style => {
+            if (!tattooStyle.includes(style)) {
+                resultNoSelect.push(style)
+            };
+        });
+    if (profileDescription.length > 120) {
         if (user.userRole === "tattooer") {
             const tattooerUser = user.userRole; 
-            res.render('auth/editProfile', { user, tattooerUser, error: `Description just allow 120 characters` });
-            return;
+            if (typeof tattooStyle != "object") {
+                const tattooStyleArr = [tattooStyle]
+                res.render('auth/editProfile', { user, resultSelectStyles: tattooStyleArr , resultNoSelect, tattooerUser, error: `Description just allow 120 characters` });
+                return;
+            } else {
+                res.render('auth/editProfile', { user, resultSelectStyles: tattooStyle, resultNoSelect, tattooerUser, error: `Description just allow 120 characters` }); 
+                return;    
+            }
         } else {
         res.render('auth/editProfile', { user, tattooerUser, error: `Description just allow 120 characters` });
             return;
         };
-    };*/
+    };
     try {
         if (req.file === undefined) {
             const userInDB = await User.findByIdAndUpdate(user._id, {city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });  
@@ -80,7 +92,6 @@ router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, as
             const userInDB = await User.findByIdAndUpdate(user._id, { profileImage: req.file.path, city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }, { new: true });
             req.session.currentUser = userInDB;
         }
-        //res.render('auth/profile', userInDB);
         res.redirect('/users/profile')
     } catch (error) {
         next(error);

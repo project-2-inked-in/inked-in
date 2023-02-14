@@ -38,7 +38,7 @@ const userSchema = new Schema(
     },
     profileDescription: {
       type: String,
-      maxLength: [20, 'Description just allow 120 characters.'],
+      maxlength: 120,
       match: [/^[A-Za-z0-9]+$/g, 'Description just allow characters and numbers.']
     },
     tattooStyle: {
