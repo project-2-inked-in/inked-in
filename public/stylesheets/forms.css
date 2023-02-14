@@ -70,9 +70,27 @@ section.form-container div#form form div.button-form-container button {
     text-transform: uppercase;
     text-align: center;
     color: var(--primary-white);
+    cursor: pointer;
 }
 
 section.form-container div#form form div.button-form-container button:hover {
+    border: 1px solid var(--primary-white);
+    width: 205px;
+    color: var(--secondary-gold);
+    cursor: pointer;
+}
+
+.delete-photos-button {
+    border: 1px solid var(--secondary-gold);
+    width: 200px;
+    background-color: var(--primary-grey);
+    padding: 1rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--primary-white);
+}
+
+.delete-photos-button:hover {
     border: 1px solid var(--primary-white);
     width: 205px;
     color: var(--secondary-gold)

@@ -21,10 +21,12 @@
         <label>Tattooer</label>
         <input type="text" name="tattooer" value="{{photoData.tattooer}}" required />
       {{/if}}
-      <div class="button-form-container"></div>
+      <div class="button-form-container">
         <button type="submit">Upload</button>
       </div>
     </form>
+      <div class="button-form-container">
+      <a href="/tattoo/delete/{{photoData._id}}"><button class="delete-photos-button">DELETE</button></a>
+      </div>
   </div>
 </section>
-<a href="/tattoo/delete/{{photoData._id}}">Delete content</a>

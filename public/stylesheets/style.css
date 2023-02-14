@@ -387,6 +387,11 @@ section.main-section div.profile-main-container section.profile-info-container{
   justify-content: center;
   text-align: center;
   line-height: 1.3rem;
+  
+}
+
+.user-profile {
+  margin-bottom: 1rem;
 }
 
 section.profile-image-container img{
@@ -436,17 +441,18 @@ section.placeholder-logo-container img {
 }
 
 /*---------------PROFILE TATTOOER PAGE---------------*/
+
 section.profile-info-container {
   padding: 0 0.5rem;
 }
-section.tattoer-photos-container div div.tattoo-photo-div div.like-and-tattoer-info {
+div div.tattoo-photo-div div.like-and-tattoer-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0.1rem 0.8rem 0rem 0.8rem;
 }
 
-section.tattoer-photos-container div div.tattoo-photo-div div.like-and-number-tattooer {
+div div.tattoo-photo-div div.like-and-number-tattooer {
   display:flex;
   align-items: center;
   gap: 0.7rem;
