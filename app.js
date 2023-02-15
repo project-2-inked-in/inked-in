@@ -20,6 +20,7 @@ const searchRoute = require('./routes/search');
 const tattooRouter = require('./routes/tattoo');
 const likesRouter = require('./routes/likes');
 const favoritesRouter = require('./routes/favorites');
+const contactRouter = require('./routes/contact')
 
 const app = express();
 
@@ -74,6 +75,7 @@ app.use('/tattooer', tattooerRouter);
 app.use('/tattoo', tattooRouter);
 app.use('/likes', likesRouter);
 app.use('/favorites', favoritesRouter);
+app.use('/contact', contactRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,0 +1,36 @@
+{{#if user}}
+    <nav class="navbar-layout-back-arrow">
+        <button class="back-button"><a href="/tattooer/{{tattooer._id}}"><img class="back-button-image" src="/images/left-arrow.png" alt="back-arrow"></a></button>
+        <section class="logo-nav-section">
+            <ul>
+                <li><a href="/"><img class="max-icon" src="/images/inked-in-logo-B.png" alt="logo-icon"></a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+{{/if}}
+
+{{#if userContact}}
+    <section class="formrev">
+        <form method="POST" action="/contact/{{tattooer._id}}">
+            <label>Message:</label>
+            <input type="text" placeholder="I need a tattoo" name="comment"/>
+            <label>Contact form</label>
+            <input type="text" placeholder="phone or email" name="contactform"/>
+            <button type="submit">Contact!</button>
+        </form>
+    </section>
+    </form>       
+{{/if}}
+
+{{#if userCanSee}}
+    {{#each userCanSee}}
+    <section class="review">
+        <div class="info-review-div">
+            <h5>{{toUpperCase this.userId.username}}</h5> 
+            <p class="comment">{{toUpperCase this.comment}}.</p> 
+            <p class="rate">Contact form: {{this.contactform}}</p>
+        </div>
+    </section>
+        {{/each}}
+{{/if}}
