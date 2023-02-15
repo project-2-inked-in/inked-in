@@ -9,7 +9,9 @@
         </section>
     </nav>
 {{/if}}
-
+<section class="main-welcome-title">
+  <h2> YOUR MESSAGES </h2>
+</section>
 {{#if userContact}}
     <section class="formrev">
         <form method="POST" action="/contact/{{tattooer._id}}">
@@ -32,5 +34,6 @@
             <p class="rate">Contact form: {{this.contactform}}</p>
         </div>
     </section>
-        {{/each}}
+    {{/each}}
+
 {{/if}}
