@@ -8,9 +8,9 @@
 </nav>
 <section class="formrev">
     <form method="POST" action="/reviews/edit/{{review._id}}">
-        <label>Stars to the artist:</label>
+        <label>Rate the artist</label>
         <input type="number" value="{{review.stars}}" name="stars" max="5"/>
-        <label>Comment:</label>
+        <label>Review</label>
         <input type="text" value="{{review.comment}}" name="comment"/>
         <button type="submit">Edit review</button>
     </form>

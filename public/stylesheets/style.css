@@ -51,8 +51,9 @@ h4 {
 
 h5 {
   font-family: 'Manrope', sans-serif;
-  font-size: 1.2rem;
   color: var(--secondary-gold);
+  font-weight: 900;
+  font-size: 1.1rem;
 }
 
 p{
@@ -674,7 +675,7 @@ section.review p.rate {
 }
 
 .min-icon-review {
-  width: 29px;
+  width: 21px;
 }
 
 section.review div.edit-delete-icons-div {

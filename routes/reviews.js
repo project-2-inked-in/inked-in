@@ -13,6 +13,7 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const tattooer = await User.findById(tattooerId);
+        console.log("tattooerID", tattooer._id)
         const reviews = await Review.find({ tattooerId: tattooerId }).populate('userId').sort({createdAt:-1});
         const userCanedit = [];
         const userCanTedit = [];
