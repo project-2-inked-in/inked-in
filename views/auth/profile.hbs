@@ -10,7 +10,7 @@
     </div>
     <ul class="nav-sub">
       <li class="list-item"><a href="/favorites" class="nav-link">My favs</a></li>
-      <li class="list-item"><a href="/contact/{{user._id}}" class="nav-link">My messages</a></li>
+      {{#if userRole.tattooer}}<li class="list-item"><a href="/contact/{{user._id}}" class="nav-link">My messages</a></li>{{/if}}
       <li class="list-item"><a href="/users/profile/edit" class="nav-link">Edit profile</a></li>
       <li class="list-item"><a href="/users/unsubscribe" class="nav-link">Unsubscribe</a></li>
       <li class="list-item"><a href="/auth/logout" class="nav-link">Log out</a></li>
