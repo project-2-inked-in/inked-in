@@ -11,19 +11,15 @@
   </head>
   <body>
     {{{ body }}}
+    {{#if user}}
     <nav class="navbar-layout">
       <ul>
-        {{#if user}}
           <li><a href="/welcome"><img src="/images/home-icon.png" alt="home-icon"></a></li>
           <li><a href="/search"><img src="/images/search-icon.png" alt="search-icon"></a></li>
           <li><a href="/users/profile"><img src="/images/profile-icon.png" alt="profile-icon"></a></li>
-        {{else}}
-        <div class="li-no-user">
-          <li> <p> Made with love </p></li>
-        </div>
-        {{/if}}
       </ul>
     </nav>
+    {{/if}}
     <script src="/javascript/profile-nav.js"></script>
     <script src="/javascript/go-back-button.js"></script>
   </body>

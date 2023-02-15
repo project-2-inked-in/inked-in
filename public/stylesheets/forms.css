@@ -1,5 +1,15 @@
 /*-------SIGN UP PAGE / EDIT PROFILE / UPLOADCONTENT / LOG IN ----------*/
 
+section.login-signup-logo {
+   display: flex;
+   justify-content: center; 
+   padding-top: 2rem;
+}
+
+section.login-signup-logo img {
+    width: 115px;
+}
+
 section.form-container {
     display: flex;
     flex-direction: column;
@@ -17,6 +27,7 @@ section.form-container div#form {
     flex-direction: column;
     padding: 0 1rem;
     justify-content: center;
+    position: relative;
 }
 
 section.form-container div#form form input {
@@ -99,11 +110,16 @@ section.form-container div#form form div.button-form-container button:hover {
 section.form-container div#form div.form-end-question{
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 section.form-container div#form div.form-end-question p.form-end-question-p {
     font-size: 0.8rem;
+}
+
+section.form-container div#form div.form-end-question p.form-end-question-p a {
+    color: var(--secondary-gold);
+    font-weight: 900;
 }
 
 .upload-photo img {
@@ -149,7 +165,7 @@ section.form-container-search {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
     padding-top: 0.3rem;
 }
 
@@ -161,6 +177,13 @@ section.form-container-search div#form-search {
 section.form-container-search div#form-search ul.ul-checkbox-search {
     display:flex;
     gap: 1rem;
+}
+
+section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li {
+    margin: 0 0 0.3rem 0;
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
 }
 
 section.form-container-search div#form-search ul.ul-checkbox-search section.column-search-form li input[type="checkbox"] {
