@@ -9,10 +9,10 @@
         </section>
     </nav>
 {{/if}}
-{{#if userNoReview}}
 <section class="main-welcome-title">
     <h2>{{tattooer.username}} review</h2>
 </section>
+{{#if userNoReview}}
     <section class="formrev">
         <form method="POST" action="/reviews/{{tattooer._id}}">
             <input type="number" class="input1" placeholder="Rate the artist (1-5)" name="stars" max="5"/>
