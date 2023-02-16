@@ -446,7 +446,7 @@ div.user-info-div {
   gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
-  line-height: 1rem;
+  align-items: center;
 }
 
 div.reviews-stars-container {
