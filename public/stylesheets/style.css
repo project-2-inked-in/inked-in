@@ -564,6 +564,7 @@ div div.tattoo-photo-div div.like-and-number-tattooer {
 }
 
 /*---------------WELCOME PAGE---------------*/
+
 section.main-welcome-title {
   display: flex;
   justify-content: center;
@@ -704,13 +705,15 @@ section.message {
 section.message div.image-username-div {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   margin-bottom: 0.6rem;
 }
 
 section.message div.image-username-div img {
   width: 30px;
-  border-radius: 30px;
-  margin-right: 5px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--secondary-gold);
 }
 
 section.message div.message-contact-via {

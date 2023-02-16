@@ -64,11 +64,13 @@ router.post('/profile/edit', fileUploader.single('profileImage'), isLoggedIn, as
     const user = req.session.currentUser;
     const styles = ['traditionalOldSchool', 'realism', 'watercolor', 'tribal', 'newSchool', 'neoTraditional', 'japanese', 'blackwork', 'dotwork', 'geometric', 'illustrative', 'sketch', 'anime', 'lettering', 'minimalism', 'surrealism', 'trashPolka', 'blackAndGrey', 'ignorant', 'other'];
     const resultNoSelect = [];
+    if(user.userRole === "tattooer") {
         styles.filter(style => {
             if (!tattooStyle.includes(style)) {
                 resultNoSelect.push(style)
             };
         });
+    };
     if (profileDescription.length > 120) {
         if (user.userRole === "tattooer") {
             const tattooerUser = user.userRole; 

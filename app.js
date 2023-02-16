@@ -59,7 +59,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('toUpperCase', function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 });
-hbs.registerHelper('changeNumToStar', function changeNumber(elements) {
+hbs.registerHelper('changeNumToStar', function(elements) {
   let numberToStar = Array(elements + 1).join("☆ ");
   return numberToStar;
 });
