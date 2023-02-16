@@ -7,6 +7,7 @@ const { isLoggedIn } = require('../middlewares');
 const Review = require('../models/Review');
 const Like = require('../models/Like');
 const Favorite = require('../models/Favorite');
+const Contact = require('../models/Contact');
 
 
 // @desc Profile user
@@ -108,6 +109,7 @@ router.get('/unsubscribe', isLoggedIn, async (req, res, next) => {
         await Review.deleteMany({ userId: user._id });
         await Like.deleteMany({ user: user._id });
         await Favorite.deleteMany({ user: user._id });
+        await Contact.deleteMany({ user: user._id });
         await User.deleteOne({ _id: user._id });
         req.session.destroy((err) => {
             if (err) {

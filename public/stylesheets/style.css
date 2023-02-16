@@ -56,6 +56,12 @@ h5 {
   font-size: 1.1rem;
 }
 
+h6 {
+  font-family: 'Manrope', sans-serif;
+  color: var(--secondary-gold);
+  font-size: 0.9rem;
+}
+
 p{
   font-family: 'Manrope', sans-serif;
   color: var(--primary-white)
@@ -685,6 +691,35 @@ section.review div.edit-delete-icons-div {
   align-items: center;
 }
 
+/*---------------MESSAGES PAGE---------------*/
+
+section.message {
+  margin: 1rem 2.3rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--secondary-gold);
+  padding-bottom: 1rem;
+}
+
+section.message div.image-username-div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+section.message div.image-username-div img {
+  width: 30px;
+}
+
+section.message div.message-contact-via {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+section.message div.message-contact-via h6 {
+  margin-top: 0.3rem;
+}
 /*---------------FAVORITES PAGE---------------*/
 
 section.photo-tattooer-fav-container {

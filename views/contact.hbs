@@ -10,7 +10,7 @@
     </nav>
 {{/if}}
 <section class="main-welcome-title">
-  <h2> YOUR MESSAGES </h2>
+  <h2> {{tattooer.username}} MESSAGES </h2>
 </section>
 {{#if userContact}}
     <section class="formrev">
@@ -27,13 +27,16 @@
 
 {{#if userCanSee}}
     {{#each userCanSee}}
-    <section class="review">
-        <div class="info-review-div">
+    <section class="message">
+        <div class="image-username-div">
+            <img src={{this.userId.profileImage}} alt="profile-image">
             <h5>{{toUpperCase this.userId.username}}</h5> 
+        </div>
+        <div class="message-contact-via">
             <p class="comment">{{toUpperCase this.comment}}.</p> 
             <p class="rate">Contact form: {{this.contactform}}</p>
+            <h6> {{prettifyDate createdAt}}</h6>
         </div>
     </section>
     {{/each}}
-
 {{/if}}

@@ -12,14 +12,15 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         const tattooer = await User.findById(tattooerId);
-        const contacts = await Contact.find({ tattooerId: tattooerId }).populate('userId').sort({createdAt:-1});
+        const contacts = await Contact.find({ tattooerId: tattooerId }).populate('userId').sort({ createdAt: -1 });
         const userCanSee = [];
         contacts.filter(contact=> {
             if ((tattooerId === user._id )) {
                 userCanSee.push(contact)
             } 
         });
-        const userContact = !(tattooerId === user._id );
+        const userContact = !(tattooerId === user._id);
+        const getDate = userCanSee[0].createdAt.getDate()
         res.render('contact', { user, tattooer, contacts, userCanSee, userContact}); 
     } catch (error) {
         next(error)

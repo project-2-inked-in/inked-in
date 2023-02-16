@@ -19,7 +19,6 @@ router.get('/', isLoggedIn, (req, res, next) => {
 // @access Private
 router.get('/tattooer', isLoggedIn, async (req, res, next) => {
     const { tattooPhotoStyle, place } = req.query;
-    console.log(tattooPhotoStyle)
     const user = req.session.currentUser;
     try {
         let tattoo;

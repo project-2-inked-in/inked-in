@@ -63,6 +63,14 @@ hbs.registerHelper('changeNumToStar', function changeNumber(elements) {
   let numberToStar = Array(elements + 1).join("☆ ");
   return numberToStar;
 });
+hbs.registerHelper("prettifyDate", function(timestamp) {
+    let curr_date = timestamp.getDate();
+    let curr_month = timestamp.getMonth();
+    curr_month++;
+    let curr_year = timestamp.getFullYear();
+    return curr_date + ". " + curr_month + ". " + curr_year;
+});
+
 
 // routes intro
 app.use('/', indexRouter);

@@ -16,6 +16,9 @@ const contactSchema = new Schema(
         contactform: {
             type: String
         },
+        isChecked: {
+            type: Boolean
+        }
     },
     {
         timestamps: true

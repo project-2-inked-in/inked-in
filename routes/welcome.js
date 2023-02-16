@@ -11,7 +11,7 @@ const { isLoggedIn } = require('../middlewares');
 router.get('/', isLoggedIn, async (req, res, next) => {
   const user = req.session.currentUser;
   try {
-    const allTattooes = await Tattoo.find({}).populate('user');
+    const allTattooes = await Tattoo.find({}).populate('user').sort({ createdAt: -1 });
     const justTattooersPhotos = allTattooes.filter(({ user }) => user.userRole == 'tattooer');
     const justTattooersPhotosAndLike = await Promise.all(justTattooersPhotos.map(async (tattooo) => {
       // Transform your mongoose object to standard javascript object 

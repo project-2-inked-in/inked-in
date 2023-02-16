@@ -18,7 +18,6 @@ router.get('/', isLoggedIn, async (req, res, next) => {
       tatooInfo.tattooerName = findUserName.username;
       return tatooInfo
     }));
-    console.log("hulaaaa", findTattooerNames)
     res.render('favorites/myFavorites', { user, findTattooerNames});
   } catch (error) {
     next(error)
