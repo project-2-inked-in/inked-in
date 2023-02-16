@@ -1,0 +1,11 @@
+<section class="review">
+  <div class="info-review-div">
+    <h5>{{toUpperCase this.userId.username}}</h5>
+    <p class="comment">{{toUpperCase this.comment}}.</p>
+    <p class="rate grade">{{changeNumToStar this.stars}}</p>
+  </div>
+  <div class="edit-delete-icons-div">
+    <a href="/reviews/edit/{{_id}}"><img class="min-icon-review" src="/images/edit-review.png" alt="logo-edit"></a>
+    <a href="/reviews/delete/{{_id}}"><img class="min-icon-review" src="/images/delete-icon.png" alt="logo-edit"></a>
+  </div>
+</section>

@@ -9,23 +9,24 @@
         </section>
     </nav>
 {{/if}}
-<section class="main-welcome-title">
-  <h2> {{tattooer.username}} MESSAGES </h2>
-</section>
 {{#if userContact}}
+    <section class="main-welcome-title">
+    <h2> contact {{tattooer.username}}</h2>
+    </section>
     <section class="formrev">
         <form method="POST" action="/contact/{{tattooer._id}}">
-            <label>Message:</label>
-            <input type="text" placeholder="I need a tattoo" name="comment"/>
-            <label>Contact form</label>
-            <input type="text" placeholder="phone or email" name="contactform"/>
-            <button type="submit">Contact!</button>
+            <input type="text" placeholder="How can I help you" name="comment"/>
+            <input type="text" placeholder="Leave your phone number o email" name="contactform"/>
+            <button type="submit">send</button>
         </form>
     </section>
     </form>       
 {{/if}}
 
 {{#if userCanSee}}
+    <section class="main-welcome-title">
+        <h2>{{tattooer.username}} messages </h2>
+    </section>
     {{#each userCanSee}}
     <section class="message">
         <div class="image-username-div">

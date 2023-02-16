@@ -20,7 +20,6 @@ router.get('/:tattooerId', isLoggedIn, async (req, res, next) => {
             } 
         });
         const userContact = !(tattooerId === user._id);
-        const getDate = userCanSee[0].createdAt.getDate()
         res.render('contact', { user, tattooer, contacts, userCanSee, userContact}); 
     } catch (error) {
         next(error)

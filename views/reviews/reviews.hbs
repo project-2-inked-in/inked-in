@@ -10,6 +10,9 @@
     </nav>
 {{/if}}
 {{#if userNoReview}}
+<section class="main-welcome-title">
+    <h2>{{tattooer.username}} review</h2>
+</section>
     <section class="formrev">
         <form method="POST" action="/reviews/{{tattooer._id}}">
             <input type="number" class="input1" placeholder="Rate the artist (1-5)" name="stars" max="5"/>
@@ -17,34 +20,21 @@
             <button type="submit">Add review</button>
         </form>
     </section>
+{{else}}
+<section class="main-welcome-title">
+    <h2>{{tattooer.username}} reviews</h2>
+</section>
+<section class="placeholder-logo-container">
+    <img src="/images/logo-placeholder.png" alt="logo-placeholder">
+</section>
 {{/if}}
 {{#if userCanedit}}
     {{#each userCanedit}}
-    <section class="review">
-        <div class="info-review-div">
-            <h5>{{toUpperCase this.userId.username}}</h5> 
-            <p class="comment">{{toUpperCase this.comment}}.</p> 
-            <p class="rate grade">{{changeNumToStar this.stars}}</p>
-        </div>
-        <div class="edit-delete-icons-div">
-            <a href="/reviews/edit/{{_id}}"><img class="min-icon-review" src="/images/edit-review.png" alt="logo-edit"></a>
-            <a href="/reviews/delete/{{_id}}"><img class="min-icon-review" src="/images/delete-icon.png" alt="logo-edit"></a>
-        </div>
-    </section>
+        {{>cardReviewsUserCanEdit}}
     {{/each}}
 {{/if}}
 {{#if userCanTedit}}
     {{#each userCanTedit}}
-    <section class="review">
-        <div class="info-review-div">
-            <h5>{{toUpperCase this.userId.username}}</h5> 
-            <p class="comment">{{toUpperCase this.comment}}.</p> 
-            <p class="rate">Rate: {{this.stars}}/5</p>
-        </div>
-    </section>
-    {{/each}}
-    {{else}}
-        <section class="placeholder-logo-container">
-            <img src="/images/logo-placeholder.png" alt="logo-placeholder">
-        </section>
+        {{>cardReviewsUserCanTEdit}}
+    {{/each}}    
 {{/if}}
