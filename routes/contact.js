@@ -35,7 +35,7 @@ router.post('/:tattooerId', isLoggedIn, async (req, res, next) => {
     const { tattooerId } = req.params;
     try {
     await Contact.create({  comment, contactform, userId: user._id, tattooerId: tattooerId });
-    res.redirect(`/contact/${tattooerId}`)
+    res.redirect(`/tattooer/${tattooerId}`)
     } catch (error) {
         next(error)
     }
