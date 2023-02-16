@@ -20,13 +20,6 @@
             <button type="submit">Add review</button>
         </form>
     </section>
-{{else}}
-<section class="main-welcome-title">
-    <h2>{{tattooer.username}} reviews</h2>
-</section>
-<section class="placeholder-logo-container">
-    <img src="/images/logo-placeholder.png" alt="logo-placeholder">
-</section>
 {{/if}}
 {{#if userCanedit}}
     {{#each userCanedit}}

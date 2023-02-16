@@ -709,6 +709,8 @@ section.message div.image-username-div {
 
 section.message div.image-username-div img {
   width: 30px;
+  border-radius: 30px;
+  margin-right: 5px;
 }
 
 section.message div.message-contact-via {
