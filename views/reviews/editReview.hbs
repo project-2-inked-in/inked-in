@@ -6,12 +6,13 @@
         </ul>
     </section>
 </nav>
+<section class="main-welcome-title">
+    <h2>Edit review</h2>
+</section>
 <section class="formrev">
     <form method="POST" action="/reviews/edit/{{review._id}}">
-        <label>Rate the artist</label>
-        <input type="number" value="{{review.stars}}" name="stars" max="5"/>
-        <label>Review</label>
-        <input type="text" value="{{review.comment}}" name="comment"/>
+        <input type="number" value="{{review.stars}}" name="stars" max="5" placeholder="Rate the artist (1-5)"/>
+        <input type="text" value="{{review.comment}}" name="comment" placeholder="Review"/>
         <button type="submit">Edit review</button>
     </form>
 </section>

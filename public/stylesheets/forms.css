@@ -204,10 +204,12 @@ section.form-container-search div#form-search ul.ul-checkbox-search section.colu
     margin-top: 0.8rem;
 }
 
-section.formrev {
-    margin: 3rem 2rem 2rem 1rem;
-    padding-left: 2rem;
-    overflow: hidden;
+section.formrev form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 2rem;
 }
 
 section.formrev form input{
@@ -221,7 +223,7 @@ section.formrev form input{
 
 section.formrev input {
     color: var(--primary-white);
-    width: 16rem;;
+    width: 16rem;
 }
 
 section.formrev label {
