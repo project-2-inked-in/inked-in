@@ -62,8 +62,6 @@ What can the user do with the app?
 - User can visit other users profiles
 - User can ask appointment to tattooer
 - User can send a DM to tattoer
-- User/tattoor can see favoutire images in big size
-
 
 ---
 
@@ -125,10 +123,10 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
-´´´
+```
 Tattoo:
-
 ```js
+
 const tattooSchema = new Schema(
     {
         user: {
@@ -156,7 +154,7 @@ const tattooSchema = new Schema(
     {
         timestamps: true
     });
-´´´
+```
 Review:
 ```js
 
@@ -175,12 +173,10 @@ const reviewSchema = new Schema(
         type: String
     }
     });
-´´´
+```
 
 Like: 
-´´´js
-
-const { Schema, model } = require('mongoose');
+```js
 
 const likeSchema = new Schema(
     {
@@ -196,32 +192,100 @@ const likeSchema = new Schema(
     {
         timestamps: true
     });
+```
 
-const Like = model('Like', likeSchema);
+Favorites: 
+```js
 
-module.exports = Like;
+const favoriteSchema = new Schema(
+    {
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        tattoo: {
+            type: Schema.Types.ObjectId,
+            ref: 'Tattoo'
+        },
+    },
+    {
+        timestamps: true
+    });
+```
+
+Contact:
+```js 
+const contactSchema = new Schema(
+    {
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        tattooerId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        comment: {
+            type: String
+        }, 
+        contactform: {
+            type: String
+        },
+        isChecked: {
+            type: Boolean
+        }
+    },
+    {
+        timestamps: true
+    });
+```
+
 ---
 
 ## Routes
 
-| Name  | Method | Endpoint    | Protected | Req.body            | Redirects |
-|-------|--------|-------------|------|---------------------|-----------|
-| Home  | GET   | /           | No   |                     |           |
-| Login | GET    | /auth/login | No |                      |           |
-| Login | POST | /auth/login   | No | { email, password }  | /         |
-| Signup | GET    | /auth/signup | No |                      |           |
-| Signup | POST | /auth/signup   | No | { username, password }  | /auth/login  |
-| Welcome  | GET    | /welcome | Yes |                        |           |
-| Profile | GET | /profile   | Yes |          |   |
-| Profile | POST | /profile | Yes |
-| 
+| Name       | Method | Endpoint           | Protected | Req.body            | Redirects |
+|------------|--------|-------------       |-----------|---------------------|-----------|
+| Home       | GET    | /                  | No        |                     |           |
+| Login      | GET    | /auth/login        | No        |                     | /welcome  |
+| Login      | POST   | /auth/login        | No        | { email, password } | / welcome |
+| Signup     | GET    | /auth/signup       | No        |                     | /auth/signup |
+| Signup     | POST   | /auth/signup       | No        | { username, password } | /auth/login  |
+| SignTattoo | GET    | /auth/signTattooer | Yes       |                  | /welcome |
+| SignTattoo | POST   | /auth/signTattooer | Yes       | { TattooStyle, city } | /welcome |
+| Log Out    | GET    | /logout            | YES       |  | /auth/login |
+| Welcome    | GET    | /welcome           | Yes       |                        |  /welcome |
+| Profile    | GET    | /profile           | Yes       |          | /auth/profile |
+| Edit Prof  | GET    | /profile/edit      | Yes       | | /auth/editProfile |
+| Edit Prof  | POST   | /profile/edit      | Yes       |  { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } | /auth/editProfile |
+| Unsubscribe | GET | /unsubscribe | Yes |  | /auth/signup |
+| Tattooer Prof | GET | /tattooerId | Yes | | /tattooesPhotos/tattooer |
+| Upload | GET | /upload | Yes | | /tattooesPhotos/uploadContent |
+| Upload | POST | /upload | Yes | { tattooPhotoStyle, year, tattooer, place } | /users/profile |
+| Edit photo | GET | /edit/photoId | Yes | | /tattooesPhotos/editPhotosContent |
+| Edit photo | POST | /edit/photoId | Yes | { tattooPhotoStyle, year, tattooer, place } | /users/profile |
+| Delete photo | GET | /delete/photoId | Yes | | /users/profile
+| Search view | GET | /search | Yes | | /search |
+| Search query | GET | /tattoer | Yes | | /search |
+| Review | GET | /reviews | Yes | | /reviews/reviews |
+| Review | POST | /reviews | Yes | { stars, comment } | /reviews/editReview |
+| Edit Review | GET | /edit/reviewId | Yes | | /reviews/editReview |
+| Edit Review | POST | /edit/reviewId | Yes | { stars, comment } | /reviews/tattooerId |
+| Delete Review | GET | /delete/reviewId | Yes | | /reviews/tattooerId |
+| Like | GET | /tattoerId | Yes | | /Back |
+| Delete Like | GET | /delete/tattoerId | Yes | | /Back |
+| See Favorites | GET | /myfavorites/ | Yes | | /favorites/myFavorites |
+| Choise Favorites | GET | /tattooId | Yes | | /Back |
+| Delete favorite | GET | /delete/tattooId | Yes | | /Back |
+| Contact | GET | /tattooerId | Yes | | /Contact |
+| Contact | POST | /tattoerId | Yes | { comment, contactform } | /tattoer/tattoerId | 
 ---
 
 ## Useful links
 
 - [Github Repo]()
 - [Trello kanban](https://trello.com/b/h4l8ecjZ/inked-in)
-- [Deployed version]()
+- [Deployed version](https://inkedin.fly.dev/)
 - [Presentation slides](https://www.slides.com)
 
 
