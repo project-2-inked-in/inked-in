@@ -37,8 +37,6 @@ npm run dev
 Substitute this image with an image of your own app wireframes or designs
 
 ![](docs/wirefl1.png)
-![](docs/login.png)
-![](docs/profile.png)
 
 ---
 
