@@ -1,8 +1,10 @@
-# App name
+# Inked-In
+
+![](docs/inked-logo-B.png)
 
 ## Description
 
-This is a project developed by Estefania and Pau as the project for the second module at Ironhack. The purpose of the application is ...
+Inked-in is a project developed by Estefania Egea and Paula Bertolin as a project for Ironhack module 2. This APP is for Tattoo artists from all over the world to publicize their work and receive feedback for them. Inked-in also acts as a social network and users can contact their favorite tattoo artists to make appointments or ask questions. Users can also comment on the work of tattoo artists by liking and saving the images in Favorites. In general, it is an application that is easy to use and very intuitive for the user, making Inked-In a great user experience.
 
 ---
 
@@ -34,7 +36,9 @@ npm run dev
 ## Wireframes
 Substitute this image with an image of your own app wireframes or designs
 
-![](docs/wireframes.png)
+![](docs/wirefl1.png)
+![](docs/login.png)
+![](docs/profile.png)
 
 ---
 
@@ -283,7 +287,7 @@ const contactSchema = new Schema(
 
 ## Useful links
 
-- [Github Repo]()
+- [Github Repo](https://github.com/project-2-inked-in/inked-in)
 - [Trello kanban](https://trello.com/b/h4l8ecjZ/inked-in)
 - [Deployed version](https://inkedin.fly.dev/)
 - [Presentation slides](https://www.slides.com)
