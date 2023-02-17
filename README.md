@@ -247,33 +247,38 @@ const contactSchema = new Schema(
 | Name       | Method | Endpoint           | Protected | Req.body            | Redirects |
 |------------|--------|-------------       |-----------|---------------------|-----------|
 | Home       | GET    | /                  | No        |                     |           |
-| Login      | GET    | /auth/login        | No        |                     |           |
-| Login      | POST   | /auth/login        | No        | { email, password } | /         |
-| Signup     | GET    | /auth/signup       | No        |                     |           |
+| Login      | GET    | /auth/login        | No        |                     | /welcome  |
+| Login      | POST   | /auth/login        | No        | { email, password } | / welcome |
+| Signup     | GET    | /auth/signup       | No        |                     | /auth/signup |
 | Signup     | POST   | /auth/signup       | No        | { username, password } | /auth/login  |
 | SignTattoo | GET    | /auth/signTattooer | Yes       |                  | /welcome |
 | SignTattoo | POST   | /auth/signTattooer | Yes       | { TattooStyle, city } | /welcome |
-| Log Out    | GET    | /logout            | YES       |
-| Welcome    | GET    | /welcome           | Yes       |                        |           |
-| Profile    | GET    | /profile           | Yes       |          |   |
-| Profile    | POST   | /profile           | Yes       |
-| Edit Prof  | GET    | /profile/edit      | Yes       |
-| Edit Prof  | POST   | /profile/edit      | Yes       |  { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }
+| Log Out    | GET    | /logout            | YES       |  | /auth/login |
+| Welcome    | GET    | /welcome           | Yes       |                        |  /welcome |
+| Profile    | GET    | /profile           | Yes       |          | /auth/profile |
+| Edit Prof  | GET    | /profile/edit      | Yes       | | /auth/editProfile |
+| Edit Prof  | POST   | /profile/edit      | Yes       |  { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys } | /auth/editProfile |
 | Unsubscribe | GET | /unsubscribe | Yes |  | /auth/signup |
-| Tattooer Prof | GET | /tattooerId | Yes | 
-| Upload | GET | /upload | Yes |
-| Upload | POST | /upload | Yes | { tattooPhotoStyle, year, tattooer, place } |
-| Edit photo | GET | /edit/photoId |
-| Edit photo | POST | /edit/photoId | Yes | { tattooPhotoStyle, year, tattooer, place } |
-| Delete photo | GET | /delete/photoId | Yes | 
-| Search | GET | /search | Yes |
-| Review | GET | /reviews | Yes |
-| Review | POST | /reviews | Yes | { stars, comment } |
-| Edit Review | GET | /edit/reviewId | Yes |
-| Edit Review | POST | /edit/reviewId | Yes | { stars, comment } |
-| Delete Review | GET | /delete/reviewId | Yes 
-| Like | GET | /tattoerId | Yes
-| Delete Like | GET | /delete/tattoerId | Yes
+| Tattooer Prof | GET | /tattooerId | Yes | | /tattooesPhotos/tattooer |
+| Upload | GET | /upload | Yes | | /tattooesPhotos/uploadContent |
+| Upload | POST | /upload | Yes | { tattooPhotoStyle, year, tattooer, place } | /users/profile |
+| Edit photo | GET | /edit/photoId | Yes | | /tattooesPhotos/editPhotosContent |
+| Edit photo | POST | /edit/photoId | Yes | { tattooPhotoStyle, year, tattooer, place } | /users/profile |
+| Delete photo | GET | /delete/photoId | Yes | | /users/profile
+| Search view | GET | /search | Yes | | /search |
+| Search query | GET | /tattoer | Yes | | /search |
+| Review | GET | /reviews | Yes | | /reviews/reviews |
+| Review | POST | /reviews | Yes | { stars, comment } | /reviews/editReview |
+| Edit Review | GET | /edit/reviewId | Yes | | /reviews/editReview |
+| Edit Review | POST | /edit/reviewId | Yes | { stars, comment } | /reviews/tattooerId |
+| Delete Review | GET | /delete/reviewId | Yes | | /reviews/tattooerId |
+| Like | GET | /tattoerId | Yes | | /Back |
+| Delete Like | GET | /delete/tattoerId | Yes | | /Back |
+| See Favorites | GET | /myfavorites/ | Yes | | /favorites/myFavorites |
+| Choise Favorites | GET | /tattooId | Yes | | /Back |
+| Delete favorite | GET | /delete/tattooId | Yes | | /Back |
+| Contact | GET | /tattooerId | Yes | | /Contact |
+| Contact | POST | /tattoerId | Yes | { comment, contactform } | /tattoer/tattoerId | 
 ---
 
 ## Useful links
