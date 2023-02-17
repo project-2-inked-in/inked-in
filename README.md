@@ -38,6 +38,8 @@ Substitute this image with an image of your own app wireframes or designs
 
 ![](docs/wirefl1.png)
 
+http://localhost:3000/users/profile // http://localhost:3000/users/profile/edit
+
 ---
 
 ## User stories (MVP)
