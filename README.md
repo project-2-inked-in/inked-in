@@ -62,8 +62,6 @@ What can the user do with the app?
 - User can visit other users profiles
 - User can ask appointment to tattooer
 - User can send a DM to tattoer
-- User/tattoor can see favoutire images in big size
-
 
 ---
 
@@ -127,8 +125,8 @@ const userSchema = new Schema(
 );
 ´´´
 Tattoo:
+´´´js
 
-```js
 const tattooSchema = new Schema(
     {
         user: {
@@ -158,7 +156,7 @@ const tattooSchema = new Schema(
     });
 ´´´
 Review:
-```js
+´´´js
 
 const reviewSchema = new Schema(
     {
@@ -180,8 +178,6 @@ const reviewSchema = new Schema(
 Like: 
 ´´´js
 
-const { Schema, model } = require('mongoose');
-
 const likeSchema = new Schema(
     {
         user: {
@@ -196,32 +192,87 @@ const likeSchema = new Schema(
     {
         timestamps: true
     });
+´´´
 
-const Like = model('Like', likeSchema);
+Favorites: 
+´´´js
 
-module.exports = Like;
+const favoriteSchema = new Schema(
+    {
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        tattoo: {
+            type: Schema.Types.ObjectId,
+            ref: 'Tattoo'
+        },
+    },
+    {
+        timestamps: true
+    });
+´´´
+
+Contact:
+´´´js 
+const contactSchema = new Schema(
+    {
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        tattooerId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        comment: {
+            type: String
+        }, 
+        contactform: {
+            type: String
+        },
+        isChecked: {
+            type: Boolean
+        }
+    },
+    {
+        timestamps: true
+    });
+´´´
+
 ---
 
 ## Routes
 
-| Name  | Method | Endpoint    | Protected | Req.body            | Redirects |
-|-------|--------|-------------|------|---------------------|-----------|
-| Home  | GET   | /           | No   |                     |           |
-| Login | GET    | /auth/login | No |                      |           |
-| Login | POST | /auth/login   | No | { email, password }  | /         |
-| Signup | GET    | /auth/signup | No |                      |           |
-| Signup | POST | /auth/signup   | No | { username, password }  | /auth/login  |
-| Welcome  | GET    | /welcome | Yes |                        |           |
-| Profile | GET | /profile   | Yes |          |   |
-| Profile | POST | /profile | Yes |
-| 
+| Name       | Method | Endpoint           | Protected | Req.body            | Redirects |
+|------------|--------|-------------       |-----------|---------------------|-----------|
+| Home       | GET    | /                  | No        |                     |           |
+| Login      | GET    | /auth/login        | No        |                     |           |
+| Login      | POST   | /auth/login        | No        | { email, password } | /         |
+| Signup     | GET    | /auth/signup       | No        |                     |           |
+| Signup     | POST   | /auth/signup       | No        | { username, password } | /auth/login  |
+| SignTattoo | GET    | /auth/signTattooer | Yes       |                  | /welcome |
+| SignTattoo | POST   | /auth/signTattooer | Yes       | { TattooStyle, city } | /welcome |
+| Log Out    | GET    | /logout            | YES       |
+| Welcome    | GET    | /welcome           | Yes       |                        |           |
+| Profile    | GET    | /profile           | Yes       |          |   |
+| Profile    | POST   | /profile           | Yes       |
+| Edit Prof  | GET    | /profile/edit      | Yes       |
+| Edit Prof  | POST   | /profile/edit      | Yes       |  { city, tattooNumber, profileDescription, tattooStyle, studio, nextJourneys }
+| Unsubscribe | GET | /unsubscribe | Yes |  | /auth/signup |
+| Tattooer Prof | GET | /tattooerId | Yes | 
+| Upload | GET | /upload | Yes |
+| Upload | POST | /upload | Yes | { tattooPhotoStyle, year, tattooer, place } |
+| Edit photo | GET | /edit/photoId |
+| Edit photo | POST | /edit/photoId | Yes | { tattooPhotoStyle, year, tattooer, place } |
+| Delete photo | GET | /delete/photoId | Yes | 
 ---
 
 ## Useful links
 
 - [Github Repo]()
 - [Trello kanban](https://trello.com/b/h4l8ecjZ/inked-in)
-- [Deployed version]()
+- [Deployed version](https://inkedin.fly.dev/)
 - [Presentation slides](https://www.slides.com)
 
 

@@ -22,30 +22,30 @@ router.get('/tattooer', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     try {
         let tattoo;
-         if (place.length === 0) {
-             tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle } }).populate('user');
-        } else if (tattooPhotoStyle === undefined) {
-            tattoo = await Tattoo.find({ place: { $in: place } }).populate('user');
-        } else {
-            tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }, place: { $in: place } }).populate('user');
-        }
-        const tattooesResult =  await Promise.all( tattoo.map( async (tattooo) => {
-            let tatu = tattooo.toObject();
-            const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
-            if (like != null) {
-                tatu.isLikedPhoto = true;
+            if (place.length === 0) {
+                tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle } }).populate('user');
+            } else if (tattooPhotoStyle === undefined) {
+                tattoo = await Tattoo.find({ place: { $in: place } }).populate('user');
             } else {
-                tatu.isLikedPhoto = false;
+                tattoo = await Tattoo.find({ tattooPhotoStyle: { $in: tattooPhotoStyle }, place: { $in: place } }).populate('user');
             }
+            const tattooesResult =  await Promise.all( tattoo.map( async (tattooo) => {
+                let tatu = tattooo.toObject();
+                const like = await Like.findOne({ user: user._id, tattoo: tatu._id })
+                if (like != null) {
+                    tatu.isLikedPhoto = true;
+                } else {
+                    tatu.isLikedPhoto = false;
+                }
             const findLikes = await Like.find({ tattoo: tatu._id });
             tatu.numberLikes = findLikes.length;
             const findFav = await Favorite.findOne({ user: user._id, tattoo: tatu._id });
-            if (findFav != null) {
-                tatu.isFavPhoto = true;
-            } else {
-                tatu.isFavPhoto = false;
-            }
-            return tatu
+                if (findFav != null) {
+                    tatu.isFavPhoto = true;
+                } else {
+                    tatu.isFavPhoto = false;
+                }
+                return tatu
             }));
             if (tattooesResult.length === 0) {
                 const tattooNull = true;
