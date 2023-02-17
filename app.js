@@ -59,9 +59,15 @@ hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('toUpperCase', function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 });
-hbs.registerHelper('changeNumToStar', function(elements) {
-  let numberToStar = Array(elements + 1).join("☆ ");
-  return numberToStar;
+hbs.registerHelper('changeNumToStar', function (elements) {
+  let numberToStar = Array(elements + 1).join("★");
+  let rest;
+  if(numberToStar.length < 5) {
+    rest = Array(5 - numberToStar.length + 1)
+    return numberToStar + rest.join("☆")
+  } else {
+  return numberToStar
+  }
 });
 hbs.registerHelper("prettifyDate", function(timestamp) {
     let curr_date = timestamp.getDate();

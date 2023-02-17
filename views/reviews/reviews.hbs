@@ -22,6 +22,7 @@
     </section>
 {{/if}}
 {{#if userCanedit}}
+    <section class="review-container">
     {{#each userCanedit}}
         {{>cardReviewsUserCanEdit}}
     {{/each}}
@@ -29,5 +30,6 @@
 {{#if userCanTedit}}
     {{#each userCanTedit}}
         {{>cardReviewsUserCanTEdit}}
-    {{/each}}    
+    {{/each}}  
+    </section>
 {{/if}}
