@@ -123,9 +123,9 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
-´´´
+```
 Tattoo:
-´´´js
+```js
 
 const tattooSchema = new Schema(
     {
@@ -154,9 +154,9 @@ const tattooSchema = new Schema(
     {
         timestamps: true
     });
-´´´
+```
 Review:
-´´´js
+```js
 
 const reviewSchema = new Schema(
     {
@@ -173,10 +173,10 @@ const reviewSchema = new Schema(
         type: String
     }
     });
-´´´
+```
 
 Like: 
-´´´js
+```js
 
 const likeSchema = new Schema(
     {
@@ -192,10 +192,10 @@ const likeSchema = new Schema(
     {
         timestamps: true
     });
-´´´
+```
 
 Favorites: 
-´´´js
+```js
 
 const favoriteSchema = new Schema(
     {
@@ -211,10 +211,10 @@ const favoriteSchema = new Schema(
     {
         timestamps: true
     });
-´´´
+```
 
 Contact:
-´´´js 
+```js 
 const contactSchema = new Schema(
     {
         userId: {
@@ -238,7 +238,7 @@ const contactSchema = new Schema(
     {
         timestamps: true
     });
-´´´
+```
 
 ---
 
@@ -266,6 +266,14 @@ const contactSchema = new Schema(
 | Edit photo | GET | /edit/photoId |
 | Edit photo | POST | /edit/photoId | Yes | { tattooPhotoStyle, year, tattooer, place } |
 | Delete photo | GET | /delete/photoId | Yes | 
+| Search | GET | /search | Yes |
+| Review | GET | /reviews | Yes |
+| Review | POST | /reviews | Yes | { stars, comment } |
+| Edit Review | GET | /edit/reviewId | Yes |
+| Edit Review | POST | /edit/reviewId | Yes | { stars, comment } |
+| Delete Review | GET | /delete/reviewId | Yes 
+| Like | GET | /tattoerId | Yes
+| Delete Like | GET | /delete/tattoerId | Yes
 ---
 
 ## Useful links
