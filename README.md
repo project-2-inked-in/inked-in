@@ -1,6 +1,6 @@
 # Inked-In
 
-![](docs/inked-logo-B.png)
+![](docs/inked-in-logo-B.png)
 
 ## Description
 
